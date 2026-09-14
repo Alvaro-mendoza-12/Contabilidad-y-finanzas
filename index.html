@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 Contabilidad & Finanzas — USAT 2026</title>
+<style>
+  :root {
+    --bg: #0f0f13;
+    --bg2: #16161e;
+    --bg3: #1e1e2a;
+    --card: #1a1a24;
+    --accent: #7c6af7;
+    --accent2: #5fd4c4;
+    --accent3: #f7a84a;
+    --danger: #f76c6c;
+    --success: #5fd48c;
+    --text: #e8e8f0;
+    --text2: #9090b0;
+    --border: #2a2a3a;
+    --shadow: 0 8px 32px rgba(0,0,0,0.4);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+  /* NAVIGATION */
+  .navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(15,15,19,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex; align-items: center; gap: 8px;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-size: 1.2rem; font-weight: 800;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-right: 16px; white-space: nowrap;
+  }
+
+  .nav-btn {
+    padding: 7px 14px; border-radius: 8px; border: none; cursor: pointer;
+    font-size: 0.82rem; font-weight: 600;
+    background: transparent; color: var(--text2);
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .nav-btn:hover { background: var(--bg3); color: var(--text); }
+  .nav-btn.active {
+    background: var(--accent); color: #fff;
+    box-shadow: 0 2px 12px rgba(124,106,247,0.4);
+  }
+
+  /* PAGES */
+  .page { display: none; padding: 76px 24px 40px; max-width: 1100px; margin: 0 auto; }
+  .page.active { display: block; }
+
+  /* HERO */
+  .hero {
+    text-align: center; padding: 60px 20px 40px;
+  }
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900;
+    background: linear-gradient(135deg, #fff 0%, var(--accent) 50%, var(--accent2) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1.1; margin-bottom: 16px;
+  }
+  .hero p { color: var(--text2); font-size: 1.1rem; max-width: 600px; margin: 0 auto 32px; }
+
+  .stats-row {
+    display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px;
+  }
+  .stat-chip {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 12px 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .stat-chip .icon { font-size: 1.5rem; }
+  .stat-chip .num { font-size: 1.4rem; font-weight: 800; color: var(--accent); }
+  .stat-chip .lbl { font-size: 0.75rem; color: var(--text2); }
+
+  .quick-btns {
+    display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;
+  }
+  .quick-btn {
+    padding: 12px 24px; border-radius: var(--radius-sm); border: none; cursor: pointer;
+    font-size: 0.95rem; font-weight: 700; transition: all 0.2s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .quick-btn.primary {
+    background: linear-gradient(135deg, var(--accent), #9b8df7);
+    color: #fff; box-shadow: 0 4px 20px rgba(124,106,247,0.4);
+  }
+  .quick-btn.secondary {
+    background: var(--card); color: var(--text); border: 1px solid var(--border);
+  }
+  .quick-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+  /* SECTION GRID */
+  .section-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px;
+    margin-top: 24px;
+  }
+
+  .session-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 24px; cursor: pointer; transition: all 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .session-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+  .session-card:hover {
+    transform: translateY(-4px); border-color: var(--accent);
+    box-shadow: 0 12px 40px rgba(124,106,247,0.2);
+  }
+  .session-card .num {
+    font-size: 0.75rem; font-weight: 700; color: var(--accent); letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .session-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .session-card p { font-size: 0.82rem; color: var(--text2); line-height: 1.5; }
+  .session-card .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+  .tag {
+    padding: 3px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 600;
+    background: rgba(124,106,247,0.15); color: var(--accent); border: 1px solid rgba(124,106,247,0.3);
+  }
+
+  /* LESSON PAGE */
+  .lesson-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 28px;
+    padding: 20px; background: var(--card); border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+  .lesson-header .back-btn {
+    background: var(--bg3); border: 1px solid var(--border); color: var(--text);
+    padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.85rem;
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .lesson-header .back-btn:hover { background: var(--accent); border-color: var(--accent); }
+  .lesson-header h2 { font-size: 1.2rem; font-weight: 700; }
+
+  .lesson-body { display: flex; flex-direction: column; gap: 20px; }
+
+  .concept-block {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 24px; transition: all 0.2s;
+  }
+  .concept-block:hover { border-color: var(--accent); }
+  .concept-block h3 {
+    font-size: 1.1rem; font-weight: 700; color: var(--accent2);
+    display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+  }
+  .concept-block h3 .icon { font-size: 1.3rem; }
+  .concept-block p { color: var(--text2); line-height: 1.7; font-size: 0.92rem; }
+  .concept-block .highlight {
+    background: rgba(124,106,247,0.1); border-left: 3px solid var(--accent);
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin-top: 12px;
+    font-size: 0.88rem; color: var(--text);
+  }
+
+  .example-box {
+    background: rgba(95,212,196,0.08); border: 1px solid rgba(95,212,196,0.3);
+    border-radius: var(--radius-sm); padding: 16px; margin-top: 12px;
+  }
+  .example-box .example-label {
+    font-size: 0.72rem; font-weight: 700; color: var(--accent2);
+    letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;
+  }
+  .example-box p { font-size: 0.88rem; line-height: 1.6; }
+
+  /* EQUATION TABLE */
+  .eq-table {
+    width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 0.85rem;
+  }
+  .eq-table th {
+    background: rgba(124,106,247,0.2); color: var(--accent); padding: 10px 12px;
+    text-align: left; font-weight: 700; border-bottom: 1px solid var(--border);
+  }
+  .eq-table td {
+    padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text2);
+  }
+  .eq-table tr:hover td { background: rgba(255,255,255,0.03); color: var(--text); }
+  .eq-table .debe { color: var(--success); font-weight: 700; }
+  .eq-table .haber { color: var(--accent3); font-weight: 700; }
+
+  /* AUDIO PLAYER */
+  .audio-section {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px;
+  }
+  .audio-section h3 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .tts-btn {
+    background: linear-gradient(135deg, var(--accent2), #3dbdad);
+    color: #fff; border: none; border-radius: 8px; padding: 10px 20px;
+    cursor: pointer; font-size: 0.88rem; font-weight: 700; transition: all 0.2s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .tts-btn:hover { transform: scale(1.03); }
+  .tts-btn.playing { background: linear-gradient(135deg, var(--danger), #c94848); }
+  .audio-progress {
+    margin-top: 12px; height: 4px; background: var(--bg3);
+    border-radius: 2px; overflow: hidden; display: none;
+  }
+  .audio-progress-bar {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    border-radius: 2px; transition: width 0.3s;
+    animation: audioAnim 2s ease-in-out infinite;
+  }
+  @keyframes audioAnim { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+  /* VIDEO SECTION */
+  .video-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;
+    margin-top: 12px;
+  }
+  .video-card {
+    background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    overflow: hidden; cursor: pointer; transition: all 0.2s;
+  }
+  .video-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .video-thumb {
+    width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a1a2e, #16213e);
+    display: flex; align-items: center; justify-content: center; position: relative;
+  }
+  .video-thumb .play-icon { font-size: 2.5rem; opacity: 0.9; }
+  .video-thumb .yt-badge {
+    position: absolute; bottom: 8px; right: 8px;
+    background: #ff0000; color: #fff; font-size: 0.65rem; font-weight: 700;
+    padding: 2px 8px; border-radius: 4px; letter-spacing: 0.5px;
+  }
+  .video-info { padding: 12px; }
+  .video-info h4 { font-size: 0.88rem; font-weight: 700; margin-bottom: 4px; }
+  .video-info p { font-size: 0.75rem; color: var(--text2); }
+
+  /* FLASHCARDS */
+  .flashcard-container {
+    perspective: 1000px; max-width: 600px; margin: 0 auto;
+  }
+  .flashcard-inner {
+    width: 100%; height: 280px; position: relative;
+    transform-style: preserve-3d; transition: transform 0.6s;
+    cursor: pointer;
+  }
+  .flashcard-inner.flipped { transform: rotateY(180deg); }
+  .flashcard-face {
+    position: absolute; width: 100%; height: 100%;
+    backface-visibility: hidden; border-radius: var(--radius);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 30px; text-align: center; border: 1px solid var(--border);
+  }
+  .flashcard-front {
+    background: linear-gradient(135deg, var(--card), var(--bg3));
+    border-color: var(--accent);
+  }
+  .flashcard-back {
+    background: linear-gradient(135deg, rgba(124,106,247,0.2), rgba(95,212,196,0.1));
+    transform: rotateY(180deg);
+    border-color: var(--accent2);
+  }
+  .flashcard-face .card-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--text2); margin-bottom: 16px;
+  }
+  .flashcard-face .card-question { font-size: 1.15rem; font-weight: 700; line-height: 1.4; }
+  .flashcard-face .card-answer { font-size: 0.95rem; color: var(--text2); line-height: 1.6; }
+  .flashcard-hint { font-size: 0.75rem; color: var(--text2); text-align: center; margin-top: 10px; }
+
+  .fc-controls {
+    display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 20px;
+  }
+  .fc-btn {
+    padding: 10px 20px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--card); color: var(--text); cursor: pointer; font-weight: 600;
+    font-size: 0.88rem; transition: all 0.2s;
+  }
+  .fc-btn:hover { background: var(--accent); border-color: var(--accent); }
+  .fc-counter { font-size: 0.85rem; color: var(--text2); min-width: 80px; text-align: center; }
+
+  .fc-progress {
+    background: var(--bg3); border-radius: 20px; height: 6px; margin-top: 16px;
+  }
+  .fc-progress-bar {
+    height: 100%; border-radius: 20px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transition: width 0.3s;
+  }
+
+  .fc-session-picker {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+  }
+  .fc-session-btn {
+    padding: 7px 14px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--card); color: var(--text2); cursor: pointer; font-size: 0.82rem;
+    font-weight: 600; transition: all 0.2s;
+  }
+  .fc-session-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  /* EXERCISES */
+  .exercise-block {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 24px; margin-bottom: 16px;
+  }
+  .exercise-block h3 {
+    font-size: 1rem; font-weight: 700; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .ex-question { font-size: 0.92rem; color: var(--text2); margin-bottom: 16px; line-height: 1.6; }
+  .ex-options { display: flex; flex-direction: column; gap: 8px; }
+  .ex-option {
+    padding: 12px 16px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--bg3); cursor: pointer; font-size: 0.88rem;
+    transition: all 0.2s; display: flex; align-items: center; gap: 10px;
+  }
+  .ex-option:hover { border-color: var(--accent); background: rgba(124,106,247,0.1); }
+  .ex-option.correct { border-color: var(--success) !important; background: rgba(95,212,140,0.15) !important; color: var(--success); }
+  .ex-option.wrong { border-color: var(--danger) !important; background: rgba(247,108,108,0.15) !important; color: var(--danger); }
+  .ex-option.disabled { pointer-events: none; opacity: 0.6; }
+  .ex-feedback {
+    margin-top: 12px; padding: 12px 16px; border-radius: 8px;
+    font-size: 0.88rem; display: none;
+  }
+  .ex-feedback.show { display: block; }
+  .ex-feedback.success { background: rgba(95,212,140,0.15); border: 1px solid var(--success); color: var(--success); }
+  .ex-feedback.error { background: rgba(247,108,108,0.15); border: 1px solid var(--danger); color: var(--danger); }
+
+  /* EXAM */
+  .exam-picker {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px;
+    margin-bottom: 24px;
+  }
+  .exam-picker-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 16px; cursor: pointer; transition: all 0.2s; text-align: center;
+  }
+  .exam-picker-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .exam-picker-card .exam-num { font-size: 2rem; font-weight: 900; color: var(--accent); }
+  .exam-picker-card .exam-title { font-size: 0.82rem; color: var(--text2); margin-top: 4px; }
+  .exam-picker-card .exam-score {
+    font-size: 0.75rem; margin-top: 8px; padding: 3px 10px;
+    border-radius: 20px; display: inline-block;
+  }
+  .exam-picker-card .exam-score.passed { background: rgba(95,212,140,0.2); color: var(--success); }
+  .exam-picker-card .exam-score.failed { background: rgba(247,108,108,0.2); color: var(--danger); }
+  .exam-picker-card .exam-score.pending { background: rgba(144,144,176,0.2); color: var(--text2); }
+
+  .exam-area { display: none; }
+  .exam-area.active { display: block; }
+
+  .exam-header-bar {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 16px 20px; margin-bottom: 20px;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: gap;
+  }
+  .exam-header-bar h3 { font-size: 1rem; font-weight: 700; }
+  .exam-timer {
+    font-size: 1.3rem; font-weight: 900; color: var(--accent3);
+    font-variant-numeric: tabular-nums;
+  }
+  .exam-timer.danger { color: var(--danger); animation: pulse 1s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+  .exam-progress-row {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+  }
+  .exam-q-counter { font-size: 0.82rem; color: var(--text2); white-space: nowrap; }
+  .exam-progress-bar-wrap { flex: 1; background: var(--bg3); border-radius: 3px; height: 6px; }
+  .exam-progress-bar { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width 0.3s; }
+
+  .exam-question-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 28px; margin-bottom: 16px;
+  }
+  .exam-q-num { font-size: 0.75rem; font-weight: 700; color: var(--accent); letter-spacing: 1px; margin-bottom: 10px; }
+  .exam-q-text { font-size: 1rem; font-weight: 600; margin-bottom: 20px; line-height: 1.5; }
+  .exam-options { display: flex; flex-direction: column; gap: 10px; }
+  .exam-option {
+    padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border);
+    background: var(--bg3); cursor: pointer; font-size: 0.9rem;
+    transition: all 0.2s; display: flex; align-items: center; gap: 12px;
+  }
+  .exam-option:hover { border-color: var(--accent); background: rgba(124,106,247,0.1); }
+  .exam-option.selected { border-color: var(--accent); background: rgba(124,106,247,0.15); color: #fff; }
+  .exam-option.correct-final { border-color: var(--success); background: rgba(95,212,140,0.15); color: var(--success); pointer-events: none; }
+  .exam-option.wrong-final { border-color: var(--danger); background: rgba(247,108,108,0.15); color: var(--danger); pointer-events: none; }
+  .exam-option.neutral-final { opacity: 0.5; pointer-events: none; }
+
+  .option-letter {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
+  }
+
+  .exam-nav {
+    display: flex; gap: 12px; justify-content: center; margin-top: 24px;
+  }
+  .exam-nav-btn {
+    padding: 12px 28px; border-radius: 10px; border: none; cursor: pointer;
+    font-size: 0.92rem; font-weight: 700; transition: all 0.2s;
+  }
+  .exam-nav-btn.prev { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+  .exam-nav-btn.next { background: var(--accent); color: #fff; box-shadow: 0 4px 16px rgba(124,106,247,0.4); }
+  .exam-nav-btn.submit { background: linear-gradient(135deg, var(--success), #3dbd6a); color: #fff; }
+  .exam-nav-btn:hover { transform: translateY(-1px); filter: brightness(1.1); }
+  .exam-nav-btn:disabled { opacity: 0.4; pointer-events: none; }
+
+  /* RESULTS */
+  .result-screen {
+    text-align: center; padding: 40px 20px;
+  }
+  .result-grade {
+    font-size: 5rem; font-weight: 900; line-height: 1;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .result-grade.passing { background: linear-gradient(135deg, var(--success), #3dbdad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .result-grade.failing { background: linear-gradient(135deg, var(--danger), #c94848); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .result-label { font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+  .result-sub { color: var(--text2); font-size: 0.95rem; margin-bottom: 28px; }
+  .result-stats {
+    display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 28px;
+  }
+  .result-stat {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px 24px; text-align: center;
+  }
+  .result-stat .num { font-size: 1.8rem; font-weight: 900; }
+  .result-stat .lbl { font-size: 0.75rem; color: var(--text2); margin-top: 2px; }
+  .result-stat .num.green { color: var(--success); }
+  .result-stat .num.red { color: var(--danger); }
+  .result-btn {
+    padding: 12px 28px; border-radius: 10px; border: none; cursor: pointer;
+    font-size: 0.95rem; font-weight: 700; margin: 6px;
+    transition: all 0.2s;
+  }
+  .result-btn.primary { background: var(--accent); color: #fff; }
+  .result-btn.secondary { background: var(--card); color: var(--text); border: 1px solid var(--border); }
+  .result-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+  /* REVIEW */
+  .review-item {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 16px; margin-bottom: 12px;
+  }
+  .review-item.correct-r { border-color: rgba(95,212,140,0.4); }
+  .review-item.wrong-r { border-color: rgba(247,108,108,0.4); }
+  .review-q { font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; }
+  .review-ans { font-size: 0.85rem; color: var(--text2); }
+  .review-ans .your-ans { }
+  .review-ans .correct-ans { color: var(--success); }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(4px); z-index: 2000;
+    display: none; align-items: center; justify-content: center; padding: 20px;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius); max-width: 700px; width: 100%;
+    max-height: 80vh; overflow-y: auto; padding: 32px;
+  }
+  .modal h2 { font-size: 1.4rem; font-weight: 800; margin-bottom: 16px; }
+  .modal-close {
+    float: right; background: var(--bg3); border: none; color: var(--text);
+    width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 20px;
+    display: flex; align-items: center; gap: 10px;
+    box-shadow: var(--shadow); font-size: 0.88rem;
+    transform: translateY(100px); opacity: 0;
+    transition: all 0.3s; max-width: 320px;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.success { border-color: var(--success); }
+  .toast.error { border-color: var(--danger); }
+
+  /* KNOW RIGHTS SECTION */
+  .rights-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;
+  }
+  .right-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px; transition: all 0.2s;
+  }
+  .right-card:hover { border-color: var(--accent3); }
+  .right-card .right-icon { font-size: 2rem; margin-bottom: 10px; }
+  .right-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--accent3); margin-bottom: 8px; }
+  .right-card p { font-size: 0.82rem; color: var(--text2); line-height: 1.6; }
+  .right-card ul { list-style: none; margin-top: 10px; }
+  .right-card ul li {
+    font-size: 0.82rem; color: var(--text2); padding: 4px 0;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .right-card ul li::before { content: '→'; color: var(--accent3); flex-shrink: 0; }
+
+  /* LOADING */
+  .loading-overlay {
+    position: fixed; inset: 0; background: var(--bg);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    z-index: 9999; transition: opacity 0.5s;
+  }
+  .loading-overlay.fade { opacity: 0; pointer-events: none; }
+  .loader-logo { font-size: 3rem; margin-bottom: 20px; animation: bounce 1s ease-in-out infinite alternate; }
+  @keyframes bounce { 0%{transform:translateY(0)} 100%{transform:translateY(-12px)} }
+  .loader-title {
+    font-size: 1.5rem; font-weight: 900;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 8px;
+  }
+  .loader-sub { color: var(--text2); font-size: 0.88rem; margin-bottom: 24px; }
+  .loader-bar { width: 200px; height: 4px; background: var(--bg3); border-radius: 2px; overflow: hidden; }
+  .loader-fill {
+    height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px; animation: load 1.5s ease-out forwards;
+  }
+  @keyframes load { 0%{width:0%} 100%{width:100%} }
+
+  /* TABS */
+  .tabs { display: flex; gap: 8px; margin-bottom: 24px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .tab-btn {
+    padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer;
+    font-size: 0.88rem; font-weight: 600; background: transparent; color: var(--text2);
+    transition: all 0.2s;
+  }
+  .tab-btn.active { background: var(--accent); color: #fff; }
+  .tab-btn:hover:not(.active) { background: var(--bg3); color: var(--text); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .navbar { gap: 4px; padding: 0 12px; overflow-x: auto; }
+    .nav-btn { padding: 6px 10px; font-size: 0.75rem; }
+    .page { padding: 70px 12px 30px; }
+    .hero h1 { font-size: 1.8rem; }
+  }
+
+  /* ANIMATIONS */
+  .fade-in { animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+  .shimmer {
+    background: linear-gradient(90deg, var(--card) 25%, var(--bg3) 50%, var(--card) 75%);
+    background-size: 200% 100%; animation: shimmer 1.5s infinite;
+  }
+  @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+  /* MNEMONIC CARDS */
+  .mnemonic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin-top: 16px; }
+  .mnemonic-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    padding: 18px; text-align: center;
+  }
+  .mnemonic-card .m-term { font-size: 1.5rem; font-weight: 900; color: var(--accent); margin-bottom: 6px; }
+  .mnemonic-card .m-rule { font-size: 0.8rem; color: var(--accent2); margin-bottom: 6px; font-weight: 700; }
+  .mnemonic-card .m-desc { font-size: 0.78rem; color: var(--text2); line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loader-logo">📊</div>
+  <div class="loader-title">Contabilidad & Finanzas</div>
+  <div class="loader-sub">USAT · Cargando tu material de estudio...</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-logo">📊 CF</div>
+  <button class="nav-btn active" onclick="showPage('home')">🏠 Inicio</button>
+  <button class="nav-btn" onclick="showPage('lessons')">📚 Lecciones</button>
+  <button class="nav-btn" onclick="showPage('flashcards')">🃏 Tarjetas</button>
+  <button class="nav-btn" onclick="showPage('exercises')">✏️ Ejercicios</button>
+  <button class="nav-btn" onclick="showPage('exams')">📝 Exámenes</button>
+  <button class="nav-btn" onclick="showPage('rights')">⚖️ Derechos</button>
+  <button class="nav-btn" onclick="showPage('videos')">🎬 Videos</button>
+</nav>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ====== HOME PAGE ====== -->
+<div class="page active fade-in" id="page-home">
+  <div class="hero">
+    <h1>Contabilidad & Finanzas</h1>
+    <p>Tu guía completa para dominar el examen. Material interactivo, tarjetas, exámenes y más.</p>
+    <div class="stats-row">
+      <div class="stat-chip"><div class="icon">📖</div><div><div class="num">5</div><div class="lbl">Sesiones</div></div></div>
+      <div class="stat-chip"><div class="icon">🃏</div><div><div class="num">80+</div><div class="lbl">Tarjetas</div></div></div>
+      <div class="stat-chip"><div class="icon">📝</div><div><div class="num">20</div><div class="lbl">Exámenes</div></div></div>
+      <div class="stat-chip"><div class="icon">❓</div><div><div class="num">400</div><div class="lbl">Preguntas</div></div></div>
+      <div class="stat-chip"><div class="icon">✏️</div><div><div class="num">30+</div><div class="lbl">Ejercicios</div></div></div>
+    </div>
+    <div class="quick-btns">
+      <button class="quick-btn primary" onclick="showPage('exams')">🚀 Ir al Examen Ahora</button>
+      <button class="quick-btn secondary" onclick="showPage('flashcards')">🃏 Practicar Tarjetas</button>
+      <button class="quick-btn secondary" onclick="showPage('lessons')">📚 Ver Lecciones</button>
+    </div>
+  </div>
+
+  <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:16px;">📚 Sesiones del Curso</h2>
+  <div class="section-grid">
+    <div class="session-card" onclick="openLesson(1)">
+      <div class="num">Sesión 01</div>
+      <h3>Historia y Fundamentos de la Contabilidad</h3>
+      <p>Orígenes, Luca Pacioli, quipus incas, definición, libros contables y ciclo contable.</p>
+      <div class="tags"><span class="tag">Historia</span><span class="tag">Definición</span><span class="tag">Libros</span><span class="tag">Ciclo</span></div>
+    </div>
+    <div class="session-card" onclick="openLesson(2)">
+      <div class="num">Sesión 02</div>
+      <h3>Activo, Pasivo y Patrimonio — Partida Doble</h3>
+      <p>Clasificación del activo corriente/no corriente, pasivo, patrimonio y ejemplos de ecuación contable.</p>
+      <div class="tags"><span class="tag">Activo</span><span class="tag">Pasivo</span><span class="tag">Patrimonio</span><span class="tag">Ecuación</span></div>
+    </div>
+    <div class="session-card" onclick="openLesson(3)">
+      <div class="num">Sesión 03</div>
+      <h3>Casos Prácticos y La Empresa</h3>
+      <p>Ejercicios de ecuación contable y partida doble. Definición, elementos y constitución de empresa.</p>
+      <div class="tags"><span class="tag">Casos</span><span class="tag">Empresa</span><span class="tag">Constitución</span></div>
+    </div>
+    <div class="session-card" onclick="openLesson(4)">
+      <div class="num">Sesión 04</div>
+      <h3>Tipos de Empresa y Modelos de Negocio</h3>
+      <p>SA, SAC, SRL, EIRL, SAA. Los 9 modelos de negocio: franquicia, freemium, dropshipping y más.</p>
+      <div class="tags"><span class="tag">SA</span><span class="tag">SAC</span><span class="tag">SRL</span><span class="tag">Modelos</span></div>
+    </div>
+    <div class="session-card" onclick="openLesson(5)">
+      <div class="num">Sesión 05</div>
+      <h3>Repaso General — I Unidad</h3>
+      <p>Consolidación de todos los temas para el examen parcial.</p>
+      <div class="tags"><span class="tag">Repaso</span><span class="tag">Examen</span></div>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;">
+    <h3 style="font-size:1rem;font-weight:700;margin-bottom:16px;color:var(--accent2);">💡 Fórmula Clave — La Ecuación Contable</h3>
+    <div style="text-align:center;font-size:1.5rem;font-weight:900;margin:20px 0;padding:20px;background:var(--bg3);border-radius:12px;letter-spacing:2px;">
+      <span style="color:var(--success)">ACTIVO</span>
+      <span style="color:var(--text2);margin:0 12px">=</span>
+      <span style="color:var(--danger)">PASIVO</span>
+      <span style="color:var(--text2);margin:0 12px">+</span>
+      <span style="color:var(--accent)">PATRIMONIO</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center;">
+      <div style="background:rgba(95,212,140,0.1);border:1px solid rgba(95,212,140,0.3);border-radius:8px;padding:12px;">
+        <div style="font-weight:700;color:var(--success)">ACTIVO</div>
+        <div style="font-size:0.78rem;color:var(--text2);margin-top:4px">Lo que la empresa TIENE y POSEE</div>
+      </div>
+      <div style="background:rgba(247,108,108,0.1);border:1px solid rgba(247,108,108,0.3);border-radius:8px;padding:12px;">
+        <div style="font-weight:700;color:var(--danger)">PASIVO</div>
+        <div style="font-size:0.78rem;color:var(--text2);margin-top:4px">Lo que la empresa DEBE a terceros</div>
+      </div>
+      <div style="background:rgba(124,106,247,0.1);border:1px solid rgba(124,106,247,0.3);border-radius:8px;padding:12px;">
+        <div style="font-weight:700;color:var(--accent)">PATRIMONIO</div>
+        <div style="font-size:0.78rem;color:var(--text2);margin-top:4px">Lo que pertenece a los DUEÑOS</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== LESSONS PAGE ====== -->
+<div class="page fade-in" id="page-lessons">
+  <div id="lesson-home">
+    <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:8px;">📚 Lecciones</h2>
+    <p style="color:var(--text2);margin-bottom:24px;">Selecciona una sesión para estudiarla en detalle.</p>
+    <div class="section-grid">
+      <div class="session-card" onclick="openLesson(1)">
+        <div class="num">Sesión 01</div>
+        <h3>Historia y Fundamentos</h3>
+        <p>Historia, Luca Pacioli, Quipus, Definición, Libros Contables, Ciclo Contable.</p>
+        <div class="tags"><span class="tag">Historia</span><span class="tag">Libros</span><span class="tag">Ciclo</span></div>
+      </div>
+      <div class="session-card" onclick="openLesson(2)">
+        <div class="num">Sesión 02</div>
+        <h3>Activo, Pasivo y Partida Doble</h3>
+        <p>Clasificaciones, ecuación contable, casos prácticos con empresa JÁVEA SAC.</p>
+        <div class="tags"><span class="tag">Activo</span><span class="tag">Pasivo</span><span class="tag">Partida Doble</span></div>
+      </div>
+      <div class="session-card" onclick="openLesson(3)">
+        <div class="num">Sesión 03</div>
+        <h3>La Empresa: Definición y Elementos</h3>
+        <p>Casos prácticos con empresa Águilas del Norte. Definición y elementos de empresa.</p>
+        <div class="tags"><span class="tag">Empresa</span><span class="tag">Casos</span></div>
+      </div>
+      <div class="session-card" onclick="openLesson(4)">
+        <div class="num">Sesión 04</div>
+        <h3>Tipos y Modelos de Negocio</h3>
+        <p>SA, SAC, SRL, EIRL, SAA, SACS. Los 9 modelos de negocio más usados.</p>
+        <div class="tags"><span class="tag">Tipos</span><span class="tag">Modelos</span></div>
+      </div>
+      <div class="session-card" onclick="openLesson(5)">
+        <div class="num">Sesión 05</div>
+        <h3>Repaso General</h3>
+        <p>Consolidación de todos los temas para el examen de la I Unidad.</p>
+        <div class="tags"><span class="tag">Repaso</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="lesson-content" style="display:none;"></div>
+</div>
+
+<!-- ====== FLASHCARDS PAGE ====== -->
+<div class="page fade-in" id="page-flashcards">
+  <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:8px;">🃏 Tarjetas de Memorización</h2>
+  <p style="color:var(--text2);margin-bottom:20px;">Haz clic en la tarjeta para ver la respuesta.</p>
+
+  <div class="fc-session-picker" id="fc-session-picker">
+    <button class="fc-session-btn active" onclick="loadFlashcards('all', this)">📚 Todas</button>
+    <button class="fc-session-btn" onclick="loadFlashcards(1, this)">S1 Historia</button>
+    <button class="fc-session-btn" onclick="loadFlashcards(2, this)">S2 A/P/P</button>
+    <button class="fc-session-btn" onclick="loadFlashcards(3, this)">S3 Empresa</button>
+    <button class="fc-session-btn" onclick="loadFlashcards(4, this)">S4 Modelos</button>
+  </div>
+
+  <div class="fc-progress"><div class="fc-progress-bar" id="fc-bar" style="width:0%"></div></div>
+
+  <div style="margin-top:20px;" class="flashcard-container">
+    <div class="flashcard-inner" id="fc-card" onclick="flipCard()">
+      <div class="flashcard-face flashcard-front">
+        <div class="card-label">💭 Pregunta</div>
+        <div class="card-question" id="fc-question">Cargando...</div>
+      </div>
+      <div class="flashcard-face flashcard-back">
+        <div class="card-label">✅ Respuesta</div>
+        <div class="card-answer" id="fc-answer"></div>
+      </div>
+    </div>
+    <div class="flashcard-hint">👆 Haz clic en la tarjeta para voltear</div>
+  </div>
+
+  <div class="fc-controls">
+    <button class="fc-btn" onclick="prevCard()">← Anterior</button>
+    <div class="fc-counter" id="fc-counter">1 / ?</div>
+    <button class="fc-btn" onclick="nextCard()">Siguiente →</button>
+  </div>
+  <div style="text-align:center;margin-top:12px;">
+    <button class="fc-btn" onclick="shuffleCards()" style="background:rgba(124,106,247,0.15);border-color:var(--accent);color:var(--accent);">🔀 Mezclar</button>
+  </div>
+</div>
+
+<!-- ====== EXERCISES PAGE ====== -->
+<div class="page fade-in" id="page-exercises">
+  <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:8px;">✏️ Ejercicios Prácticos</h2>
+  <p style="color:var(--text2);margin-bottom:24px;">Practica con ejercicios interactivos de cada tema.</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('tab-ec')">Ecuación Contable</button>
+    <button class="tab-btn" onclick="showTab('tab-pd')">Partida Doble</button>
+    <button class="tab-btn" onclick="showTab('tab-clas')">Clasificación</button>
+    <button class="tab-btn" onclick="showTab('tab-emp')">Tipos de Empresa</button>
+  </div>
+
+  <div class="tab-content active" id="tab-ec">
+    <div id="exercises-ec"></div>
+  </div>
+  <div class="tab-content" id="tab-pd">
+    <div id="exercises-pd"></div>
+  </div>
+  <div class="tab-content" id="tab-clas">
+    <div id="exercises-clas"></div>
+  </div>
+  <div class="tab-content" id="tab-emp">
+    <div id="exercises-emp"></div>
+  </div>
+</div>
+
+<!-- ====== EXAMS PAGE ====== -->
+<div class="page fade-in" id="page-exams">
+  <div id="exam-picker-view">
+    <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:8px;">📝 Exámenes</h2>
+    <p style="color:var(--text2);margin-bottom:24px;">20 exámenes con 20 preguntas cada uno. Preguntas aleatorias y únicas.</p>
+    <div class="exam-picker" id="exam-picker"></div>
+  </div>
+
+  <div class="exam-area" id="exam-area">
+    <div class="exam-header-bar">
+      <div>
+        <h3 id="exam-title">Examen 1</h3>
+        <div style="font-size:0.78rem;color:var(--text2);">20 preguntas · Tiempo: 30 min</div>
+      </div>
+      <div class="exam-timer" id="exam-timer">30:00</div>
+    </div>
+    <div class="exam-progress-row">
+      <div class="exam-q-counter" id="exam-q-counter">1/20</div>
+      <div class="exam-progress-bar-wrap"><div class="exam-progress-bar" id="exam-pbar" style="width:5%"></div></div>
+    </div>
+    <div id="exam-question-area"></div>
+    <div class="exam-nav">
+      <button class="exam-nav-btn prev" id="exam-prev" onclick="examNav(-1)">← Anterior</button>
+      <button class="exam-nav-btn next" id="exam-next" onclick="examNav(1)">Siguiente →</button>
+      <button class="exam-nav-btn submit" id="exam-submit" onclick="submitExam()" style="display:none">✅ Entregar</button>
+    </div>
+  </div>
+
+  <div class="exam-area" id="result-area">
+    <div class="result-screen" id="result-screen"></div>
+    <div id="review-area"></div>
+  </div>
+</div>
+
+<!-- ====== RIGHTS PAGE ====== -->
+<div class="page fade-in" id="page-rights">
+  <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:8px;">⚖️ Lo que Debes Saber: Derechos Laborales y Más</h2>
+  <p style="color:var(--text2);margin-bottom:24px;">Conocimiento esencial que todo estudiante de Contabilidad y Finanzas debe dominar.</p>
+
+  <div class="rights-grid" id="rights-grid"></div>
+</div>
+
+<!-- ====== VIDEOS PAGE ====== -->
+<div class="page fade-in" id="page-videos">
+  <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:8px;">🎬 Videos Educativos</h2>
+  <p style="color:var(--text2);margin-bottom:24px;">Videos de YouTube recomendados para reforzar cada tema.</p>
+  <div class="video-grid" id="video-grid"></div>
+</div>
+
+<script>
+// ================================================================
+// DATA
+// ================================================================
+
+const FLASHCARDS = [
+  // SESSION 1 - Historia
+  {s:1, q:"¿Quién creó el sistema de Partida Doble?", a:"Fray Luca Pacioli (1445-1517), matemático italiano nacido en Venecia, explicó por primera vez la Ley de la Partida Doble."},
+  {s:1, q:"¿Qué son los Quipus?", a:"Sistema contable del Imperio Inca. Cuerdas gruesas con cuerdas delgadas colgantes con nudos de diferentes colores que representaban números y datos."},
+  {s:1, q:"¿Qué son los Quipucamayocs?", a:"Los 'contadores' del Imperio Inca. Operaban los quipus, registraban operaciones y consolidaban información contable. El mayor se llamaba 'Tahuantinsuyo runa quipu'."},
+  {s:1, q:"¿Qué es la Contabilidad?", a:"Es la ciencia que se encarga de registrar, clasificar, analizar, interpretar y comunicar la información financiera de una empresa, usando normas, principios y procedimientos."},
+  {s:1, q:"¿Cuál es la importancia de la Contabilidad?", a:"Permite conocer la situación económica y financiera real de una empresa, proporciona información precisa de activos, pasivos y patrimonio para la toma de decisiones."},
+  {s:1, q:"¿Cuáles son los Fines de la Contabilidad?", a:"1. Imagen clara y verídica de la situación financiera. 2. Prever el futuro. 3. Servir como comprobante legal. 4. Control riguroso de recursos. 5. Registrar operaciones con claridad y precisión."},
+  {s:1, q:"¿Qué son los Libros de Contabilidad?", a:"Documentos empastados y foliados donde se registra de forma ordenada, clara y precisa las distintas operaciones de una empresa. Hoy mayormente computarizados."},
+  {s:1, q:"¿Cuáles son los Libros Principales?", a:"1. Libro de Inventarios y Balances. 2. Libro Diario. 3. Libro Mayor. 4. Libro Caja. 5. Libro Actas."},
+  {s:1, q:"¿Cuáles son los Libros Auxiliares?", a:"Libro de almacén, registro de compras, registro de ventas, bancos, planillas, gastos generales, cuentas por cobrar, control de personal, letras por cobrar/pagar."},
+  {s:1, q:"¿Cuáles son las 3 etapas del Ciclo Contable?", a:"1. APERTURA: Balance inicial del nuevo ciclo. 2. MOVIMIENTO: Registro de operaciones en el Libro Diario. 3. CIERRE: Traslado al Libro Mayor y generación de Estados Financieros."},
+  {s:1, q:"¿Qué es el Activo?", a:"Son los bienes, derechos y recursos que posee la empresa: bienes muebles, inmuebles, dinero, equipos, mercaderías, cuentas por cobrar, etc."},
+  {s:1, q:"¿Qué es el Pasivo?", a:"Son las obligaciones que la empresa debe pagar a terceros: deudas con bancos, proveedores, impuestos, salarios pendientes, etc."},
+  {s:1, q:"¿Qué es el Patrimonio?", a:"Es la diferencia entre el Activo y el Pasivo. Incluye el capital aportado por socios, reservas legales y utilidades obtenidas. Patrimonio = Activo - Pasivo."},
+  {s:1, q:"¿Qué es el Plan Contable General Empresarial (PCGE)?", a:"Catálogo de cuentas emitido en 2010 por el Consejo Normativo de Contabilidad, homologado con las NIIF. Es la herramienta para registrar hechos económicos y presentar Estados Financieros."},
+  {s:1, q:"¿Quién es el Deudor en contabilidad?", a:"Se ubica al lado IZQUIERDO (Debe). Registra a quien recibe dinero/bienes, los valores que ingresan y las pérdidas de la empresa."},
+  {s:1, q:"¿Quién es el Acreedor en contabilidad?", a:"Se ubica al lado DERECHO (Haber). Registra a quien da/entrega dinero, los valores que salen y las ganancias de la empresa."},
+
+  // SESSION 2 - Activo, Pasivo, Partida Doble
+  {s:2, q:"¿Qué es el Activo Corriente?", a:"Son cuentas que representan dinero, valores o derechos que permanecen HASTA un año. Ej: Caja, Bancos, Clientes, Mercaderías, Suministros."},
+  {s:2, q:"¿Qué es el Activo No Corriente?", a:"Son cuentas que permanecen MÁS de un año. Incluye bienes muebles e inmuebles, intangibles, activos biológicos. Elemento 3 del PCGE."},
+  {s:2, q:"¿Qué es el Activo Disponible?", a:"Representa Caja y Bancos: el dinero con disponibilidad inmediata."},
+  {s:2, q:"¿Qué es el Activo Exigible?", a:"Está representado por la cuenta Clientes (cuentas por cobrar). Se llama 'exigible' porque al vencer la factura se le exige al deudor el pago."},
+  {s:2, q:"¿Qué es el Activo Realizable?", a:"Mercaderías, productos terminados, materias primas y productos en proceso. Están listos para la venta o transformación."},
+  {s:2, q:"¿Qué es el Pasivo Corriente?", a:"Obligaciones con vencimiento MENOR a un año. Ej: deudas a corto plazo, facturas por pagar próximas."},
+  {s:2, q:"¿Qué es el Pasivo No Corriente?", a:"Obligaciones con vencimiento MAYOR a un año. Ej: préstamos a largo plazo."},
+  {s:2, q:"¿Qué es la Ecuación Contable?", a:"ACTIVO = PASIVO + PATRIMONIO. Toda operación comercial debe mantener esta igualdad entre el Debe y el Haber."},
+  {s:2, q:"¿Cuáles son las 3 Reglas de la Partida Doble?", a:"1. Para personas: quien RECIBE es Deudor, quien DA es Acreedor. 2. Para cosas: lo que INGRESA es Deudor, lo que SALE es Acreedor. 3. Para resultados: toda PÉRDIDA es Deudora, toda GANANCIA es Acreedora."},
+  {s:2, q:"¿Cómo se registra el Activo en la Partida Doble?", a:"Las cuentas del Activo AUMENTAN con CARGO (lado izquierdo/Debe) y DISMINUYEN con ABONO (lado derecho/Haber)."},
+  {s:2, q:"¿Cómo se registra el Pasivo en la Partida Doble?", a:"Las cuentas del Pasivo DISMINUYEN con CARGO (Debe) y AUMENTAN con ABONO (Haber)."},
+  {s:2, q:"¿Cómo se registra el Patrimonio en la Partida Doble?", a:"Se CARGA (Debe) si hay PÉRDIDA y se ABONA (Haber) si aumenta el CAPITAL o hay UTILIDAD."},
+  {s:2, q:"¿Qué establece el Principio Contable de la Partida Doble?", a:"'No hay Deudor sin Acreedor, ni Acreedor sin Deudor'. A una o más cuentas deudoras le corresponde una o más cuentas acreedoras."},
+
+  // SESSION 3 - Empresa
+  {s:3, q:"¿Qué es una Empresa según la LGS?", a:"Institución pública o privada, persona natural o jurídica, que genera ingresos y gastos cuyo objetivo principal es el LUCRO, excepto las ONG."},
+  {s:3, q:"¿Cuáles son los 6 Elementos de una Empresa?", a:"1. Entidad (persona jurídica/individual). 2. Elementos humanos (personas). 3. Aspiraciones. 4. Realizaciones. 5. Bienes materiales. 6. Capacidad técnica y financiera."},
+  {s:3, q:"¿Qué es la Capacidad Financiera de una empresa?", a:"Las posibilidades que tiene la empresa para realizar pagos e inversiones a corto, mediano y largo plazo, incluyendo liquidez y margen de utilidad de operaciones."},
+  {s:3, q:"¿Para qué sirve constituir una empresa formalmente?", a:"Para que el Estado le ofrezca los beneficios de la formalidad: protección legal, acceso a créditos, emisión de comprobantes válidos y responsabilidad limitada."},
+
+  // SESSION 4 - Tipos de empresa y modelos de negocio
+  {s:4, q:"¿Qué es una SA (Sociedad Anónima)?", a:"Empresa con accionistas cuya responsabilidad está limitada a su inversión en acciones. Permite participación pública y venta en Bolsa de Valores. Ideal para empresas grandes."},
+  {s:4, q:"¿Qué es una SAC (Sociedad Anónima Cerrada)?", a:"Versión íntima de la SA. Tiene accionistas con número limitado y NO puede vender acciones al público. Mantiene control en un grupo selecto."},
+  {s:4, q:"¿Qué es una SRL (Sociedad Comercial de Responsabilidad Limitada)?", a:"Los socios tienen responsabilidad LIMITADA: sus bienes personales están protegidos en caso de deudas. Combina flexibilidad con protección."},
+  {s:4, q:"¿Qué es una EIRL (Empresa Individual de Responsabilidad Limitada)?", a:"Diseñada para UN SOLO dueño. La responsabilidad está limitada a los bienes de la empresa, protegiendo el patrimonio personal del titular."},
+  {s:4, q:"¿Qué es una SAA (Sociedad Anónima Abierta)?", a:"Puede ofrecer sus acciones al público en GENERAL. Ideal para empresas grandes que buscan aumentar capital con amplia base de inversionistas."},
+  {s:4, q:"¿Qué es el Modelo de Negocios 'De Varios Lados'?", a:"Conecta 2 o más grupos de clientes no relacionados para beneficio mutuo. Ej: Google conecta usuarios con empresas anunciantes."},
+  {s:4, q:"¿Qué es el Modelo de Franquicia?", a:"Se otorgan derechos a terceros para vender productos bajo la marca y métodos del franquiciante, a cambio de un porcentaje sobre ventas. Ej: McDonald's, KFC."},
+  {s:4, q:"¿Qué es el Modelo de Cola Larga?", a:"Ofrece amplio catálogo de productos específicos con pocas ventas individuales, pero gran volumen total. Ej: Amazon, tiendas de comercio electrónico especializadas."},
+  {s:4, q:"¿Qué es el Modelo Freemium?", a:"Se ofrece parte del servicio GRATIS y se cobra por servicios avanzados. Requiere gran número de usuarios porque pocos pagan. Ej: Spotify, LinkedIn."},
+  {s:4, q:"¿Qué es el Modelo de Suscripción?", a:"El consumidor paga PERIÓDICAMENTE por un producto/servicio continuo. Genera ingresos recurrentes. Ej: Netflix, Spotify Premium, periódicos digitales."},
+  {s:4, q:"¿Qué es el E-Commerce?", a:"Comercio electrónico: venta de productos online con logística de envío a domicilio. Puede ser masivo o de 'cola larga'. Su crecimiento es imparable."},
+  {s:4, q:"¿Qué es el Dropshipping?", a:"E-commerce donde el vendedor NO almacena el producto. El proveedor lo almacena y envía al cliente final. Baja inversión pero márgenes estrechos."},
+  {s:4, q:"¿Qué es el Modelo de Afiliación?", a:"Promover productos de terceros y recibir COMISIONES por ventas logradas. Requiere mucho tráfico online. Ej: blogs de reseñas con links a tiendas."},
+  {s:4, q:"¿Qué es el Modelo Peer to Peer?", a:"Conecta a PARTICULARES entre sí. La empresa gana por publicidad o comisiones. Ej: Facebook Marketplace, MercadoLibre, Airbnb."},
+  {s:4, q:"¿Cuáles son los 3 Objetivos Empresariales principales?", a:"1. Máximo beneficio (ingresos - gastos). 2. Crecimiento (reinvertir utilidades). 3. Satisfacción del cliente (fidelización)."},
+  {s:4, q:"¿Qué es la SACS (Sociedad por Acciones Cerrada Simplificada)?", a:"Combina características de la SAC con simplificaciones administrativas. Creada para facilitar la formalización de emprendedores y pequeños empresarios."},
+];
+
+// ================================================================
+// 20 EXAMS × 20 QUESTIONS EACH
+// ================================================================
+const ALL_QUESTIONS = [
+  // EXAM SET 1 - Fundamentos
+  {id:1, q:"¿En qué año nació Luca Pacioli?", opts:["1445","1517","1400","1350"], ans:0, exp:"Luca Pacioli nació en 1445 en Burgo Saneti Sepulcro, Venecia, Italia."},
+  {id:2, q:"¿Qué es la Partida Doble?", opts:["Un libro contable","Sistema donde toda transacción afecta mínimo dos cuentas","Un tipo de empresa","Un estado financiero"], ans:1, exp:"La Partida Doble establece que cada transacción afecta al menos dos cuentas: una con débito y otra con crédito."},
+  {id:3, q:"¿Qué representa el ACTIVO en la ecuación contable?", opts:["Lo que la empresa debe","Lo que la empresa tiene y posee","El capital de los socios","Las utilidades"], ans:1, exp:"El activo son los bienes, derechos y recursos de los que dispone la empresa."},
+  {id:4, q:"¿Cuánto dura normalmente un Ciclo Contable?", opts:["6 meses","3 meses","Un año","2 años"], ans:2, exp:"Normalmente el ciclo contable es de un año, aunque puede ser mensual, trimestral o semestral."},
+  {id:5, q:"¿Qué son los Quipucamayocs?", opts:["Tipo de quipu","Contadores del Imperio Inca","Libros de contabilidad inca","Monedas incas"], ans:1, exp:"Los Quipucamayocs eran los operadores de quipus, comparables a los contadores actuales."},
+  {id:6, q:"¿Cuál es la fórmula de la Ecuación Contable?", opts:["Activo = Pasivo - Patrimonio","Activo + Pasivo = Patrimonio","Activo = Pasivo + Patrimonio","Patrimonio = Activo + Pasivo"], ans:2, exp:"La ecuación fundamental es: ACTIVO = PASIVO + PATRIMONIO"},
+  {id:7, q:"¿En qué lado se ubica el Acreedor en la cuenta T?", opts:["Lado izquierdo (Debe)","Lado derecho (Haber)","Centro","Arriba"], ans:1, exp:"El Acreedor se ubica al lado DERECHO (Haber) y registra lo que sale de la empresa."},
+  {id:8, q:"¿Qué registra el Libro Diario?", opts:["Solo las compras","Todas las operaciones cronológicamente","Solo las ventas","El inventario final"], ans:1, exp:"El Libro Diario registra TODAS las operaciones que conforman la actividad de la empresa."},
+  {id:9, q:"¿Qué es el Activo Disponible?", opts:["Mercaderías en almacén","Cuentas por cobrar","Caja y Bancos","Maquinaria"], ans:2, exp:"El Activo Disponible representa Caja y Bancos, con disponibilidad inmediata."},
+  {id:10, q:"¿Qué tipo de empresa está diseñada para un solo dueño?", opts:["SA","SAC","EIRL","SRL"], ans:2, exp:"La EIRL (Empresa Individual de Responsabilidad Limitada) está diseñada para un solo propietario."},
+  {id:11, q:"¿Qué es el Modelo Freemium?", opts:["Venta solo en redes sociales","Servicio gratis básico, pago por avanzado","Modelo de franquicias","Venta por suscripción anual"], ans:1, exp:"Freemium ofrece parte del servicio gratis y cobra por funciones más completas o avanzadas."},
+  {id:12, q:"¿Cuándo se ABONA una cuenta de Activo?", opts:["Cuando aumenta","Cuando disminuye","Siempre","Nunca"], ans:1, exp:"Las cuentas de Activo se ABONAN (lado derecho) cuando DISMINUYEN."},
+  {id:13, q:"¿Qué es la SAA?", opts:["Sociedad Anónima Abierta","Sociedad Anónima Adjunta","Sociedad de Accionistas Abiertos","Sociedad Anónima Activa"], ans:0, exp:"SAA = Sociedad Anónima Abierta. Puede ofrecer acciones al público en general."},
+  {id:14, q:"¿Qué libro se usa para centralizar TODAS las operaciones de una empresa?", opts:["Libro Auxiliar","Libro Mayor","Libro de Ventas","Libro de Almacén"], ans:1, exp:"El Libro Mayor centraliza de forma sistemática todas las operaciones realizadas."},
+  {id:15, q:"¿Qué principio rige la Partida Doble?", opts:["'Sin pérdida no hay ganancia'","'No hay Deudor sin Acreedor'","'El debe siempre es mayor'","'El haber nunca se abona'"], ans:1, exp:"El principio es: 'No hay Deudor sin Acreedor, ni Acreedor sin Deudor'."},
+  {id:16, q:"¿Qué es el Pasivo Corriente?", opts:["Deudas a más de 5 años","Obligaciones con vencimiento menor a 1 año","Capital de los socios","Utilidades retenidas"], ans:1, exp:"El Pasivo Corriente son obligaciones con vencimiento MENOR a un año."},
+  {id:17, q:"¿Para qué sirve el PCGE (Plan Contable General Empresarial)?", opts:["Registrar planillas","Catálogo de cuentas para registrar hechos económicos","Manual de recursos humanos","Ley de impuestos"], ans:1, exp:"El PCGE es un catálogo de cuentas para registrar hechos económicos y elaborar Estados Financieros."},
+  {id:18, q:"¿En qué consiste el Modelo Dropshipping?", opts:["Compras en efectivo","El vendedor no almacena, el proveedor envía directamente","Venta puerta a puerta","Modelo de afiliados"], ans:1, exp:"En Dropshipping el vendedor no almacena. El proveedor gestiona inventario y envíos al cliente final."},
+  {id:19, q:"¿Qué es el Activo Exigible?", opts:["Dinero en caja","Cuentas por cobrar a clientes","Maquinaria","Mercaderías"], ans:1, exp:"El Activo Exigible son cuentas por cobrar a clientes, exigibles al vencimiento de la factura."},
+  {id:20, q:"¿Cuál es el objetivo principal de la Contabilidad?", opts:["Solo pagar impuestos","Facilitar la toma de decisiones y control de gestión","Calcular sueldos","Hacer inventarios"], ans:1, exp:"La Contabilidad facilita la toma de decisiones y el control de gestión estudiando el patrimonio."},
+
+  // EXAM SET 2 - Historia y Ciclo
+  {id:21, q:"¿En qué año murió Luca Pacioli?", opts:["1400","1500","1517","1550"], ans:2, exp:"Luca Pacioli murió en 1517."},
+  {id:22, q:"¿De qué material se hacían los Quipus?", opts:["Metal y piedra","Algodón y fibra de camélidos","Madera y cuero","Arcilla"], ans:1, exp:"Los Quipus estaban hechos de algodón y fibra de camélidos (alpaca, guanaco, llama)."},
+  {id:23, q:"¿Qué significa 'Quipu'?", opts:["Número","Nudo","Registro","Contador"], ans:1, exp:"Quipu significa 'NUDO' en quechua."},
+  {id:24, q:"¿Cuál es la primera etapa del Ciclo Contable?", opts:["Cierre contable","Movimiento","Apertura contable","Liquidación"], ans:2, exp:"La primera etapa es la APERTURA CONTABLE, donde se realiza el balance inicial del nuevo ciclo."},
+  {id:25, q:"¿Qué son las Reglas del Principio Matemático de la Partida Doble?", opts:["Reglas de auditoría","5 reglas sobre deudor/acreedor, debe/haber","Normas de publicidad","Reglas de impuestos"], ans:1, exp:"Las 5 reglas incluyen: no hay deudor sin acreedor, suma adeudada = abono, etc."},
+  {id:26, q:"¿En qué consiste la segunda etapa del Ciclo Contable?", opts:["Cierre en el libro mayor","Registro de operaciones en el Libro Diario","Balance general","Apertura de cuentas"], ans:1, exp:"El MOVIMIENTO consiste en registrar todas las operaciones en el Libro Diario."},
+  {id:27, q:"¿Qué documentos se obtienen al final del Ciclo Contable?", opts:["Solo el Libro Diario","Los Estados Financieros","Los Quipus","La hoja de planillas"], ans:1, exp:"Al cerrar el ciclo contable se generan los ESTADOS FINANCIEROS."},
+  {id:28, q:"¿Cómo se llaman las 'ramas afines' de la Contabilidad?", opts:["Solo matemáticas y estadística","Documentación mercantil, estadística, ing. sistemas, derecho, legislación","Solo auditoría","Solo finanzas"], ans:1, exp:"Las ramas afines son: documentación mercantil, estadística, ingeniería de sistemas, derecho y legislación."},
+  {id:29, q:"¿Qué es el Patrimonio Neto?", opts:["Todo el activo de la empresa","Activo menos Pasivo","Solo el capital aportado","Las ventas del año"], ans:1, exp:"Patrimonio = Activo - Pasivo. Incluye capital, reservas, acciones y utilidades."},
+  {id:30, q:"¿Cuándo se CARGA una cuenta de Pasivo?", opts:["Cuando aumenta","Cuando disminuye","Siempre al inicio","Nunca"], ans:1, exp:"Las cuentas de Pasivo se CARGAN (Debe/izquierda) cuando DISMINUYEN."},
+  {id:31, q:"¿Cuál es el Libro Auxiliar usado para compras?", opts:["Libro Mayor","Libro de Registro de Compras","Libro Diario","Libro Caja"], ans:1, exp:"El Libro de Registro de Compras es el auxiliar para registrar todas las compras."},
+  {id:32, q:"¿Qué es el Activo Realizable?", opts:["Dinero en banco","Cuentas por cobrar","Mercaderías y productos en almacén listos para venta","Terrenos"], ans:2, exp:"El Activo Realizable son existencias en almacén listas para la venta o transformación."},
+  {id:33, q:"¿Cuáles son los 4 pasos del Ciclo Contable?", opts:["Comprar, vender, pagar, cobrar","Comprobantes, libros, hoja de comprobación, estados financieros","Inventario, compra, venta, cierre","Apertura, registro, ajuste, cierre"], ans:1, exp:"Los pasos son: Comprobantes de Pago → Libros Contables → Hoja de Comprobación → Estados Financieros."},
+  {id:34, q:"¿Qué tipo de empresa puede cotizar en la Bolsa de Valores de Lima?", opts:["SRL","EIRL","SA (Sociedad Anónima)","SAC"], ans:2, exp:"La SA puede participar en la Bolsa de Valores, a diferencia de la SAC que es cerrada."},
+  {id:35, q:"¿Cuántos modelos de negocio se mencionan en el curso?", opts:["5","7","9","12"], ans:2, exp:"Se estudian 9 modelos de negocio: De Varios Lados, Franquicia, Cola Larga, Freemium, Suscripción, E-Commerce, Dropshipping, Afiliación y Peer to Peer."},
+  {id:36, q:"¿Qué es el Modelo Peer to Peer?", opts:["Empresa y Estado","Particulares conectados entre sí","Empresa a empresa","Banco a cliente"], ans:1, exp:"Peer to Peer (Red entre Pares) conecta a particulares entre sí. La empresa gana comisiones/publicidad."},
+  {id:37, q:"¿Qué es la Capacidad Técnica de una empresa?", opts:["Dinero disponible","Conjunto de conocimientos y habilidades del personal","Número de clientes","Tamaño de la empresa"], ans:1, exp:"La Capacidad Técnica es el conjunto de conocimientos y habilidades que poseen los miembros para ejecutar tareas."},
+  {id:38, q:"¿Qué es una Franquicia?", opts:["Tipo de impuesto","Acuerdo para vender productos de otra empresa usando su marca a cambio de compensación","Sociedad de responsabilidad limitada","Modelo de ventas por internet"], ans:1, exp:"La Franquicia permite vender bajo la marca de otro a cambio de un porcentaje sobre ventas o canon fijo."},
+  {id:39, q:"¿Qué hace el Libro de Inventarios y Balances?", opts:["Registra solo las ventas","Controla el inventario y refleja el balance general","Registra planillas","Contiene las actas de socios"], ans:1, exp:"El Libro de Inventarios y Balances muestra el inventario de bienes y el balance de la empresa."},
+  {id:40, q:"¿Cuál es la función del Libro Mayor?", opts:["Registrar operaciones diarias","Centralizar todas las operaciones de forma sistemática","Registrar compras","Controlar el almacén"], ans:1, exp:"El Libro Mayor centraliza TODAS las operaciones en forma sistemática y sirve para preparar los estados financieros."},
+
+  // EXAM SET 3 - Clasificación de Empresas
+  {id:41, q:"¿Cuántos accionistas mínimo necesita una SAC?", opts:["Solo 1","Mínimo 2, máximo 20","Sin límite","Mínimo 50"], ans:1, exp:"La SAC tiene entre 2 y 20 accionistas, siendo una empresa pequeña y cerrada."},
+  {id:42, q:"¿Qué significa la 'responsabilidad limitada' en una empresa?", opts:["La empresa tiene pocas deudas","Los bienes personales del dueño están protegidos de deudas empresariales","Que solo se puede deber hasta cierta cifra","Que hay pocos trabajadores"], ans:1, exp:"Responsabilidad limitada significa que las deudas de la empresa no afectan el patrimonio personal del dueño."},
+  {id:43, q:"¿Cuál es la diferencia principal entre SA y SAA?", opts:["El tamaño","La SAA puede ofrecer acciones al público en general, la SA no siempre","El número de socios","El tipo de negocio"], ans:1, exp:"La SAA puede cotizar en bolsa y captar capital del público en general, a diferencia de la SA tradicional."},
+  {id:44, q:"¿Para qué sirve la SACS (Sociedad por Acciones Cerrada Simplificada)?", opts:["Solo para grandes empresas","Fomentar la formalización de emprendedores con trámites simplificados","Para empresas públicas","Para bancos"], ans:1, exp:"La SACS fue creada para facilitar la formalización de emprendedores y pequeños empresarios con menos burocracia."},
+  {id:45, q:"¿Cuál es el objetivo empresarial de 'Calidad'?", opts:["Bajar precios","Ofrecer bienes y servicios que superen a la competencia en todo el proceso productivo","Tener muchos empleados","Solo cumplir la ley"], ans:1, exp:"La calidad debe estar no solo en el producto sino en TODO el proceso productivo y de distribución."},
+  {id:46, q:"¿Cuándo una empresa persigue el objetivo de 'Supervivencia'?", opts:["Cuando quiere crecer rápido","En periodos de crisis, solo busca mantenerse","Cuando lanza nuevos productos","Cuando contrata personal"], ans:1, exp:"En situaciones de crisis, la empresa solo aspira a sobrevivir hasta que cambien las condiciones."},
+  {id:47, q:"¿Qué incluyen los 'Objetivos Sociales' de una empresa?", opts:["Solo maximizar ganancias","Respeto al medio ambiente y nivel de vida digno para trabajadores","Reducir costos","Expandirse internacionalmente"], ans:1, exp:"Los objetivos sociales incluyen respeto ambiental y condiciones de vida dignas para los trabajadores."},
+  {id:48, q:"¿Qué es el Modelo de Cola Larga?", opts:["Venta de pocos productos en grandes cantidades","Amplio catálogo de productos específicos con pocas ventas individuales pero gran total","Venta en cadena","Modelo de supermercados"], ans:1, exp:"El modelo de Cola Larga ofrece muchos productos nicho que individualmente venden poco pero suman mucho."},
+  {id:49, q:"¿Qué es el E-Commerce?", opts:["Comercio en efectivo","Comercio electrónico online con envío a domicilio","Comercio entre empresas","Comercio en ferias"], ans:1, exp:"E-Commerce es el comercio electrónico: venta de productos/servicios online con logística de envío."},
+  {id:50, q:"¿Qué es el Modelo de Afiliación?", opts:["Asociación de empresas","Promover productos de terceros y recibir comisiones por ventas","Filial de una empresa grande","Tipo de franquicia"], ans:1, exp:"En el modelo de Afiliación se promocionan productos ajenos a cambio de comisiones por las ventas generadas."},
+  {id:51, q:"¿Qué es una Realización en el contexto de empresa?", opts:["Un inventario","La satisfacción al lograr lo que se aspiraba","Un tipo de venta","Un estado financiero"], ans:1, exp:"Las Realizaciones son las satisfacciones que sienten los miembros de la empresa al cumplir sus aspiraciones."},
+  {id:52, q:"¿Cuántos elementos tiene la estructura de una empresa?", opts:["3","4","6","8"], ans:2, exp:"Los 6 elementos son: Entidad, Elementos humanos, Aspiraciones, Realizaciones, Bienes materiales, Capacidad técnica y financiera."},
+  {id:53, q:"¿Cuál es la Ley que regula las Sociedades en Perú?", opts:["Ley N° 28015","Ley General de Sociedades N° 26887","Decreto Legislativo 728","Ley N° 30056"], ans:1, exp:"La Ley General de Sociedades N° 26887 regula los tipos de sociedades en el Perú."},
+  {id:54, q:"¿Qué es el 'Máximo Beneficio' como objetivo empresarial?", opts:["Tener muchos empleados","La diferencia entre ingresos y gastos: el objetivo más importante","Tener la empresa más grande","Dar más créditos"], ans:1, exp:"El máximo beneficio es la diferencia entre ingresos y gastos, el objetivo más importante pues garantiza la supervivencia."},
+  {id:55, q:"¿Qué tipo de modelo de negocio funciona cobrando periódicamente?", opts:["Dropshipping","Freemium","Suscripción","Afiliación"], ans:2, exp:"El Modelo de Suscripción genera ingresos recurrentes con pagos periódicos del consumidor."},
+  {id:56, q:"¿Qué es la 'Fidelización' de clientes?", opts:["Descuento en ventas","Lograr que los clientes vuelvan a comprar porque quedaron satisfechos","Contratar empleados fijos","Registro de clientes en el libro auxiliar"], ans:1, exp:"La fidelización es conseguir que los clientes satisfechos vuelvan a comprar, esencial para el objetivo de satisfacción."},
+  {id:57, q:"¿Cuál es la clave del éxito del Modelo Freemium?", opts:["Cobrar a todos desde el inicio","Tener muchos usuarios, pues pocos pagan por el nivel premium","Usar solo redes sociales","Vender por catálogo"], ans:1, exp:"En Freemium se necesitan muchos usuarios porque estadísticamente solo una minoría paga por el servicio premium."},
+  {id:58, q:"¿Qué es un Modelo de Negocio?", opts:["Solo un plan financiero","Herramienta que define qué, cómo, a quién vender y cómo generar ingresos","Un tipo de empresa","Un libro de contabilidad"], ans:1, exp:"El Modelo de Negocio define la propuesta de valor, clientes, canales, costos y fuentes de ingreso."},
+  {id:59, q:"¿Cuál es la ventaja principal del Dropshipping?", opts:["Altos márgenes de ganancia","Baja inversión inicial pues no requiere inventario propio","Control total de la calidad","Amplio personal"], ans:1, exp:"El Dropshipping requiere poca inversión porque el proveedor gestiona el inventario y los envíos."},
+  {id:60, q:"¿Qué es el 'Crecimiento' como objetivo empresarial?", opts:["Contratar más personal","Reinvertir beneficios para aumentar participación de mercado","Abrir más tiendas sin reinvertir","Reducir costos"], ans:1, exp:"El objetivo de Crecimiento implica reinvertir las utilidades para aumentar el tamaño y participación en el mercado."},
+
+  // EXAM SET 4 - Partida Doble y casos
+  {id:61, q:"Si una empresa COMPRA mercadería AL CONTADO, ¿qué sucede?", opts:["Activo aumenta y Pasivo aumenta","Activo aumenta (mercadería) y Activo disminuye (caja)","Solo aumenta el Activo","Solo disminuye el Pasivo"], ans:1, exp:"Se intercambia un activo por otro: aumenta mercadería (20) y disminuye Caja (10.1)."},
+  {id:62, q:"Si una empresa COMPRA mercadería AL CRÉDITO, ¿qué sucede?", opts:["Solo aumenta el Activo","Activo aumenta y Pasivo aumenta","Patrimonio disminuye","Solo el Pasivo cambia"], ans:1, exp:"Aumenta el Activo (mercadería) y aumenta el Pasivo (cuenta por pagar al proveedor)."},
+  {id:63, q:"Si un socio APORTA capital en efectivo, ¿qué sucede?", opts:["Activo disminuye","Activo aumenta (caja) y Patrimonio aumenta (capital)","Solo aumenta el Patrimonio","El Pasivo aumenta"], ans:1, exp:"Aumenta el Activo (Caja) y aumenta el Patrimonio (Capital aportado por el socio)."},
+  {id:64, q:"Si la empresa PAGA un servicio con dinero, ¿qué sucede?", opts:["Activo aumenta","Activo disminuye (caja) y Patrimonio disminuye (pérdida)","Pasivo aumenta","Patrimonio aumenta"], ans:1, exp:"El pago de gastos disminuye el Activo (Caja) y reduce el Patrimonio (gasto/pérdida)."},
+  {id:65, q:"¿Qué cuenta del PCGE representa la Caja?", opts:["Cuenta 20","Cuenta 10.1","Cuenta 42.1","Cuenta 50"], ans:1, exp:"La Cuenta 10.1 representa Caja en el Plan Contable General Empresarial."},
+  {id:66, q:"¿Qué cuenta del PCGE representa Mercaderías?", opts:["Cuenta 25.2","Cuenta 42.1","Cuenta 20","Cuenta 33.4"], ans:2, exp:"La Cuenta 20 representa Mercaderías en el PCGE."},
+  {id:67, q:"¿Qué cuenta del PCGE representa Facturas por Pagar al Proveedor?", opts:["Cuenta 10.1","Cuenta 42.1","Cuenta 50","Cuenta 20.1"], ans:1, exp:"La Cuenta 42.1 representa Facturas, boletas y otros comprobantes por pagar."},
+  {id:68, q:"¿Qué cuenta del PCGE representa el Capital?", opts:["Cuenta 10.4","Cuenta 33.5","Cuenta 50","Cuenta 42.1"], ans:2, exp:"La Cuenta 50 representa Capital en el PCGE."},
+  {id:69, q:"Si la empresa compra una camioneta para reparto AL CONTADO, ¿qué sucede?", opts:["Activo aumenta y Pasivo aumenta","Activo aumenta (camioneta) y Activo disminuye (banco)","Solo aumenta el Activo","El Patrimonio disminuye"], ans:1, exp:"Aumenta Activo No Corriente (camioneta) y disminuye Activo Corriente (cuenta corriente bancaria)."},
+  {id:70, q:"¿Cuándo se dice que el Debe y el Haber están en equilibrio?", opts:["Cuando hay más activo que pasivo","Cuando la suma del Debe es igual a la suma del Haber","Cuando no hay deudas","Cuando las ventas superan los gastos"], ans:1, exp:"El principio de Partida Doble exige que la suma total del Debe siempre sea igual a la suma total del Haber."},
+  {id:71, q:"¿Qué cuenta representa la Cuenta Corriente Bancaria en el PCGE?", opts:["10.1","10.4","42.1","50"], ans:1, exp:"La Cuenta 10.4 representa la Cuenta Corriente bancaria en el PCGE."},
+  {id:72, q:"¿Qué cuenta del PCGE representa Materia Prima?", opts:["Cuenta 20","Cuenta 24","Cuenta 25.1","Cuenta 33.5"], ans:1, exp:"La Cuenta 24 representa Materias Primas en el PCGE."},
+  {id:73, q:"Si la empresa compra al crédito el 40% y al contado el 60%, ¿qué aumenta en el Pasivo?", opts:["El 60%","El 40%","El 100%","Nada"], ans:1, exp:"Solo el 40% crédito genera una deuda en el Pasivo (cuenta por pagar). El 60% contado se paga de inmediato."},
+  {id:74, q:"¿Qué es un comprobante de pago?", opts:["Un cheque bancario","Documento que acredita una transacción comercial (factura, boleta, nota)","El Libro Diario","Un estado financiero"], ans:1, exp:"Los comprobantes de pago son documentos que acreditan las operaciones comerciales y son el punto de inicio del ciclo contable."},
+  {id:75, q:"Las cuentas de RESULTADO — Ingreso: ¿cómo se registran?", opts:["Se cargan (Debe)","Se abonan (Haber)","Se anulan","Se promedian"], ans:1, exp:"Toda cuenta de INGRESO se ABONA (lado derecho/Haber)."},
+  {id:76, q:"Las cuentas de RESULTADO — Egreso: ¿cómo se registran?", opts:["Se abonan (Haber)","Se cargan (Debe)","Se neutralizan","Se ignoran"], ans:1, exp:"Toda cuenta de EGRESO se CARGA (lado izquierdo/Debe)."},
+  {id:77, q:"¿Cuántos libros Principales existen?", opts:["3","4","5","7"], ans:2, exp:"Los 5 libros principales son: Inventarios y Balances, Diario, Mayor, Caja y Actas."},
+  {id:78, q:"¿Cuál es la cuenta que representa suministros diversos en el PCGE?", opts:["20","25.2","42.1","10.1"], ans:1, exp:"La Cuenta 25.2 representa Suministros Diversos en el PCGE."},
+  {id:79, q:"¿Qué pasa con el Patrimonio cuando la empresa tiene PÉRDIDAS?", opts:["Aumenta","Disminuye","No cambia","Se transfiere al Pasivo"], ans:1, exp:"Las pérdidas reducen el Patrimonio de la empresa."},
+  {id:80, q:"¿Qué tipo de activo es la maquinaria de una empresa?", opts:["Activo Corriente","Activo Disponible","Activo No Corriente","Activo Exigible"], ans:2, exp:"La maquinaria es un Activo No Corriente porque permanece más de un año en la empresa."},
+
+  // EXAM SET 5 - Definiciones avanzadas
+  {id:81, q:"¿Qué significa 'DEBE' en contabilidad?", opts:["Una deuda de la empresa","El lado izquierdo de la cuenta T donde se registran cargos","Una obligación tributaria","El dinero en caja"], ans:1, exp:"'DEBE' es el lado izquierdo de la cuenta T. Se cargan (debitan) aumentos de activos y gastos."},
+  {id:82, q:"¿Qué significa 'HABER' en contabilidad?", opts:["Tener activos","El lado derecho de la cuenta T donde se registran abonos","El patrimonio total","Las ganancias del año"], ans:1, exp:"'HABER' es el lado derecho de la cuenta T. Se abonan (acreditan) aumentos de pasivos, patrimonio e ingresos."},
+  {id:83, q:"¿Qué son los Estados Financieros?", opts:["Solo el balance general","Reportes que muestran la situación financiera: Balance, Estado de Resultados, Flujo de Efectivo, Cambios en Patrimonio","Las facturas del año","Los libros auxiliares"], ans:1, exp:"Los 4 principales Estados Financieros son: Balance de Situación Financiera, Estado de Resultados, Flujo de Efectivo y Cambios en el Patrimonio Neto."},
+  {id:84, q:"¿Qué es el Balance de Situación Financiera?", opts:["Un libro contable","Reporte que muestra activos, pasivos y patrimonio en una fecha determinada","El estado de ventas","El registro de compras"], ans:1, exp:"El Balance de Situación Financiera (antes llamado Balance General) muestra lo que la empresa tiene, debe y le pertenece a una fecha dada."},
+  {id:85, q:"¿Qué son las NIIF?", opts:["Normas de Impuestos Financieros Internacionales","Normas Internacionales de Información Financiera","Normas de Inspección Fiscal","Normas de Inventario y Finanzas"], ans:1, exp:"NIIF = Normas Internacionales de Información Financiera. El PCGE está homologado con ellas."},
+  {id:86, q:"¿Qué es el Consejo Normativo de Contabilidad?", opts:["Ministerio de Economía","Órgano del Sistema Nacional de Contabilidad que norma la contabilidad pública y privada","Un banco central","Una ONG"], ans:1, exp:"El Consejo Normativo de Contabilidad estudia, analiza y emite normas de contabilidad para el sector público y privado."},
+  {id:87, q:"¿Cuántos Elementos tiene el Plan Contable General Empresarial?", opts:["5","7","9","10"], ans:2, exp:"El PCGE tiene 9 elementos que agrupan las diferentes cuentas contables."},
+  {id:88, q:"¿Para qué tipo de empresas está diseñado el PCGE?", opts:["Solo grandes empresas","Empresas con fines de lucro de cualquier tamaño o sector (excepto Estado y Financieras)","Solo empresas industriales","Solo empresas de servicios"], ans:1, exp:"El PCGE está diseñado para empresas con fines de lucro de cualquier tamaño o sector, excepto Estado y Financieras que tienen su propio plan."},
+  {id:89, q:"¿Qué es el Estado de Resultados?", opts:["Balance de activos","Reporte que muestra ingresos, gastos y utilidad o pérdida de un período","Lista de clientes","Registro de facturas"], ans:1, exp:"El Estado de Resultados (antes P&L o Estado de Ganancias y Pérdidas) muestra si la empresa ganó o perdió en el período."},
+  {id:90, q:"¿Qué es la Yupana?", opts:["Un tipo de quipu","Especie de ábaco o calculadora usada por los incas","Un libro contable inca","Un tipo de nudo"], ans:1, exp:"La Yupana era una especie de ábaco o calculadora usada por los Incas como complemento del sistema numérico."},
+  {id:91, q:"¿Qué es el 'Crecimiento' como objetivo empresarial según el curso?", opts:["Solo aumentar empleados","Reinvertir beneficios para crecer y aumentar participación de mercado","Abrir tiendas en el extranjero","Fusionarse con otra empresa"], ans:1, exp:"Crecer implica reinvertir los beneficios para aumentar la participación de mercado y alcanzar una mejor posición futura."},
+  {id:92, q:"¿Qué busca el objetivo de 'Satisfacción del Cliente'?", opts:["Reducir precios al mínimo","Tratar bien a los clientes para que queden satisfechos y vuelvan (fidelización)","Dar regalos a clientes","Ofrecer muchos descuentos"], ans:1, exp:"La satisfacción del cliente busca fidelizarlos: que queden satisfechos y confíen en la empresa en el futuro."},
+  {id:93, q:"¿A qué se refiere 'Bienes Materiales' como elemento de empresa?", opts:["El dinero en caja","Instalaciones, oficinas, mobiliario y demás cosas físicas","El capital de los socios","Las ventas realizadas"], ans:1, exp:"Los Bienes Materiales son todas las cosas físicas de la empresa: instalaciones, oficinas, mobiliario, equipos, etc."},
+  {id:94, q:"¿Cuál fue la actividad principal de los Quipucamayocs?", opts:["Comerciar con otras civilizaciones","Operar quipus para registrar y consolidar información del Imperio Inca","Construir caminos del inca","Administrar ejércitos"], ans:1, exp:"Los Quipucamayocs elaboraban anotaciones en quipus, consolidaban datos contables y hacían la 'memoria del imperio'."},
+  {id:95, q:"¿Qué ventaja tiene la SAC sobre la SA?", opts:["Puede cotizar en bolsa","Mantiene control en grupo selecto sin complejidad regulatoria del mercado de valores","Tiene más accionistas","Es más grande"], ans:1, exp:"La SAC es más íntima y controlada, sin las complejas regulaciones del mercado de valores que tiene la SA."},
+  {id:96, q:"¿Qué es el 'nicho de mercado' en un modelo de negocio?", opts:["El local comercial","Un segmento específico y bien definido de clientes a quienes va dirigido el negocio","El tipo de producto","La zona geográfica"], ans:1, exp:"El nicho de mercado es el segmento específico de clientes. Cuanto más concreto sea, mejor puede enfocarse el negocio."},
+  {id:97, q:"¿Cuántos 'lados' puede tener el Modelo de Varios Lados?", opts:["Exactamente 2","2 o más grupos de clientes no relacionados","Solo 3","Un número par"], ans:1, exp:"El Modelo de Varios Lados puede tener 2 o más grupos de clientes que interactúan para beneficio mutuo."},
+  {id:98, q:"¿Qué genera el 'efecto red' en el Modelo de Varios Lados?", opts:["Más gastos","Que cuantos más usuarios hay de un lado, más crece el otro lado","Más empleados","Precios más altos"], ans:1, exp:"El efecto red hace que cuantos más usuarios hay de un lado, más aumentan del otro lado, creando crecimiento exponencial."},
+  {id:99, q:"¿Qué es el Libro de Actas?", opts:["Registro de compras","Libro donde se registran los acuerdos de los órganos de gobierno de la empresa","Registro de ventas","El estado de resultados"], ans:1, exp:"El Libro de Actas registra los acuerdos adoptados por las juntas de socios, directorio y otros órganos de gobierno."},
+  {id:100, q:"¿Cuál es el documento que inicia el proceso del Ciclo Contable?", opts:["El Libro Mayor","El Comprobante de Pago (factura, boleta, etc.)","El Estado Financiero","El Libro de Actas"], ans:1, exp:"El Ciclo Contable inicia con la obtención de Comprobantes de Pago que acreditan las operaciones comerciales."},
+
+  // EXAM SET 6-20: Adicionales de repaso
+  {id:101, q:"¿Qué es una persona jurídica?", opts:["Una persona física","Entidad reconocida legalmente con derechos y obligaciones propias (empresa, ONG, etc.)","Un contador público","Un accionista mayoritario"], ans:1, exp:"Una persona jurídica es una entidad reconocida por la ley con derechos y obligaciones distintos a los de sus miembros individuales."},
+  {id:102, q:"¿Cuál es la diferencia entre Activo Corriente y No Corriente?", opts:["El tamaño del activo","El tiempo: corriente ≤1 año, no corriente >1 año","El tipo de bien","El precio"], ans:1, exp:"Corriente permanece hasta 1 año; No Corriente permanece más de 1 año en la empresa."},
+  {id:103, q:"¿Qué pasa cuando la empresa COBRA a un cliente?", opts:["Disminuye el Activo","Aumenta el Activo (caja) y disminuye el Activo (cuentas por cobrar)","Aumenta el Pasivo","Disminuye el Patrimonio"], ans:1, exp:"Al cobrar, la caja aumenta y las cuentas por cobrar disminuyen: se intercambia un activo por otro."},
+  {id:104, q:"¿Qué pasa cuando la empresa PAGA a un proveedor?", opts:["Aumenta el Activo","Disminuye el Activo (caja) y disminuye el Pasivo (deuda con proveedor)","Aumenta el Patrimonio","Disminuye el Pasivo y aumenta el Activo"], ans:1, exp:"Al pagar, disminuye la caja (Activo) y disminuye la deuda con el proveedor (Pasivo)."},
+  {id:105, q:"¿Qué representa la cuenta 33.4 en el PCGE?", opts:["Maquinaria","Vehículos (camioneta)","Edificios","Terrenos"], ans:1, exp:"La cuenta 33.4 representa Unidades de Transporte (vehículos) en el PCGE."},
+  {id:106, q:"¿Qué significa 'Embalajes' en contabilidad?", opts:["Un tipo de deuda","Materiales usados para envolver/embalar productos (suministros)","Un activo fijo","Un tipo de maquinaria"], ans:1, exp:"Los embalajes son materiales usados para embalar/proteger productos, clasificados como suministros."},
+  {id:107, q:"¿Cuántos socios mínimo necesita una SRL?", opts:["1","2","5","10"], ans:1, exp:"La SRL requiere mínimo 2 socios. A diferencia de la EIRL que es individual."},
+  {id:108, q:"¿Qué es el 'aumento de capital' en una empresa?", opts:["Contratar más empleados","Los socios aportan más dinero a la empresa para incrementar el patrimonio","Comprar más mercadería","Pedir un préstamo"], ans:1, exp:"El aumento de capital es cuando los socios/accionistas aportan fondos adicionales, incrementando el patrimonio de la empresa."},
+  {id:109, q:"¿Qué representa la Cuenta 52 en el PCGE?", opts:["Capital","Capital Adicional (aumento de capital)","Pasivo a largo plazo","Gastos financieros"], ans:1, exp:"La Cuenta 52 representa Capital Adicional, producto de aportes complementarios de los socios."},
+  {id:110, q:"¿Cuál es la principal desventaja del Dropshipping?", opts:["Alta inversión inicial","Márgenes estrechos y poco control sobre calidad del servicio","Necesita muchos empleados","Es ilegal en Perú"], ans:1, exp:"El Dropshipping tiene márgenes reducidos y no permite controlar la calidad porque el proveedor maneja todo."},
+  {id:111, q:"¿Qué es el 'Libro de Planillas'?", opts:["Registro de facturas","Libro auxiliar donde se registran los sueldos y beneficios de los trabajadores","Libro de inventario","Registro de compras"], ans:1, exp:"El Libro de Planillas registra todos los sueldos, beneficios y deducciones de los trabajadores de la empresa."},
+  {id:112, q:"¿Qué tipo de activo son las 'mercaderías' que están en almacén?", opts:["Activo Disponible","Activo Exigible","Activo Realizable","Activo No Corriente"], ans:2, exp:"Las mercaderías en almacén listas para la venta son Activo Realizable."},
+  {id:113, q:"¿Qué sucede contablemente si la empresa recibe un préstamo bancario?", opts:["Solo aumenta el Activo","Activo aumenta (caja) y Pasivo aumenta (deuda con banco)","El Patrimonio aumenta","El Pasivo disminuye"], ans:1, exp:"Al recibir un préstamo, aumenta el Activo (dinero) y aumenta el Pasivo (obligación con el banco)."},
+  {id:114, q:"¿Qué es el 'Giro del Negocio'?", opts:["El logo de la empresa","La actividad principal a la que se dedica la empresa","El nombre comercial","El número de RUC"], ans:1, exp:"El giro del negocio es la actividad principal de la empresa (ej: 'comercialización de abarrotes', 'servicios de transporte')."},
+  {id:115, q:"¿Qué significa 'RUC'?", opts:["Registro Único de Comercio","Registro Único de Contribuyentes","Registro Universal de Comerciantes","Registro de Uso Comercial"], ans:1, exp:"RUC = Registro Único de Contribuyentes. Es el número de identificación tributaria de empresas en Perú."},
+  {id:116, q:"¿Qué es una 'Factura' en términos contables?", opts:["Un tipo de libro","Comprobante de pago que acredita una transacción comercial entre empresas con crédito fiscal","Una cuenta bancaria","Un tipo de contrato"], ans:1, exp:"La factura es el comprobante de pago principal en operaciones comerciales, que otorga crédito fiscal al comprador."},
+  {id:117, q:"¿Qué es la 'Liquidez' en una empresa?", opts:["La cantidad de empleados","La capacidad de pagar obligaciones a corto plazo con dinero disponible","El total de ventas","Las utilidades del año"], ans:1, exp:"La liquidez es la capacidad de la empresa para cumplir sus obligaciones de corto plazo con sus activos corrientes."},
+  {id:118, q:"¿Qué es el 'Patrimonio Neto'?", opts:["Solo el capital inicial","Total de activos menos total de pasivos: lo que realmente pertenece a los dueños","Las deudas de la empresa","Los ingresos del año"], ans:1, exp:"El Patrimonio Neto = Activo Total - Pasivo Total. Es lo que genuinamente pertenece a los socios o dueños."},
+  {id:119, q:"¿Cuál es el papel de la Ingeniería de Sistemas en la Contabilidad?", opts:["No tiene relación","Ha optimizado el registro de operaciones mediante sistemas computarizados","Solo hace páginas web","Diseña logos corporativos"], ans:1, exp:"La Ing. de Sistemas ha permitido llevar los libros contables computarizados, optimizando tiempo y reduciendo errores."},
+  {id:120, q:"¿Qué es la 'Utilidad' en una empresa?", opts:["El local de la empresa","La ganancia: diferencia entre ingresos totales y gastos totales cuando los ingresos son mayores","Las ventas brutas","Los sueldos de empleados"], ans:1, exp:"La Utilidad es la ganancia neta: cuando los ingresos superan a los gastos en un período determinado."},
+
+  // More questions for exams 7-20
+  {id:121, q:"¿Qué tipo de empresa es 'McDonald's' en su relación con los restaurantes locales?", opts:["SAC","E-Commerce","Franquicia","Peer to Peer"], ans:2, exp:"McDonald's opera bajo el modelo de Franquicia: permite a terceros usar su marca y método a cambio de regalías."},
+  {id:122, q:"¿Qué tipo de modelo usa 'Spotify'?", opts:["Dropshipping","Franquicia","Freemium","Peer to Peer"], ans:2, exp:"Spotify usa el modelo Freemium: versión básica gratis y premium de pago con funciones adicionales."},
+  {id:123, q:"¿Qué tipo de modelo usa 'Netflix'?", opts:["Cola Larga","Suscripción","Dropshipping","Afiliación"], ans:1, exp:"Netflix usa el Modelo de Suscripción: pago periódico mensual por acceso al contenido."},
+  {id:124, q:"¿Qué tipo de modelo usa 'Amazon' para su marketplace?", opts:["Freemium","Peer to Peer","De Varios Lados","Dropshipping"], ans:2, exp:"Amazon marketplace es un Modelo de Varios Lados: conecta compradores con vendedores en la misma plataforma."},
+  {id:125, q:"¿Qué tipo de modelo usa 'MercadoLibre' para ventas entre personas?", opts:["Franquicia","E-Commerce puro","Peer to Peer","Suscripción"], ans:2, exp:"MercadoLibre opera como Peer to Peer (P2P): conecta compradores y vendedores particulares entre sí."},
+  {id:126, q:"¿En qué período del Imperio Inca floreció el sistema de Quipus?", opts:["Siglos I al V","Siglos XI al XVI","Siglos XVII al XIX","Siglos V al X"], ans:1, exp:"El Imperio Inca con su sistema de Quipus floreció entre los siglos XI y XVI."},
+  {id:127, q:"¿Qué diferencia al PCGE del 2010 respecto a versiones anteriores?", opts:["Tiene menos cuentas","Está homologado con las NIIF (Normas Internacionales de Información Financiera)","Solo aplica a grandes empresas","Elimina los libros auxiliares"], ans:1, exp:"El PCGE emitido en 2010 está homologado con las NIIF, permitiendo comparabilidad internacional."},
+  {id:128, q:"¿Cuál es el objetivo del 'Libro de Bancos'?", opts:["Registrar préstamos","Controlar y registrar todas las operaciones con cuentas bancarias","Registrar facturas","Controlar el almacén"], ans:1, exp:"El Libro de Bancos es un auxiliar que controla todos los movimientos de las cuentas bancarias de la empresa."},
+  {id:129, q:"¿Qué es la 'Depreciación'?", opts:["Un tipo de descuento","La reducción del valor de un activo fijo por uso o paso del tiempo","Un aumento del patrimonio","Una deuda bancaria"], ans:1, exp:"La depreciación es la pérdida de valor de los activos fijos (maquinaria, vehículos) por uso u obsolescencia con el tiempo."},
+  {id:130, q:"¿Qué es el 'Capital de Trabajo'?", opts:["El dinero para pagar salarios","Activo Corriente menos Pasivo Corriente: los recursos disponibles para operar","El capital aportado por socios","Las utilidades del mes"], ans:1, exp:"El Capital de Trabajo = Activo Corriente - Pasivo Corriente. Es el dinero disponible para las operaciones diarias."},
+  {id:131, q:"¿Qué es el 'Punto de Equilibrio'?", opts:["Cuando activos = pasivos","El nivel de ventas donde los ingresos igualan a los costos, sin ganancia ni pérdida","Cuando el debe = haber","Cuando el balance es cero"], ans:1, exp:"El Punto de Equilibrio es el volumen de ventas donde los ingresos cubren exactamente los costos, sin utilidad ni pérdida."},
+  {id:132, q:"¿Qué son los 'Gastos Operativos'?", opts:["Compras de mercadería","Gastos necesarios para el funcionamiento diario de la empresa (alquiler, servicios, sueldos)","Deudas bancarias","Inversiones en activos"], ans:1, exp:"Los Gastos Operativos son todos los costos necesarios para mantener el funcionamiento diario del negocio."},
+  {id:133, q:"¿Qué es el 'Flujo de Efectivo'?", opts:["El saldo bancario","Estado financiero que muestra entradas y salidas de dinero en un período","El libro de caja","Las ventas del mes"], ans:1, exp:"El Flujo de Efectivo (Estado de Flujos de Efectivo) muestra las entradas y salidas de dinero real en un período."},
+  {id:134, q:"¿Qué es el 'Margen de Utilidad'?", opts:["Las ventas totales","El porcentaje de ganancia sobre las ventas o costos","El total de activos","Las deudas totales"], ans:1, exp:"El Margen de Utilidad es el porcentaje de ganancia en relación a las ventas: (Utilidad / Ventas) × 100."},
+  {id:135, q:"¿Cuál es la función de la 'Auditoría'?", opts:["Registrar operaciones","Revisión independiente y verificación de la información financiera de una empresa","Elaborar el presupuesto","Contratar personal"], ans:1, exp:"La Auditoría es la revisión independiente de los libros y estados financieros para verificar su exactitud y cumplimiento legal."},
+  {id:136, q:"¿Qué es la 'Solvencia'?", opts:["Tener muchos clientes","Capacidad de la empresa para pagar todas sus deudas con sus activos totales","Tener muchas ventas","El total del patrimonio"], ans:1, exp:"La Solvencia es la capacidad de la empresa para afrontar todas sus obligaciones con sus activos totales."},
+  {id:137, q:"¿Qué tipo de pasivo es una deuda bancaria a 5 años?", opts:["Pasivo Corriente","Pasivo No Corriente","Patrimonio","Activo No Corriente"], ans:1, exp:"Una deuda a 5 años tiene vencimiento mayor a 1 año, por lo que es Pasivo No Corriente (largo plazo)."},
+  {id:138, q:"¿Qué son los 'Activos Intangibles'?", opts:["Dinero en banco","Bienes sin forma física: marcas, patentes, software, goodwill","Máquinas y equipos","Mercaderías"], ans:1, exp:"Los Activos Intangibles son bienes sin forma física pero con valor económico: marcas, patentes, licencias, software."},
+  {id:139, q:"¿Qué es el 'Goodwill' o Fondo de Comercio?", opts:["Un tipo de préstamo","El valor intangible extra que tiene una empresa por su reputación, clientela y posicionamiento","Un activo fijo","Un tipo de deuda"], ans:1, exp:"El Goodwill es el valor adicional de una empresa más allá de sus activos tangibles: reputación, marca, clientela fiel."},
+  {id:140, q:"¿Qué es la 'Rentabilidad'?", opts:["Las ventas totales","La capacidad de generar ganancias en relación a la inversión realizada","El número de clientes","Los activos totales"], ans:1, exp:"La Rentabilidad mide la eficiencia de generar ganancias en relación al capital invertido o a las ventas."},
+
+  // Additional questions for exams 8-20
+  {id:141, q:"¿Qué diferencia al Pasivo del Patrimonio?", opts:["El tamaño de las cifras","El Pasivo son deudas a terceros; el Patrimonio pertenece a los dueños","No hay diferencia","Solo la ubicación en el balance"], ans:1, exp:"El Pasivo son obligaciones con terceros (bancos, proveedores). El Patrimonio es lo que pertenece a los dueños/socios."},
+  {id:142, q:"¿Cuántos tipos de constitución de empresa se mencionan en el curso?", opts:["3","4","6","5"], ans:2, exp:"Se mencionan 6: SA, SAC, SRL, EIRL, SAA y SACS."},
+  {id:143, q:"¿Cuál es la principal ventaja de la SRL para empresas pequeñas?", opts:["Puede cotizar en bolsa","Combina flexibilidad de empresa pequeña con limitación de responsabilidad personal","No paga impuestos","Tiene menos socios que otras"], ans:1, exp:"La SRL protege los bienes personales de los socios mientras permite operar con flexibilidad."},
+  {id:144, q:"¿Qué es la 'Hoja de Comprobación' en el ciclo contable?", opts:["Un recibo","Estado de verificación que confirma que el debe = haber antes de hacer los estados financieros","Un libro auxiliar","Una factura"], ans:1, exp:"La Hoja de Comprobación (o Hoja de Trabajo) verifica el equilibrio del debe y haber antes de elaborar estados financieros."},
+  {id:145, q:"¿Qué regla de la Partida Doble aplica cuando una empresa VENDE?", opts:["Para cosas: lo que ingresa es deudor, lo que sale es acreedor","Para personas: quien recibe es deudor, quien da es acreedor","Para resultados: toda ganancia es acreedora","Todas las anteriores"], ans:2, exp:"Al vender, se aplica la regla de resultados: la ganancia/ingreso se ABONA (acreedor) en la cuenta de ingresos."},
+  {id:146, q:"¿Qué es la 'Depreciación Acumulada'?", opts:["Un tipo de ingreso","El total de depreciación acumulada desde la compra de un activo fijo","Un pasivo corriente","Una cuenta de patrimonio"], ans:1, exp:"La Depreciación Acumulada es el monto total de depreciación aplicada a un activo desde su adquisición hasta la fecha actual."},
+  {id:147, q:"¿En qué se diferencia un activo 'tangible' de uno 'intangible'?", opts:["Solo en el precio","Tangible tiene forma física (edificio, máquina); intangible no (marca, patente)","No hay diferencia práctica","Solo en cómo se deprecian"], ans:1, exp:"Tangible = se puede tocar (edificio, vehículo, máquina). Intangible = no tiene forma física (marca, software, patente)."},
+  {id:148, q:"¿Cuál es el rol del Contador en una empresa?", opts:["Solo hacer planillas","Registrar, analizar e interpretar la información financiera para apoyar la toma de decisiones","Solo pagar impuestos","Solo auditar"], ans:1, exp:"El Contador registra, clasifica, analiza e interpreta toda la información financiera de la empresa para la toma de decisiones."},
+  {id:149, q:"¿Qué es el 'Costo de Ventas'?", opts:["El precio de venta","El costo de adquirir o producir los bienes vendidos en un período","Los gastos administrativos","Los gastos de marketing"], ans:1, exp:"El Costo de Ventas es lo que le costó a la empresa adquirir o producir los bienes que vendió en el período."},
+  {id:150, q:"¿Qué es la 'Utilidad Bruta'?", opts:["La utilidad neta después de impuestos","Ventas totales menos Costo de Ventas","El total de ingresos","Las ventas del mes"], ans:1, exp:"Utilidad Bruta = Ventas Totales - Costo de Ventas. Antes de descontar gastos operativos e impuestos."},
+
+  // Exam sets 9-15 (additional 160 questions total... using 50 more)
+  {id:151, q:"¿Qué es una 'Nota de Débito'?", opts:["Un tipo de préstamo","Documento que aumenta la deuda del comprador hacia el vendedor","Un cheque devuelto","Un tipo de contrato"], ans:1, exp:"La Nota de Débito aumenta el importe que el comprador debe al vendedor (ej: por error en factura o cargos adicionales)."},
+  {id:152, q:"¿Qué es una 'Nota de Crédito'?", opts:["Un descuento automático","Documento que reduce la deuda del comprador (por devoluciones o descuentos)","Un préstamo bancario","Un tipo de garantía"], ans:1, exp:"La Nota de Crédito reduce el importe que el comprador debe al vendedor (devoluciones, descuentos, correcciones)."},
+  {id:153, q:"¿Cuál es el principio de 'Empresa en Marcha'?", opts:["Que la empresa vende constantemente","Supuesto de que la empresa continuará operando indefinidamente sin intención de liquidarse","Que tiene muchos empleados","Que siempre crece"], ans:1, exp:"El principio de Empresa en Marcha asume que la empresa continuará operando en el futuro previsible."},
+  {id:154, q:"¿Qué es el principio de 'Consistencia'?", opts:["Ser constante en ventas","Usar los mismos métodos contables de período a período para comparabilidad","Tener los mismos clientes","No cambiar el nombre"], ans:1, exp:"La Consistencia exige aplicar los mismos criterios y métodos contables en períodos sucesivos para que los datos sean comparables."},
+  {id:155, q:"¿Qué es el principio de 'Materialidad'?", opts:["Solo registrar transacciones físicas","Solo registrar partidas significativas; las triviales se pueden simplificar","Registrar todo sin excepción","Solo registrar transacciones en efectivo"], ans:1, exp:"La Materialidad (o significatividad) indica que solo deben registrarse o revelarse las partidas importantes para la toma de decisiones."},
+  {id:156, q:"¿Qué son las 'Reservas' en el Patrimonio?", opts:["Dinero guardado en caja fuerte","Parte de las utilidades retenidas para fines específicos de la empresa","Deudas a largo plazo","Activos no utilizados"], ans:1, exp:"Las Reservas son utilidades retenidas y asignadas a propósitos específicos (legal, estatutaria, facultativa)."},
+  {id:157, q:"¿Qué es la 'Reserva Legal'?", opts:["Un porcentaje obligatorio de las utilidades que la empresa debe retener según ley","Un tipo de seguro","Un activo del banco","Una deuda tributaria"], ans:0, exp:"La Reserva Legal es el monto obligatorio (10% de las utilidades según la LGS) que las empresas deben retener hasta alcanzar el 20% del capital."},
+  {id:158, q:"¿Qué son los 'Resultados Acumulados'?", opts:["Las ventas históricas","Utilidades o pérdidas de períodos anteriores que no se han distribuido","Los gastos del año","Los activos totales"], ans:1, exp:"Los Resultados Acumulados son las utilidades (o pérdidas) de años anteriores que no han sido distribuidas como dividendos."},
+  {id:159, q:"¿Qué es el 'Registro de Ventas'?", opts:["Un libro principal","Libro auxiliar donde se registran todas las ventas de la empresa con sus comprobantes","El estado de resultados","El libro mayor"], ans:1, exp:"El Libro de Registro de Ventas es un auxiliar que centraliza todas las ventas con sus respectivos comprobantes."},
+  {id:160, q:"¿Qué es la 'Planilla de Trabajadores'?", opts:["Una nota de débito","Documento donde se detallan los sueldos, descuentos y beneficios de cada empleado","Un libro contable principal","Un tipo de factura"], ans:1, exp:"La Planilla detalla los haberes (sueldo básico, bonificaciones) y deducciones (AFP, seguro) de cada trabajador."},
+
+  // Final additional questions
+  {id:161, q:"¿Cuál es el monto del sueldo mínimo vital en Perú aproximadamente?", opts:["S/ 500","S/ 750","S/ 1,025","S/ 2,000"], ans:2, exp:"El sueldo mínimo vital (RMV) en Perú es de S/ 1,025 (actualizado a 2023). Es el mínimo que todo empleador debe pagar."},
+  {id:162, q:"¿Cuántos días de vacaciones tiene un trabajador en Perú al año?", opts:["7 días","15 días","30 días","45 días"], ans:2, exp:"Todo trabajador en Perú tiene derecho a 30 días calendarios de vacaciones por año de trabajo."},
+  {id:163, q:"¿Qué es la CTS (Compensación por Tiempo de Servicios)?", opts:["Un seguro de salud","Beneficio laboral equivalente a aprox. 1 sueldo/año, depositado en mayo y noviembre","Un impuesto","Un tipo de préstamo bancario"], ans:1, exp:"La CTS es un beneficio social que funciona como seguro de desempleo. Se deposita en mayo y noviembre."},
+  {id:164, q:"¿Cuándo tiene derecho un trabajador a gratificaciones en Perú?", opts:["Solo en Navidad","En julio (Fiestas Patrias) y diciembre (Navidad), equivalente a 1 sueldo cada vez","Mensualmente","Solo si la empresa tiene utilidades"], ans:1, exp:"Las gratificaciones se pagan en julio (Fiestas Patrias) y diciembre (Navidad), equivaliendo a 1 remuneración básica cada una."},
+  {id:165, q:"¿Qué porcentaje descuenta la AFP aproximadamente al trabajador?", opts:["2%","10%","12.5% aprox.","20%"], ans:2, exp:"Las AFP descuentan aproximadamente 12.5% del sueldo mensual (varía por AFP) para el fondo de pensiones."},
+  {id:166, q:"¿Qué es el SIS (Seguro Integral de Salud)?", opts:["Un banco estatal","Seguro de salud del Estado para personas en pobreza o pobreza extrema","Un tipo de AFP","Un impuesto al trabajo"], ans:1, exp:"El SIS es el seguro de salud del gobierno para personas de bajos recursos que no tienen acceso al seguro regular."},
+  {id:167, q:"¿Qué es ESSALUD?", opts:["Una AFP","Seguro Social de Salud pagado por el empleador (9% del sueldo) para trabajadores formales","Un tipo de impuesto","Un banco de salud"], ans:1, exp:"ESSALUD es el seguro social de salud. El empleador paga el 9% del sueldo mensual para que el trabajador tenga atención médica."},
+  {id:168, q:"¿Qué es el Impuesto a la Renta de 5ta Categoría?", opts:["Impuesto a las ventas","Impuesto que descuenta el empleador a trabajadores dependientes con ingresos altos","Un tipo de IGV","Un impuesto a las empresas"], ans:1, exp:"El Impuesto a la Renta 5ta categoría grava los sueldos de trabajadores dependientes que superan cierto umbral anual."},
+  {id:169, q:"¿Qué es el IGV?", opts:["Impuesto General al Valor","Impuesto General a las Ventas: 18% aplicado a ventas de bienes y servicios en Perú","Impuesto a las ganancias","Impuesto sobre el ingreso"], ans:1, exp:"El IGV (Impuesto General a las Ventas) es del 18% y se aplica sobre las ventas de bienes y servicios en Perú."},
+  {id:170, q:"¿Qué es el Impuesto a la Renta de 3ra Categoría?", opts:["Impuesto a sueldos","Impuesto que pagan las empresas sobre sus utilidades anuales","Impuesto al consumo","Impuesto a las importaciones"], ans:1, exp:"El Impuesto a la Renta 3ra categoría grava las utilidades anuales de las empresas (negocios, personas jurídicas)."},
+  {id:171, q:"¿Qué es el 'asiento contable'?", opts:["Un mueble de oficina","El registro formal de una transacción en el Libro Diario con cuenta, debe y haber","Un tipo de balance","Una nota de crédito"], ans:1, exp:"El asiento contable es el registro de una operación en el Libro Diario, indicando cuentas afectadas, montos en debe y haber."},
+  {id:172, q:"¿Qué es el 'saldo' de una cuenta?", opts:["El total de ventas","La diferencia entre el total de cargos (debe) y el total de abonos (haber) de una cuenta","El patrimonio final","El capital inicial"], ans:1, exp:"El saldo es la diferencia entre el total del Debe y el total del Haber en una cuenta. Puede ser deudor o acreedor."},
+  {id:173, q:"¿Cuándo tiene 'saldo deudor' una cuenta?", opts:["Cuando el haber es mayor","Cuando el debe es mayor que el haber","Cuando están equilibradas","Cuando no hay movimientos"], ans:1, exp:"Una cuenta tiene Saldo Deudor cuando el total del Debe es mayor que el total del Haber."},
+  {id:174, q:"¿Qué tipo de saldo tienen normalmente las cuentas de Activo?", opts:["Saldo acreedor","Saldo deudor","Sin saldo","Saldo mixto"], ans:1, exp:"Las cuentas de Activo normalmente tienen Saldo Deudor porque se debitan cuando aumentan."},
+  {id:175, q:"¿Qué tipo de saldo tienen normalmente las cuentas de Pasivo y Patrimonio?", opts:["Saldo deudor","Saldo acreedor","Sin saldo","Saldo negativo"], ans:1, exp:"Las cuentas de Pasivo y Patrimonio normalmente tienen Saldo Acreedor porque se acreditan cuando aumentan."},
+  {id:176, q:"¿Cuándo se dice que una empresa es 'solvente'?", opts:["Cuando vende mucho","Cuando sus activos totales son mayores que sus pasivos totales","Cuando tiene mucho efectivo","Cuando tiene muchos empleados"], ans:1, exp:"Una empresa es solvente cuando su Activo Total > Pasivo Total, es decir, puede cubrir todas sus deudas."},
+  {id:177, q:"¿Qué es la 'razón corriente' o liquidez corriente?", opts:["El saldo en caja","Activo Corriente dividido entre Pasivo Corriente; mide capacidad de pago a corto plazo","Las ventas del trimestre","El capital de la empresa"], ans:1, exp:"Razón Corriente = Activo Corriente / Pasivo Corriente. Si es >1, la empresa puede pagar sus deudas a corto plazo."},
+  {id:178, q:"¿Qué es la 'rotación de inventario'?", opts:["El porcentaje de devoluciones","Cuántas veces se vendió y repuso el inventario en un período","El número de productos","El costo de almacén"], ans:1, exp:"La Rotación de Inventario = Costo de Ventas / Inventario Promedio. Mide la eficiencia en la gestión de existencias."},
+  {id:179, q:"¿Qué es la 'razón de endeudamiento'?", opts:["El total de deudas","Pasivo Total dividido entre Activo Total; mide cuánto de los activos están financiados por deuda","El costo financiero","Las ventas a crédito"], ans:1, exp:"Razón de Endeudamiento = Pasivo Total / Activo Total. Indica qué proporción de activos está financiada con deuda."},
+  {id:180, q:"¿Qué pasa cuando el Activo es igual al Pasivo?", opts:["La empresa quiebra","El Patrimonio es igual a cero: la empresa no tiene capital propio","La empresa es muy grande","El balance no existe"], ans:1, exp:"Si Activo = Pasivo, entonces Patrimonio = 0. La empresa existe pero los dueños no tienen capital propio neto."},
+
+  // Final 20 for exams 14-20
+  {id:181, q:"¿Cuál es la función del 'control interno' en una empresa?", opts:["Controlar empleados","Conjunto de políticas y procedimientos para proteger activos, asegurar información confiable y cumplir leyes","Auditar externos","Solo revisar las ventas"], ans:1, exp:"El Control Interno protege activos, garantiza información financiera confiable y asegura el cumplimiento de normas."},
+  {id:182, q:"¿Qué es el 'período contable'?", opts:["Un trimestre","Intervalo de tiempo que abarca el ciclo contable (generalmente 1 año: 1 enero al 31 diciembre)","Solo enero","Un mes"], ans:1, exp:"El período contable es el lapso que cubre el ciclo contable. En Perú generalmente es del 1 de enero al 31 de diciembre."},
+  {id:183, q:"¿Qué es la 'conciliación bancaria'?", opts:["Pagar facturas bancarias","Proceso de comparar el saldo del Libro de Bancos con el estado de cuenta bancario para detectar diferencias","Solicitar préstamos","Abrir una cuenta bancaria"], ans:1, exp:"La Conciliación Bancaria compara registros contables internos con el estado de cuenta del banco para detectar omisiones o errores."},
+  {id:184, q:"¿Qué es el 'ajuste contable'?", opts:["Corrección de errores solo","Asiento al final del período para actualizar cuentas que no reflejan la realidad económica (depreciación, provisiones)","Cambio de moneda","Revisión de precios"], ans:1, exp:"Los ajustes contables se realizan al cierre del período para que las cuentas reflejen la situación real (depreciación, devengados)."},
+  {id:185, q:"¿Qué es el principio de 'Devengo'?", opts:["Solo registrar lo pagado en efectivo","Registrar ingresos y gastos cuando se generan, independientemente del pago","Registrar solo al final del año","Registrar solo ventas al contado"], ans:1, exp:"El principio de Devengo (o Acumulación) indica que los ingresos y gastos se registran cuando se generan, no cuando se pagan."},
+  {id:186, q:"¿Cuántos elementos tiene el Patrimonio de una empresa?", opts:["Solo el capital","Capital, capital adicional, reservas, resultados acumulados y resultado del ejercicio","Solo las utilidades","Capital y deudas"], ans:1, exp:"El Patrimonio incluye: Capital, Capital Adicional, Acciones de Inversión, Excedente de Revaluación, Reservas y Resultados Acumulados."},
+  {id:187, q:"¿Qué es la 'variación del patrimonio'?", opts:["El cambio en ventas","Estado Financiero que muestra los cambios en el patrimonio neto durante el período","El total de activos","Las variaciones en el inventario"], ans:1, exp:"El Estado de Cambios en el Patrimonio Neto muestra todos los movimientos del patrimonio durante el período contable."},
+  {id:188, q:"¿Para qué sirve la contabilidad de costos?", opts:["Solo para empresas grandes","Determinar el costo de producir bienes o servicios para fijar precios y tomar decisiones","Solo para auditorías","Para calcular impuestos"], ans:1, exp:"La Contabilidad de Costos determina el costo unitario de productos para fijar precios competitivos y tomar decisiones estratégicas."},
+  {id:189, q:"¿Cuál es la diferencia entre Contabilidad Financiera y Contabilidad de Gestión?", opts:["No hay diferencia","Financiera es para externos (inversores, Estado); Gestión es para internos (gerentes, administradores)","Solo el idioma","Solo el tipo de empresa"], ans:1, exp:"Contabilidad Financiera reporta a usuarios externos (bancos, SUNAT). Contabilidad de Gestión ayuda a la dirección interna."},
+  {id:190, q:"¿Qué es la 'amortización'?", opts:["Un tipo de préstamo","Reducción gradual del valor de activos intangibles (similar a la depreciación pero para intangibles)","El pago de salarios","Un tipo de impuesto"], ans:1, exp:"La Amortización es como la depreciación pero para Activos Intangibles (marcas, patentes, software): se reduce su valor gradualmente."},
+  {id:191, q:"¿Cuándo se aplica el método de 'línea recta' en depreciación?", opts:["Solo a vehículos","Cuando el activo pierde el mismo valor cada año durante su vida útil","Solo al final de la vida útil","Solo en maquinaria industrial"], ans:1, exp:"El método de Línea Recta asigna la misma cantidad de depreciación cada año: (Costo - Valor Residual) / Vida Útil."},
+  {id:192, q:"¿Qué es la 'vida útil' de un activo?", opts:["Los años que tiene la empresa","El período estimado durante el cual el activo prestará servicio económico","El tiempo de garantía","El plazo del préstamo bancario"], ans:1, exp:"La Vida Útil es el tiempo estimado que un activo fijo estará en uso productivo antes de volverse obsoleto o inutilizable."},
+  {id:193, q:"¿Qué es el 'valor residual' de un activo?", opts:["El precio original de compra","El valor estimado del activo al final de su vida útil (valor de chatarra o reventa)","El costo de depreciación","El precio de mercado actual"], ans:1, exp:"El Valor Residual (o valor de salvamento) es el precio estimado de venta del activo al final de su vida útil."},
+  {id:194, q:"¿Qué es la 'provisión'?", opts:["Un tipo de venta","Estimación de un pasivo probable cuyo monto o fecha son inciertos (ej: provisión para deudas incobrables)","Un tipo de activo","Un tipo de préstamo"], ans:1, exp:"Las Provisiones son estimaciones contables de obligaciones probables pero inciertas en monto o fecha (deudas incobrables, garantías)."},
+  {id:195, q:"¿Cuál es la regla general para el DEBE (Débito)?", opts:["Pasivos y Patrimonio aumentan","Activos aumentan, Pasivos y Patrimonio disminuyen","Solo aumentan los gastos","Los ingresos se debitan"], ans:1, exp:"Regla del DEBE: aumentan Activos y Gastos; disminuyen Pasivos, Patrimonio e Ingresos."},
+  {id:196, q:"¿Cuál es la regla general para el HABER (Crédito)?", opts:["Activos y gastos aumentan","Pasivos, Patrimonio e Ingresos aumentan; Activos y Gastos disminuyen","Solo los activos aumentan","Los gastos se acreditan"], ans:1, exp:"Regla del HABER: aumentan Pasivos, Patrimonio e Ingresos; disminuyen Activos y Gastos."},
+  {id:197, q:"¿Cuántas partes tiene el Plan Contable General Empresarial en sus elementos?", opts:["5 elementos","7 elementos","9 elementos","11 elementos"], ans:2, exp:"El PCGE tiene 9 elementos: del 1 al 9, donde el 1-3 son Activo, 4 es Pasivo, 5 es Patrimonio, 6-7 son Resultados, 8 es Saldos presupuestales y 9 es Costos."},
+  {id:198, q:"¿Qué organismo regula la contabilidad en el Perú?", opts:["El MEF directamente","El Consejo Normativo de Contabilidad del Sistema Nacional de Contabilidad","La SUNAT","El Banco Central de Reserva"], ans:1, exp:"El Consejo Normativo de Contabilidad, órgano del Sistema Nacional de Contabilidad, emite y regula las normas contables en Perú."},
+  {id:199, q:"¿Qué es la SUNAT?", opts:["Banco del gobierno","Superintendencia Nacional de Aduanas y Administración Tributaria: recauda impuestos en Perú","Una AFP","Un organismo contable"], ans:1, exp:"La SUNAT (Superintendencia Nacional de Aduanas y Administración Tributaria) administra, recauda y fiscaliza los tributos en Perú."},
+  {id:200, q:"¿Para qué sirve el número de RUC?", opts:["Solo para abrir cuentas bancarias","Identificar a contribuyentes para efectos tributarios; necesario para emitir comprobantes y declarar impuestos","Solo para empresas grandes","Para registrar marcas"], ans:1, exp:"El RUC identifica a personas naturales y jurídicas ante SUNAT para el pago de impuestos y la emisión de comprobantes."},
+];
+
+// ================================================================
+// EXERCISES DATA
+// ================================================================
+const EXERCISES_EC = [
+  {q:"Una empresa compra mercaderías por S/10,000 AL CONTADO. ¿Qué pasa con el Activo y el Patrimonio?", opts:["Activo aumenta S/10,000; Patrimonio aumenta S/10,000","Solo el Activo cambia: aumenta mercadería y disminuye caja","El Pasivo aumenta S/10,000","El Patrimonio disminuye S/10,000"], ans:1, exp:"Al comprar al contado: el Activo aumenta (mercadería) y el Activo disminuye (caja). Es un intercambio dentro del activo."},
+  {q:"Una empresa compra un escritorio por S/2,500 AL CRÉDITO. ¿Qué pasa?", opts:["Solo el Activo aumenta","Activo aumenta (escritorio) y Pasivo aumenta (deuda con proveedor)","Patrimonio disminuye","Solo el Pasivo cambia"], ans:1, exp:"Al crédito: aumenta el Activo (mueble) y aumenta el Pasivo (factura por pagar)."},
+  {q:"El socio aporta S/50,000 en efectivo. ¿Cuál es la ecuación contable?", opts:["Solo el Pasivo aumenta","Activo aumenta (caja S/50,000) = Patrimonio aumenta (capital S/50,000)","Solo el Patrimonio aumenta","El Pasivo disminuye"], ans:1, exp:"Activo (caja) +50,000 = Patrimonio (capital) +50,000. La ecuación se mantiene equilibrada."},
+  {q:"La empresa paga luz eléctrica S/350 con dinero de caja. ¿Qué sucede?", opts:["Activo aumenta","Activo disminuye (caja -350) y Patrimonio disminuye (gasto -350)","Solo el Pasivo cambia","Nada cambia"], ans:1, exp:"El pago de gastos reduce la Caja (Activo) y el Patrimonio (pérdida por gasto operativo)."},
+  {q:"Compra al crédito el 60% de S/20,000 en materia prima y paga el 40% al contado. ¿Cuánto aumenta el Pasivo?", opts:["S/20,000","S/12,000","S/8,000","S/0"], ans:1, exp:"El 60% crédito = S/12,000 en Pasivo. El 40% contado = S/8,000 que disminuye la Caja."},
+];
+
+const EXERCISES_PD = [
+  {q:"La empresa inicia con S/80,000 en efectivo depositados en cuenta corriente. ¿Qué cuentas se afectan?", opts:["Caja (débito) y Capital (débito)","Cuenta Corriente 10.4 (débito S/80,000) y Capital 50 (crédito S/80,000)","Solo Capital aumenta","Solo la Caja aumenta"], ans:1, exp:"Partida Doble: Debe: Cta. Corriente 10.4 S/80,000 | Haber: Capital 50 S/80,000"},
+  {q:"Se compra una maquinaria por S/150,000 al crédito. ¿Cuál es el asiento de partida doble?", opts:["Maquinaria (debe) y Caja (haber)","Maquinaria (debe S/150,000) y Proveedor 42.1 (haber S/150,000)","Solo se registra la maquinaria","Proveedor (debe) y Maquinaria (haber)"], ans:1, exp:"Debe: Maquinaria (activo aumenta) | Haber: Proveedor 42.1 (pasivo aumenta)"},
+  {q:"Se retira S/10,000 de cuenta corriente BBVA para tener efectivo en caja. ¿Qué sucede?", opts:["Solo la Caja aumenta","Caja 10.1 aumenta S/10,000 y Cta. Corriente 10.4 disminuye S/10,000","El Pasivo disminuye","El Patrimonio aumenta"], ans:1, exp:"Es un intercambio entre activos: Debe: Caja 10.1 | Haber: Cta. Cte. 10.4. Ambos son activos."},
+  {q:"La empresa compra suministros por S/900 al contado. ¿Cuál de las siguientes opciones es correcta?", opts:["Debe: Capital; Haber: Suministros","Debe: Suministros 25.1 S/900; Haber: Caja 10.1 S/900","Debe: Proveedor; Haber: Caja","Debe: Caja; Haber: Suministros"], ans:1, exp:"Al comprar al contado, el suministro ingresa (Debe) y el dinero sale (Haber)."},
+  {q:"La empresa cancela una factura de proveedor de S/5,000 con cheque. ¿Qué pasa?", opts:["Activo disminuye y Activo disminuye","Pasivo disminuye (deuda con proveedor) y Activo disminuye (cheque/cta corriente)","El Patrimonio disminuye","Solo el Pasivo cambia"], ans:1, exp:"Al pagar la factura: disminuye la deuda con el proveedor (Pasivo) y disminuye la cuenta corriente (Activo)."},
+];
+
+const EXERCISES_CLAS = [
+  {q:"¿A qué clasificación pertenece el 'efectivo en caja'?", opts:["Pasivo Corriente","Activo No Corriente","Activo Corriente Disponible","Patrimonio"], ans:2, exp:"El efectivo en caja es Activo Corriente Disponible: disponible de forma inmediata y permanece menos de 1 año."},
+  {q:"¿A qué clasificación pertenece un 'préstamo bancario a 3 años'?", opts:["Activo No Corriente","Pasivo Corriente","Patrimonio","Pasivo No Corriente"], ans:3, exp:"Un préstamo a 3 años tiene vencimiento mayor a 1 año → Pasivo No Corriente (largo plazo)."},
+  {q:"¿A qué clasificación pertenece la 'maquinaria industrial'?", opts:["Activo Corriente","Patrimonio","Pasivo No Corriente","Activo No Corriente"], ans:3, exp:"La maquinaria permanece más de 1 año en la empresa → Activo No Corriente."},
+  {q:"¿A qué clasificación pertenecen las 'facturas por cobrar con vencimiento en 60 días'?", opts:["Activo No Corriente","Activo Corriente Exigible","Pasivo Corriente","Patrimonio"], ans:1, exp:"Cuentas por cobrar a corto plazo son Activo Corriente Exigible: se exige el pago al vencimiento."},
+  {q:"¿A qué clasificación pertenece el 'capital aportado por los socios'?", opts:["Activo Corriente","Pasivo Corriente","Patrimonio Neto","Activo No Corriente"], ans:2, exp:"El capital aportado por los socios forma parte del Patrimonio Neto de la empresa."},
+];
+
+const EXERCISES_EMP = [
+  {q:"¿Qué tipo de sociedad elegiría un emprendedor solitario que quiere proteger su patrimonio personal?", opts:["SA","SAC","EIRL","SAA"], ans:2, exp:"La EIRL está diseñada para UN solo propietario con responsabilidad limitada a los bienes de la empresa."},
+  {q:"¿Qué tipo de sociedad sería ideal para una startup que quiere captar inversores en bolsa en el futuro?", opts:["EIRL","SRL","SAC","SA (Sociedad Anónima)"], ans:3, exp:"La SA permite participar en la Bolsa de Valores de Lima, ideal para empresas que buscan capital público."},
+  {q:"¿Cuál es la principal ventaja de la SRL para socios medianos?", opts:["Puede cotizar en bolsa","Responsabilidad limitada: los bienes personales de los socios están protegidos","Sin límite de socios","Trámites más rápidos"], ans:1, exp:"La SRL combina la flexibilidad de una empresa pequeña con la protección de responsabilidad limitada."},
+  {q:"Una empresa con 15 accionistas de confianza que NO quiere competencia pública, ¿qué tipo debería ser?", opts:["SA","SAA","SAC","EIRL"], ans:2, exp:"La SAC (Sociedad Anónima Cerrada) limita el número de accionistas y no permite venta pública de acciones."},
+  {q:"¿Qué modelo de negocio usa un blog que recomienda productos con links a Amazon y gana comisiones?", opts:["Dropshipping","Freemium","Suscripción","Afiliación"], ans:3, exp:"El modelo de Afiliación consiste en promover productos de terceros y recibir comisiones por las ventas generadas."},
+];
+
+// RIGHTS DATA
+const RIGHTS_DATA = [
+  {icon:"💰", title:"Sueldo Mínimo Vital", desc:"Todo trabajador formal en Perú tiene derecho a recibir como mínimo la Remuneración Mínima Vital (RMV).", items:["RMV actual: S/ 1,025 mensuales","Se aplica a trabajadores del régimen general","El empleador NO puede pagar menos sin sanción"]},
+  {icon:"🏖️", title:"Vacaciones", desc:"Los trabajadores tienen derecho a descanso vacacional remunerado.", items:["30 días calendarios por año de trabajo","Se deben tomar dentro del año siguiente","El empleador paga el sueldo completo durante vacaciones","Si no se dan, se paga doble (vacaciones truncas)"]},
+  {icon:"🎁", title:"Gratificaciones", desc:"Beneficio social que equivale a un sueldo completo, pagado dos veces al año.", items:["Julio: Fiestas Patrias = 1 sueldo","Diciembre: Navidad = 1 sueldo","Total: 2 sueldos extra por año","Exoneradas de descuentos de AFP y ONP"]},
+  {icon:"🏦", title:"CTS (Comp. por Tiempo de Servicios)", desc:"Funciona como seguro de desempleo. Se deposita en una cuenta bancaria del trabajador.", items:["Se deposita en mayo y noviembre","Equivale aproximadamente a 1 sueldo anual","El trabajador puede retirarlo al término del contrato","El empleador no puede tocarlo"]},
+  {icon:"🏥", title:"Seguro de Salud (ESSALUD)", desc:"El empleador está obligado a afiliar al trabajador a ESSALUD.", items:["El empleador paga el 9% del sueldo mensual","Cubre atención médica al trabajador y familia","Los trabajadores independientes pueden afiliarse voluntariamente"]},
+  {icon:"👴", title:"Sistema Pensionario (AFP/ONP)", desc:"Todo trabajador debe estar afiliado a un sistema de pensiones.", items:["AFP: aproximadamente 12.5% del sueldo (fondo privado individual)","ONP (Sistema Nacional): 13% del sueldo","El trabajador elige entre AFP y ONP al ingresar al mercado laboral","Con 65 años y aportes mínimos acceden a jubilación"]},
+  {icon:"⚠️", title:"Seguro de Vida Ley", desc:"Beneficio que protege a la familia del trabajador ante fallecimiento o invalidez.", items:["Aplica a partir de 4 años de trabajo en la empresa","El empleador paga la prima mensual","Cubre fallecimiento o invalidez del trabajador","Beneficiarios: cónyuge e hijos"]},
+  {icon:"📋", title:"Contratos de Trabajo", desc:"Los tipos de contratos laborales definen la estabilidad del trabajador.", items:["Contrato Indefinido: sin fecha de fin, mayor estabilidad","Contrato a Plazo Fijo: con fecha límite, máximo 5 años","Período de prueba: 3 meses (puede extenderse a 6 o 12 meses)","El contrato indefinido solo puede terminarse por causa justificada"]},
+  {icon:"🚫", title:"Derechos ante el Despido", desc:"El trabajador tiene derechos ante un despido.", items:["Despido Arbitrario: el empleador paga 1.5 sueldos por año de trabajo","Despido Nulo: se debe reincorporar al trabajador","El trabajador puede demandar a la empresa en el Poder Judicial","SUNAFIL fiscaliza el cumplimiento de derechos laborales"]},
+  {icon:"📊", title:"Tributos Empresariales Clave", desc:"Toda empresa debe conocer sus obligaciones tributarias con SUNAT.", items:["IGV = 18% sobre ventas (se traslada al consumidor)","Impuesto a la Renta 3ra categoría = 29.5% de utilidades","Declaraciones mensuales y anuales obligatorias","Libros electrónicos para empresas según sus ingresos"]},
+  {icon:"📄", title:"Comprobantes de Pago Obligatorios", desc:"Existen distintos tipos de comprobantes según la operación.", items:["Factura: entre empresas con RUC, otorga crédito fiscal IGV","Boleta de Venta: para consumidores finales sin RUC","Ticket: máquinas registradoras o POS","Nota de Crédito/Débito: corrige comprobantes emitidos"]},
+  {icon:"🏢", title:"Registros para Constituir Empresa", desc:"Pasos básicos para formalizar una empresa en Perú.", items:["1. Búsqueda y reserva de nombre (SUNARP)","2. Elaborar minuta ante notario","3. Escritura pública en notaría","4. Inscripción en SUNARP (Registros Públicos)","5. Obtener RUC en SUNAT","6. Licencia de Funcionamiento en municipio"]},
+];
+
+// VIDEOS DATA
+const VIDEOS_DATA = [
+  {title:"¿Qué es la Contabilidad? — Explicación básica", desc:"Fundamentos de la contabilidad para principiantes", url:"https://www.youtube.com/results?search_query=que+es+la+contabilidad+para+principiantes", topic:"S1", emoji:"📊"},
+  {title:"Historia de la Contabilidad y Luca Pacioli", desc:"Origen del sistema de partida doble", url:"https://www.youtube.com/results?search_query=historia+contabilidad+luca+pacioli", topic:"S1", emoji:"🏛️"},
+  {title:"Los Quipus: Sistema Contable Inca", desc:"Cómo los Incas registraban sus operaciones", url:"https://www.youtube.com/results?search_query=quipus+sistema+contable+incas+peru", topic:"S1", emoji:"🪢"},
+  {title:"Activo, Pasivo y Patrimonio — Explicado", desc:"Diferencias clave y ejemplos prácticos", url:"https://www.youtube.com/results?search_query=activo+pasivo+patrimonio+contabilidad", topic:"S2", emoji:"⚖️"},
+  {title:"La Partida Doble — Cómo funciona", desc:"Sistema de registro con ejemplos paso a paso", url:"https://www.youtube.com/results?search_query=partida+doble+contabilidad+ejemplos", topic:"S2", emoji:"✌️"},
+  {title:"Ecuación Contable — Casos prácticos", desc:"Ejercicios resueltos de ecuación contable", url:"https://www.youtube.com/results?search_query=ecuacion+contable+ejercicios+resueltos", topic:"S2", emoji:"🧮"},
+  {title:"Tipos de Empresas en Perú (SA, SAC, SRL, EIRL)", desc:"Diferencias y cuándo usar cada tipo", url:"https://www.youtube.com/results?search_query=tipos+de+empresas+peru+SA+SAC+SRL+EIRL", topic:"S4", emoji:"🏛️"},
+  {title:"Modelos de Negocio — Los 9 modelos principales", desc:"Freemium, suscripción, franquicia y más", url:"https://www.youtube.com/results?search_query=modelos+de+negocio+empresarial+ejemplos", topic:"S4", emoji:"💡"},
+  {title:"Plan Contable General Empresarial (PCGE)", desc:"Elementos y estructura del plan de cuentas", url:"https://www.youtube.com/results?search_query=plan+contable+general+empresarial+PCGE+peru", topic:"S1", emoji:"📋"},
+  {title:"Ciclo Contable — Paso a paso", desc:"Apertura, movimiento y cierre contable", url:"https://www.youtube.com/results?search_query=ciclo+contable+paso+a+paso+explicacion", topic:"S1", emoji:"🔄"},
+  {title:"Estados Financieros — Balance y Estado de Resultados", desc:"Cómo se construyen y para qué sirven", url:"https://www.youtube.com/results?search_query=estados+financieros+balance+estado+resultados", topic:"S1", emoji:"📈"},
+  {title:"Derechos Laborales en Perú — Lo básico", desc:"Sueldo mínimo, vacaciones, CTS, gratificaciones", url:"https://www.youtube.com/results?search_query=derechos+laborales+trabajadores+peru+basico", topic:"REC", emoji:"⚖️"},
+];
+
+// ================================================================
+// STATE
+// ================================================================
+let currentFlashcards = [...FLASHCARDS];
+let fcIndex = 0;
+let examScores = {};
+let currentExam = null;
+let currentExamAnswers = {};
+let currentQuestionIdx = 0;
+let timerInterval = null;
+let timeLeft = 1800;
+
+// ================================================================
+// PAGE NAVIGATION
+// ================================================================
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + pageId).classList.add('active');
+  const btns = document.querySelectorAll('.nav-btn');
+  btns.forEach(b => { if(b.onclick.toString().includes("'" + pageId + "'")) b.classList.add('active'); });
+  window.scrollTo(0, 0);
+}
+
+function openLesson(n) {
+  document.getElementById('lesson-home').style.display = 'none';
+  const content = document.getElementById('lesson-content');
+  content.style.display = 'block';
+  content.innerHTML = getLessonHTML(n);
+  showPage('lessons');
+  window.scrollTo(0, 0);
+}
+
+function getLessonHTML(n) {
+  const lessons = {
+    1: getLesson1HTML(),
+    2: getLesson2HTML(),
+    3: getLesson3HTML(),
+    4: getLesson4HTML(),
+    5: getLesson5HTML(),
+  };
+  return lessons[n] || '<p>Lección no encontrada</p>';
+}
+
+// ================================================================
+// LESSON HTML GENERATORS
+// ================================================================
+function getLesson1HTML() {
+  return `
+  <div class="lesson-header">
+    <button class="back-btn" onclick="document.getElementById('lesson-home').style.display='';document.getElementById('lesson-content').style.display='none'">← Volver</button>
+    <div><h2>📚 Sesión 1: Historia y Fundamentos de la Contabilidad</h2></div>
+  </div>
+  <div class="lesson-body">
+    <div class="audio-section">
+      <h3>🔊 Escuchar esta Sesión</h3>
+      <button class="tts-btn" id="tts-btn-1" onclick="speakLesson(1)">▶️ Reproducir Audio</button>
+      <div class="audio-progress" id="ap-1"><div class="audio-progress-bar"></div></div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">🏛️</span>Historia: Luca Pacioli y la Partida Doble</h3>
+      <p>La contabilidad como ciencia formal nació gracias a <strong>Fray Luca Pacioli</strong> (1445-1517), matemático italiano de Venecia. Fue el primero en explicar el sistema de <strong>Partida Doble</strong>, que establece la paridad entre operaciones financieras para mantener un orden entre las cuentas.</p>
+      <div class="highlight">
+        <strong>5 Reglas de la Partida Doble:</strong><br>
+        1. No hay deudor sin acreedor<br>
+        2. La suma adeudada = lo que se abona<br>
+        3. Todo el que recibe debe a quien da<br>
+        4. Todo valor que ingresa es deudor; todo valor que sale es acreedor<br>
+        5. Toda pérdida es deudora; toda ganancia acreedora
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">🪢</span>Contabilidad en el Imperio Inca: Los Quipus</h3>
+      <p>El Imperio Inca (siglos XI al XVI) tenía su propio sistema contable: <strong>Los Quipus</strong>. Eran cuerdas gruesas con cuerdas delgadas colgantes con nudos de distintos colores que representaban números y datos.</p>
+      <div class="highlight">
+        <strong>Los Quipucamayocs</strong> eran los "contadores" incas. Consolidaban la información contable del Imperio. El mayor se llamaba <em>"Tahuantinsuyo runa quipu"</em>, equivalente al Contador Nacional de hoy.
+      </div>
+      <div class="example-box">
+        <div class="example-label">🎯 Dato Clave</div>
+        <p>Los nudos representaban números: las unidades estaban a mayor distancia del cordel principal. Los quipus complementaban a la <strong>Yupana</strong>, una especie de ábaco o calculadora.</p>
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">📖</span>¿Qué es la Contabilidad?</h3>
+      <p>Es una <strong>ciencia</strong> que registra, clasifica, analiza, interpreta y comunica la información financiera de una empresa. Tiene normas, principios y procedimientos.</p>
+      <table class="eq-table">
+        <tr><th>Fin</th><th>Descripción</th></tr>
+        <tr><td>1. Imagen clara</td><td>Situación financiera real en cualquier momento</td></tr>
+        <tr><td>2. Previsión</td><td>Anticipar el futuro de la empresa</td></tr>
+        <tr><td>3. Fuente legal</td><td>Comprobante ante terceros y el Estado</td></tr>
+        <tr><td>4. Control</td><td>Control riguroso de recursos y obligaciones</td></tr>
+        <tr><td>5. Registro</td><td>Registrar operaciones con claridad y precisión</td></tr>
+      </table>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">📕</span>Libros de Contabilidad</h3>
+      <p>Documentos donde se registran ordenadamente las operaciones de la empresa. Hoy mayormente computarizados.</p>
+      <div class="example-box">
+        <div class="example-label">📌 Libros Principales (5)</div>
+        <p>1. Inventarios y Balances &nbsp; 2. Diario &nbsp; 3. Mayor &nbsp; 4. Caja &nbsp; 5. Actas</p>
+      </div>
+      <div class="example-box">
+        <div class="example-label">📌 Libros Auxiliares</div>
+        <p>Almacén, Registro de Compras, Registro de Ventas, Bancos, Planillas, Gastos Generales, Cuentas por Cobrar, Control de Personal, Letras por Cobrar/Pagar</p>
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">🔄</span>Ciclo Contable</h3>
+      <table class="eq-table">
+        <tr><th>Etapa</th><th>Qué pasa</th></tr>
+        <tr><td class="debe">1. APERTURA</td><td>Balance inicial del nuevo ciclo</td></tr>
+        <tr><td class="haber">2. MOVIMIENTO</td><td>Registro de todas las operaciones en el Libro Diario</td></tr>
+        <tr><td style="color:var(--accent)">3. CIERRE</td><td>Traslado al Libro Mayor → Estados Financieros</td></tr>
+      </table>
+      <div class="highlight">
+        <strong>4 Pasos del Ciclo:</strong> Comprobantes de Pago → Libros Contables → Hoja de Comprobación → Estados Financieros
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">⚖️</span>Activo, Pasivo y Patrimonio</h3>
+      <table class="eq-table">
+        <tr><th>Elemento</th><th>Qué es</th><th>Ejemplos</th></tr>
+        <tr><td class="debe">ACTIVO</td><td>Lo que la empresa TIENE</td><td>Caja, maquinaria, mercaderías</td></tr>
+        <tr><td class="haber">PASIVO</td><td>Lo que la empresa DEBE</td><td>Préstamos, facturas por pagar</td></tr>
+        <tr><td style="color:var(--accent)">PATRIMONIO</td><td>Activo - Pasivo (de los dueños)</td><td>Capital, reservas, utilidades</td></tr>
+      </table>
+      <div class="highlight" style="font-size:1.1rem;text-align:center;padding:16px;">
+        <strong>ACTIVO = PASIVO + PATRIMONIO</strong>
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">📋</span>Plan Contable General Empresarial (PCGE)</h3>
+      <p>Catálogo de cuentas emitido en <strong>2010</strong> por el Consejo Normativo de Contabilidad. Homologado con las <strong>NIIF</strong>. Tiene <strong>9 elementos</strong>:</p>
+      <div class="example-box">
+        <div class="example-label">Elementos del PCGE</div>
+        <p>1-3: Activo &nbsp;|&nbsp; 4: Pasivo &nbsp;|&nbsp; 5: Patrimonio &nbsp;|&nbsp; 6: Ingresos &nbsp;|&nbsp; 7: Gastos &nbsp;|&nbsp; 8: Presupuestal &nbsp;|&nbsp; 9: Costos</p>
+      </div>
+    </div>
+  </div>`;
+}
+
+function getLesson2HTML() {
+  return `
+  <div class="lesson-header">
+    <button class="back-btn" onclick="document.getElementById('lesson-home').style.display='';document.getElementById('lesson-content').style.display='none'">← Volver</button>
+    <div><h2>📚 Sesión 2: Activo, Pasivo, Patrimonio y Partida Doble</h2></div>
+  </div>
+  <div class="lesson-body">
+    <div class="audio-section">
+      <h3>🔊 Escuchar esta Sesión</h3>
+      <button class="tts-btn" id="tts-btn-2" onclick="speakLesson(2)">▶️ Reproducir Audio</button>
+      <div class="audio-progress" id="ap-2"><div class="audio-progress-bar"></div></div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">💚</span>Clasificación del ACTIVO</h3>
+      <table class="eq-table">
+        <tr><th>Tipo</th><th>Permanencia</th><th>Subtipos</th><th>Ejemplos</th></tr>
+        <tr><td class="debe">Corriente</td><td>≤ 1 año</td><td>Disponible, Exigible, Realizable</td><td>Caja, Clientes, Mercaderías</td></tr>
+        <tr><td class="debe">No Corriente</td><td>> 1 año</td><td>Inmuebles, Intangibles, Biológicos</td><td>Maquinaria, Terrenos, Patentes</td></tr>
+      </table>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;">
+        <div class="example-box">
+          <div class="example-label">💵 Disponible</div>
+          <p>Caja y Bancos (dinero inmediato)</p>
+        </div>
+        <div class="example-box">
+          <div class="example-label">📄 Exigible</div>
+          <p>Cuentas por cobrar a clientes</p>
+        </div>
+        <div class="example-box">
+          <div class="example-label">📦 Realizable</div>
+          <p>Mercaderías, productos en almacén</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">🔴</span>Clasificación del PASIVO</h3>
+      <table class="eq-table">
+        <tr><th>Tipo</th><th>Vencimiento</th><th>Ejemplos</th></tr>
+        <tr><td class="haber">Corriente</td><td>< 1 año</td><td>Facturas por pagar, cuotas próximas</td></tr>
+        <tr><td class="haber">No Corriente</td><td>> 1 año</td><td>Préstamos a largo plazo, hipotecas</td></tr>
+      </table>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">💜</span>El PATRIMONIO</h3>
+      <p>Agrupa los aportes de socios + utilidades - pérdidas. Es lo que genuinamente pertenece a los dueños.</p>
+      <div class="example-box">
+        <div class="example-label">📌 Cuentas del Patrimonio</div>
+        <p>Capital (50), Capital Adicional (52), Reservas, Resultados Acumulados, Utilidad del Ejercicio</p>
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">🔢</span>Reglas de Registro (Débito/Crédito)</h3>
+      <table class="eq-table">
+        <tr><th>Cuenta</th><th>DEBE (↑)</th><th>HABER (↓)</th></tr>
+        <tr><td class="debe">Activo</td><td class="debe">Aumenta ✓</td><td>Disminuye</td></tr>
+        <tr><td class="haber">Pasivo</td><td>Disminuye</td><td class="haber">Aumenta ✓</td></tr>
+        <tr><td style="color:var(--accent)">Patrimonio</td><td>Pérdida</td><td style="color:var(--accent)">Capital/Utilidad ✓</td></tr>
+        <tr><td style="color:var(--accent3)">Ingreso</td><td>—</td><td style="color:var(--accent3)">Se abona ✓</td></tr>
+        <tr><td style="color:var(--danger)">Egreso</td><td style="color:var(--danger)">Se carga ✓</td><td>—</td></tr>
+      </table>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">🧮</span>Casos Prácticos — Empresa JÁVEA SAC</h3>
+      <table class="eq-table">
+        <tr><th>Operación</th><th>Debe</th><th>Haber</th><th>Monto</th></tr>
+        <tr><td>Compra mercadería (contado)</td><td class="debe">Mercaderías (20)</td><td class="haber">Capital (50)</td><td>S/13,500</td></tr>
+        <tr><td>Compra abarrotes AL CRÉDITO</td><td class="debe">Mercaderías (20)</td><td class="haber">Prov. (42.1)</td><td>S/18,000</td></tr>
+        <tr><td>Paga internet</td><td class="haber">Caja (10.1) disminuye</td><td class="debe">Capital (50) baja</td><td>S/280</td></tr>
+        <tr><td>Aumento de capital</td><td class="debe">Cta. Cte. (10.4)</td><td class="haber">Cap. Adic. (52)</td><td>S/55,800</td></tr>
+      </table>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">✌️</span>La Partida Doble</h3>
+      <p>Sistema base de toda contabilidad moderna: <strong>toda transacción afecta mínimo DOS cuentas</strong>, manteniendose siempre la igualdad Debe = Haber.</p>
+      <div class="highlight">
+        <strong>3 Reglas:</strong><br>
+        1. Para personas: quien RECIBE es deudor; quien DA es acreedor<br>
+        2. Para cosas: lo que INGRESA es deudor; lo que SALE es acreedor<br>
+        3. Para resultados: toda PÉRDIDA es deudora; toda GANANCIA es acreedora
+      </div>
+
+      <div class="mnemonic-grid" style="margin-top:16px;">
+        <div class="mnemonic-card">
+          <div class="m-term">DEBE</div>
+          <div class="m-rule">= Lado Izquierdo</div>
+          <div class="m-desc">Activos↑, Gastos↑<br>Pasivos↓, Patrimonio↓</div>
+        </div>
+        <div class="mnemonic-card">
+          <div class="m-term">HABER</div>
+          <div class="m-rule">= Lado Derecho</div>
+          <div class="m-desc">Pasivos↑, Patrimonio↑, Ingresos↑<br>Activos↓, Gastos↓</div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function getLesson3HTML() {
+  return `
+  <div class="lesson-header">
+    <button class="back-btn" onclick="document.getElementById('lesson-home').style.display='';document.getElementById('lesson-content').style.display='none'">← Volver</button>
+    <div><h2>📚 Sesión 3: Casos Prácticos y La Empresa</h2></div>
+  </div>
+  <div class="lesson-body">
+    <div class="audio-section">
+      <h3>🔊 Escuchar esta Sesión</h3>
+      <button class="tts-btn" id="tts-btn-3" onclick="speakLesson(3)">▶️ Reproducir Audio</button>
+      <div class="audio-progress" id="ap-3"><div class="audio-progress-bar"></div></div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">🏢</span>¿Qué es una Empresa?</h3>
+      <p>Entidad conformada por personas, aspiraciones, bienes materiales y capacidades técnicas/financieras, dedicada a producir/vender bienes o servicios para obtener <strong>utilidad o beneficio</strong>.</p>
+      <div class="highlight">
+        Según la LGS: Institución pública o privada (persona natural o jurídica) que genera ingresos y gastos con objetivo de lucro. Las ONG son excepción (sin fines de lucro).
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">🔬</span>6 Elementos de una Empresa</h3>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">
+        <div class="example-box"><div class="example-label">1. Entidad</div><p>Persona jurídica o individual con identidad propia</p></div>
+        <div class="example-box"><div class="example-label">2. Elementos Humanos</div><p>Personas que trabajan e invierten en la empresa</p></div>
+        <div class="example-box"><div class="example-label">3. Aspiraciones</div><p>Metas y deseos de los miembros</p></div>
+        <div class="example-box"><div class="example-label">4. Realizaciones</div><p>Satisfacción al lograr las aspiraciones</p></div>
+        <div class="example-box"><div class="example-label">5. Bienes Materiales</div><p>Instalaciones, oficinas, mobiliario, equipos</p></div>
+        <div class="example-box"><div class="example-label">6. Capacidad Técnica y Financiera</div><p>Conocimientos del personal + capacidad de pago e inversión</p></div>
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">📝</span>Casos Prácticos — Empresa "Águilas del Norte" SAC</h3>
+      <table class="eq-table">
+        <tr><th>#</th><th>Operación</th><th>Análisis</th></tr>
+        <tr><td>1</td><td>Compra maquinaria S/120,000 (60% banco, 40% crédito)</td><td class="debe">Maquinaria↑; Banco↓ (S/72,000); Proveedor↑ (S/48,000)</td></tr>
+        <tr><td>2</td><td>Compra MP S/31,500 con banco BBVA</td><td class="debe">MP↑; Banco↓</td></tr>
+        <tr><td>3</td><td>6 accionistas aumentan capital S/15,000 c/u</td><td class="haber">Banco↑ (S/90,000); Cap. Adicional↑</td></tr>
+        <tr><td>4</td><td>Paga vigilancia S/2,200</td><td class="debe">Caja↓; Patrimonio↓</td></tr>
+        <tr><td>5</td><td>Paga asesoría legal S/3,500</td><td class="debe">Caja↓; Patrimonio↓</td></tr>
+        <tr><td>7</td><td>Deposita S/42,500 en cuenta corriente BBVA</td><td>Cta. Cte.↑; Caja↓ (intercambio activo-activo)</td></tr>
+      </table>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">🚀</span>Proceso para Constituir una Empresa en Perú</h3>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px;">
+        <div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg3);border-radius:8px;">
+          <div style="background:var(--accent);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">1</div>
+          <div><strong>Búsqueda y reserva de nombre</strong> en SUNARP</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg3);border-radius:8px;">
+          <div style="background:var(--accent);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">2</div>
+          <div><strong>Elaborar Minuta</strong> ante Notario Público</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg3);border-radius:8px;">
+          <div style="background:var(--accent);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">3</div>
+          <div><strong>Escritura Pública</strong> en Notaría</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg3);border-radius:8px;">
+          <div style="background:var(--accent);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">4</div>
+          <div><strong>Inscripción en SUNARP</strong> (Registros Públicos)</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg3);border-radius:8px;">
+          <div style="background:var(--accent);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">5</div>
+          <div><strong>Obtener RUC</strong> en SUNAT</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;padding:10px;background:var(--bg3);border-radius:8px;">
+          <div style="background:var(--accent);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">6</div>
+          <div><strong>Licencia de Funcionamiento</strong> en la Municipalidad</div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function getLesson4HTML() {
+  return `
+  <div class="lesson-header">
+    <button class="back-btn" onclick="document.getElementById('lesson-home').style.display='';document.getElementById('lesson-content').style.display='none'">← Volver</button>
+    <div><h2>📚 Sesión 4: Tipos de Empresa y Modelos de Negocio</h2></div>
+  </div>
+  <div class="lesson-body">
+    <div class="audio-section">
+      <h3>🔊 Escuchar esta Sesión</h3>
+      <button class="tts-btn" id="tts-btn-4" onclick="speakLesson(4)">▶️ Reproducir Audio</button>
+      <div class="audio-progress" id="ap-4"><div class="audio-progress-bar"></div></div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">🎯</span>Objetivos Empresariales</h3>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">
+        <div class="example-box"><div class="example-label">💰 Máximo Beneficio</div><p>Diferencia entre ingresos y gastos. El más importante.</p></div>
+        <div class="example-box"><div class="example-label">📈 Crecimiento</div><p>Reinvertir utilidades para ganar más mercado.</p></div>
+        <div class="example-box"><div class="example-label">😊 Satisfacción del Cliente</div><p>Fidelización = clientes que vuelven.</p></div>
+        <div class="example-box"><div class="example-label">⭐ Calidad</div><p>En todo el proceso productivo y de distribución.</p></div>
+        <div class="example-box"><div class="example-label">🛡️ Supervivencia</div><p>Meta en tiempos de crisis.</p></div>
+        <div class="example-box"><div class="example-label">🌿 Objetivos Sociales</div><p>Medio ambiente + condiciones dignas para trabajadores.</p></div>
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">🏛️</span>Tipos de Constitución de Empresas en Perú</h3>
+      <table class="eq-table">
+        <tr><th>Tipo</th><th>Características clave</th><th>Ideal para</th></tr>
+        <tr><td class="debe">SA</td><td>Accionistas ilimitados, puede cotizar en bolsa</td><td>Empresas grandes</td></tr>
+        <tr><td class="debe">SAC</td><td>2-20 accionistas, NO venta pública de acciones</td><td>Empresas medianas/familia</td></tr>
+        <tr><td class="haber">SRL</td><td>Responsabilidad limitada, bienes personales protegidos</td><td>Pymes, socios de confianza</td></tr>
+        <tr><td class="haber">EIRL</td><td>UN solo dueño, responsabilidad limitada</td><td>Emprendedores individuales</td></tr>
+        <tr><td style="color:var(--accent)">SAA</td><td>Puede ofrecer acciones AL PÚBLICO, cotiza en bolsa</td><td>Grandes corporaciones</td></tr>
+        <tr><td style="color:var(--accent)">SACS</td><td>SAC simplificada, menos trámites</td><td>Startups y emprendedores</td></tr>
+      </table>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">💡</span>Los 9 Modelos de Negocio</h3>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px;">
+        <div class="example-box">
+          <div class="example-label">1. 🔗 De Varios Lados</div>
+          <p>Conecta 2+ grupos de clientes. Ej: Google (usuarios + anunciantes). Genera "efecto red".</p>
+        </div>
+        <div class="example-box">
+          <div class="example-label">2. 🍔 Franquicia</div>
+          <p>Terceros venden bajo tu marca a cambio de regalías. Ej: McDonald's, KFC.</p>
+        </div>
+        <div class="example-box">
+          <div class="example-label">3. 📚 Cola Larga</div>
+          <p>Amplio catálogo de productos nicho. Pocas ventas por item pero gran total. Ej: Amazon.</p>
+        </div>
+        <div class="example-box">
+          <div class="example-label">4. 🆓 Freemium</div>
+          <p>Gratis básico + pago premium. Ej: Spotify, LinkedIn, apps móviles.</p>
+        </div>
+        <div class="example-box">
+          <div class="example-label">5. 📅 Suscripción</div>
+          <p>Pago periódico recurrente. Ej: Netflix, periódicos digitales, luz eléctrica.</p>
+        </div>
+        <div class="example-box">
+          <div class="example-label">6. 🛒 E-Commerce</div>
+          <p>Tienda online con envío a domicilio. Logística es clave. Ej: Falabella.com, MercadoLibre.</p>
+        </div>
+        <div class="example-box">
+          <div class="example-label">7. 📦 Dropshipping</div>
+          <p>Vendes online pero el proveedor almacena y envía. Baja inversión, márgenes estrechos.</p>
+        </div>
+        <div class="example-box">
+          <div class="example-label">8. 🤝 Afiliación</div>
+          <p>Promueves productos de terceros y ganas comisión por venta. Ej: blogs con links de Amazon.</p>
+        </div>
+        <div class="example-box">
+          <div class="example-label">9. 👥 Peer to Peer (P2P)</div>
+          <p>Conecta particulares entre sí. Gana por publicidad/comisiones. Ej: OLX, Facebook Marketplace, Airbnb.</p>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function getLesson5HTML() {
+  return `
+  <div class="lesson-header">
+    <button class="back-btn" onclick="document.getElementById('lesson-home').style.display='';document.getElementById('lesson-content').style.display='none'">← Volver</button>
+    <div><h2>📚 Sesión 5: Repaso General — I Unidad</h2></div>
+  </div>
+  <div class="lesson-body">
+    <div class="concept-block">
+      <h3><span class="icon">🎯</span>Resumen de los Temas Clave para el Examen</h3>
+      <div class="mnemonic-grid">
+        <div class="mnemonic-card">
+          <div class="m-term">S1</div>
+          <div class="m-rule">Historia & Fundamentos</div>
+          <div class="m-desc">Pacioli, Quipus, Definición, Libros, Ciclo Contable, PCGE</div>
+        </div>
+        <div class="mnemonic-card">
+          <div class="m-term">S2</div>
+          <div class="m-rule">A = P + Pt</div>
+          <div class="m-desc">Activo/Pasivo/Patrimonio, Partida Doble, Casos JÁVEA</div>
+        </div>
+        <div class="mnemonic-card">
+          <div class="m-term">S3</div>
+          <div class="m-rule">La Empresa</div>
+          <div class="m-desc">Definición, 6 Elementos, Casos Águilas del Norte, Constitución</div>
+        </div>
+        <div class="mnemonic-card">
+          <div class="m-term">S4</div>
+          <div class="m-rule">Tipos & Modelos</div>
+          <div class="m-desc">SA, SAC, SRL, EIRL, SAA, SACS + 9 Modelos de Negocio</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">⚡</span>Reglas de Oro — Para no Olvidar</h3>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="padding:10px 14px;background:rgba(95,212,140,0.1);border:1px solid rgba(95,212,140,0.3);border-radius:8px;font-size:0.88rem;">
+          ✅ <strong>ACTIVO = PASIVO + PATRIMONIO</strong> — Siempre en equilibrio
+        </div>
+        <div style="padding:10px 14px;background:rgba(124,106,247,0.1);border:1px solid rgba(124,106,247,0.3);border-radius:8px;font-size:0.88rem;">
+          ✅ <strong>Activos AUMENTAN con DEBE; Pasivo y Patrimonio AUMENTAN con HABER</strong>
+        </div>
+        <div style="padding:10px 14px;background:rgba(247,168,74,0.1);border:1px solid rgba(247,168,74,0.3);border-radius:8px;font-size:0.88rem;">
+          ✅ <strong>No hay Deudor sin Acreedor</strong> — Principio de Partida Doble
+        </div>
+        <div style="padding:10px 14px;background:rgba(247,108,108,0.1);border:1px solid rgba(247,108,108,0.3);border-radius:8px;font-size:0.88rem;">
+          ✅ <strong>Corriente ≤ 1 año | No Corriente > 1 año</strong>
+        </div>
+        <div style="padding:10px 14px;background:rgba(95,212,196,0.1);border:1px solid rgba(95,212,196,0.3);border-radius:8px;font-size:0.88rem;">
+          ✅ <strong>EIRL = 1 dueño | SRL = socios limitados | SA = puede cotizar en bolsa</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <h3><span class="icon">🔑</span>Cuentas del PCGE que Debes Saber</h3>
+      <table class="eq-table">
+        <tr><th>Cuenta</th><th>Descripción</th><th>Tipo</th></tr>
+        <tr><td class="debe">10.1</td><td>Caja</td><td>Activo Corriente Disponible</td></tr>
+        <tr><td class="debe">10.4</td><td>Cuenta Corriente Bancaria</td><td>Activo Corriente Disponible</td></tr>
+        <tr><td class="debe">20</td><td>Mercaderías</td><td>Activo Corriente Realizable</td></tr>
+        <tr><td class="debe">24</td><td>Materias Primas</td><td>Activo Corriente Realizable</td></tr>
+        <tr><td class="debe">25.1/25.2</td><td>Suministros/Embalajes</td><td>Activo Corriente</td></tr>
+        <tr><td class="debe">33.4</td><td>Vehículos (Camioneta)</td><td>Activo No Corriente</td></tr>
+        <tr><td class="debe">33.5</td><td>Muebles y Enseres</td><td>Activo No Corriente</td></tr>
+        <tr><td class="haber">42.1</td><td>Facturas por Pagar (Proveedor)</td><td>Pasivo Corriente</td></tr>
+        <tr><td style="color:var(--accent)">50</td><td>Capital</td><td>Patrimonio</td></tr>
+        <tr><td style="color:var(--accent)">52</td><td>Capital Adicional</td><td>Patrimonio</td></tr>
+      </table>
+    </div>
+
+    <div style="text-align:center;margin-top:24px;padding:24px;background:linear-gradient(135deg,rgba(124,106,247,0.2),rgba(95,212,196,0.1));border:1px solid var(--accent);border-radius:var(--radius);">
+      <div style="font-size:2rem;margin-bottom:8px;">💪</div>
+      <div style="font-size:1.2rem;font-weight:800;margin-bottom:8px;">¡Tú puedes con el examen!</div>
+      <div style="color:var(--text2);margin-bottom:16px;">Ahora ve a practicar con los exámenes para reforzar tu aprendizaje.</div>
+      <button class="quick-btn primary" onclick="showPage('exams')">📝 Ir a los Exámenes</button>
+    </div>
+  </div>`;
+}
+
+// ================================================================
+// FLASHCARDS
+// ================================================================
+function loadFlashcards(session, btn) {
+  document.querySelectorAll('.fc-session-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (session === 'all') {
+    currentFlashcards = [...FLASHCARDS];
+  } else {
+    currentFlashcards = FLASHCARDS.filter(f => f.s === session);
+  }
+  fcIndex = 0;
+  document.getElementById('fc-card').classList.remove('flipped');
+  updateFlashcard();
+}
+
+function updateFlashcard() {
+  if (currentFlashcards.length === 0) return;
+  const fc = currentFlashcards[fcIndex];
+  document.getElementById('fc-question').textContent = fc.q;
+  document.getElementById('fc-answer').textContent = fc.a;
+  document.getElementById('fc-counter').textContent = `${fcIndex + 1} / ${currentFlashcards.length}`;
+  document.getElementById('fc-bar').style.width = `${((fcIndex + 1) / currentFlashcards.length) * 100}%`;
+  document.getElementById('fc-card').classList.remove('flipped');
+}
+
+function flipCard() { document.getElementById('fc-card').classList.toggle('flipped'); }
+function nextCard() { fcIndex = (fcIndex + 1) % currentFlashcards.length; updateFlashcard(); }
+function prevCard() { fcIndex = (fcIndex - 1 + currentFlashcards.length) % currentFlashcards.length; updateFlashcard(); }
+
+function shuffleCards() {
+  for (let i = currentFlashcards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [currentFlashcards[i], currentFlashcards[j]] = [currentFlashcards[j], currentFlashcards[i]];
+  }
+  fcIndex = 0;
+  updateFlashcard();
+  showToast('🔀 Tarjetas mezcladas!', 'success');
+}
+
+// ================================================================
+// EXERCISES
+// ================================================================
+function renderExercises(data, containerId) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = data.map((ex, i) => `
+    <div class="exercise-block">
+      <h3>📝 Ejercicio ${i + 1}</h3>
+      <div class="ex-question">${ex.q}</div>
+      <div class="ex-options">
+        ${ex.opts.map((opt, j) => `
+          <div class="ex-option" id="ex-${containerId}-${i}-${j}" onclick="checkExercise('${containerId}', ${i}, ${j}, ${ex.ans})">
+            <span style="width:24px;height:24px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;">${String.fromCharCode(65+j)}</span>
+            ${opt}
+          </div>
+        `).join('')}
+      </div>
+      <div class="ex-feedback" id="ex-fb-${containerId}-${i}"></div>
+    </div>
+  `).join('');
+}
+
+function checkExercise(container, exIdx, ansIdx, correct) {
+  const opts = document.querySelectorAll(`[id^="ex-${container}-${exIdx}-"]`);
+  opts.forEach(o => o.classList.add('disabled'));
+  const clicked = document.getElementById(`ex-${container}-${exIdx}-${ansIdx}`);
+  const correctEl = document.getElementById(`ex-${container}-${exIdx}-${correct}`);
+  const fb = document.getElementById(`ex-fb-${container}-${exIdx}`);
+  
+  if (ansIdx === correct) {
+    clicked.classList.add('correct');
+    fb.className = 'ex-feedback show success';
+    fb.innerHTML = '✅ ¡Correcto! ' + (container === 'tab-ec' ? EXERCISES_EC[exIdx].exp : container === 'tab-pd' ? EXERCISES_PD[exIdx].exp : container === 'tab-clas' ? EXERCISES_CLAS[exIdx].exp : EXERCISES_EMP[exIdx].exp);
+  } else {
+    clicked.classList.add('wrong');
+    correctEl.classList.add('correct');
+    fb.className = 'ex-feedback show error';
+    fb.innerHTML = '❌ Incorrecto. La respuesta correcta era la opción ' + String.fromCharCode(65 + correct) + '. ' + (container === 'tab-ec' ? EXERCISES_EC[exIdx].exp : container === 'tab-pd' ? EXERCISES_PD[exIdx].exp : container === 'tab-clas' ? EXERCISES_CLAS[exIdx].exp : EXERCISES_EMP[exIdx].exp);
+  }
+}
+
+// ================================================================
+// TABS
+// ================================================================
+function showTab(tabId) {
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(tabId).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ================================================================
+// EXAMS
+// ================================================================
+const EXAM_TITLES = [
+  "Fundamentos de la Contabilidad",
+  "Historia y Orígenes",
+  "Activo, Pasivo y Patrimonio",
+  "La Partida Doble",
+  "Ecuación Contable",
+  "Ciclo Contable y Libros",
+  "PCGE y Cuentas",
+  "Clasificación del Activo",
+  "Tipos de Empresa",
+  "Modelos de Negocio",
+  "Casos Prácticos I",
+  "Casos Prácticos II",
+  "Derechos y Tributos",
+  "Empresa y Constitución",
+  "Objetivos Empresariales",
+  "Repaso General I",
+  "Repaso General II",
+  "Examen Integral I",
+  "Examen Integral II",
+  "Examen Final Simulacro",
+];
+
+// Generate 20 exam sets, each 20 questions (random unique)
+function generateExamSet(examNum) {
+  const shuffled = [...ALL_QUESTIONS].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, 20);
+}
+
+let examSets = {};
+function getExamSet(n) {
+  if (!examSets[n]) examSets[n] = generateExamSet(n);
+  return examSets[n];
+}
+
+function renderExamPicker() {
+  const container = document.getElementById('exam-picker');
+  container.innerHTML = Array.from({length: 20}, (_, i) => {
+    const score = examScores[i + 1];
+    let scoreHTML = '<div class="exam-score pending">Pendiente</div>';
+    if (score !== undefined) {
+      const pct = Math.round((score / 20) * 100);
+      scoreHTML = score >= 12 
+        ? `<div class="exam-score passed">✅ ${pct}% (${score}/20)</div>`
+        : `<div class="exam-score failed">❌ ${pct}% (${score}/20)</div>`;
+    }
+    return `
+      <div class="exam-picker-card" onclick="startExam(${i + 1})">
+        <div class="exam-num">E${i + 1}</div>
+        <div class="exam-title">${EXAM_TITLES[i]}</div>
+        ${scoreHTML}
+      </div>`;
+  }).join('');
+}
+
+function startExam(num) {
+  currentExam = num;
+  currentExamAnswers = {};
+  currentQuestionIdx = 0;
+  timeLeft = 1800;
+  
+  // Re-generate exam set for fresh random questions
+  examSets[num] = generateExamSet(num);
+  
+  document.getElementById('exam-picker-view').style.display = 'none';
+  document.getElementById('exam-area').classList.add('active');
+  document.getElementById('result-area').classList.remove('active');
+  document.getElementById('result-area').style.display = 'none';
+  document.getElementById('exam-title').textContent = `Examen ${num}: ${EXAM_TITLES[num - 1]}`;
+  
+  startTimer();
+  renderExamQuestion();
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    timeLeft--;
+    const m = Math.floor(timeLeft / 60).toString().padStart(2, '0');
+    const s = (timeLeft % 60).toString().padStart(2, '0');
+    const timer = document.getElementById('exam-timer');
+    timer.textContent = `${m}:${s}`;
+    if (timeLeft <= 60) timer.classList.add('danger');
+    else timer.classList.remove('danger');
+    if (timeLeft <= 0) { clearInterval(timerInterval); submitExam(); }
+  }, 1000);
+}
+
+function renderExamQuestion() {
+  const questions = getExamSet(currentExam);
+  const q = questions[currentQuestionIdx];
+  const total = questions.length;
+  
+  document.getElementById('exam-q-counter').textContent = `${currentQuestionIdx + 1}/${total}`;
+  document.getElementById('exam-pbar').style.width = `${((currentQuestionIdx + 1) / total) * 100}%`;
+  document.getElementById('exam-prev').disabled = currentQuestionIdx === 0;
+  
+  const isLast = currentQuestionIdx === total - 1;
+  document.getElementById('exam-next').style.display = isLast ? 'none' : 'block';
+  document.getElementById('exam-submit').style.display = isLast ? 'block' : 'none';
+  
+  const letters = ['A', 'B', 'C', 'D'];
+  const savedAns = currentExamAnswers[currentQuestionIdx];
+  
+  document.getElementById('exam-question-area').innerHTML = `
+    <div class="exam-question-card fade-in">
+      <div class="exam-q-num">PREGUNTA ${currentQuestionIdx + 1} DE ${total}</div>
+      <div class="exam-q-text">${q.q}</div>
+      <div class="exam-options">
+        ${q.opts.map((opt, j) => `
+          <div class="exam-option ${savedAns === j ? 'selected' : ''}" onclick="selectAnswer(${j})" id="eopt-${j}">
+            <div class="option-letter">${letters[j]}</div>
+            ${opt}
+          </div>
+        `).join('')}
+      </div>
+    </div>`;
+}
+
+function selectAnswer(idx) {
+  currentExamAnswers[currentQuestionIdx] = idx;
+  document.querySelectorAll('.exam-option').forEach(o => o.classList.remove('selected'));
+  document.getElementById('eopt-' + idx).classList.add('selected');
+}
+
+function examNav(dir) {
+  currentQuestionIdx += dir;
+  renderExamQuestion();
+}
+
+function submitExam() {
+  clearInterval(timerInterval);
+  const questions = getExamSet(currentExam);
+  let correct = 0;
+  const results = questions.map((q, i) => {
+    const userAns = currentExamAnswers[i];
+    const isCorrect = userAns === q.ans;
+    if (isCorrect) correct++;
+    return { q: q.q, userAns, correctAns: q.ans, opts: q.opts, exp: q.exp, isCorrect };
+  });
+  
+  examScores[currentExam] = correct;
+  const pct = Math.round((correct / 20) * 100);
+  const passed = correct >= 12;
+  
+  document.getElementById('exam-area').classList.remove('active');
+  document.getElementById('result-area').style.display = 'block';
+  document.getElementById('result-area').classList.add('active');
+  
+  document.getElementById('result-screen').innerHTML = `
+    <div class="result-grade ${passed ? 'passing' : 'failing'}">${pct}%</div>
+    <div class="result-label">${passed ? '🎉 ¡Aprobado!' : '📚 Sigue Practicando'}</div>
+    <div class="result-sub">${correct} de 20 preguntas correctas · Examen ${currentExam}: ${EXAM_TITLES[currentExam - 1]}</div>
+    <div class="result-stats">
+      <div class="result-stat"><div class="num green">${correct}</div><div class="lbl">Correctas</div></div>
+      <div class="result-stat"><div class="num red">${20 - correct}</div><div class="lbl">Incorrectas</div></div>
+      <div class="result-stat"><div class="num" style="color:var(--accent)">${pct}%</div><div class="lbl">Porcentaje</div></div>
+    </div>
+    <button class="result-btn primary" onclick="showPage('exams');document.getElementById('exam-picker-view').style.display='';document.getElementById('result-area').style.display='none';document.getElementById('result-area').classList.remove('active');renderExamPicker()">📝 Otros Exámenes</button>
+    <button class="result-btn secondary" onclick="startExam(${currentExam})">🔄 Reintentar Examen</button>
+    <h3 style="text-align:left;margin-top:28px;margin-bottom:16px;font-size:1rem;">📋 Revisión de Respuestas</h3>
+  `;
+  
+  const reviewArea = document.getElementById('review-area');
+  reviewArea.innerHTML = results.map((r, i) => `
+    <div class="review-item ${r.isCorrect ? 'correct-r' : 'wrong-r'}">
+      <div class="review-q">${r.isCorrect ? '✅' : '❌'} ${i + 1}. ${r.q}</div>
+      <div class="review-ans">
+        ${!r.isCorrect && r.userAns !== undefined ? `<div class="your-ans" style="color:var(--danger)">Tu respuesta: ${r.opts[r.userAns]}</div>` : ''}
+        ${!r.isCorrect ? `<div class="correct-ans">✓ Correcta: ${r.opts[r.correctAns]}</div>` : `<div class="correct-ans">✓ ${r.opts[r.correctAns]}</div>`}
+        <div style="font-size:0.78rem;color:var(--text2);margin-top:4px;font-style:italic;">💡 ${r.exp}</div>
+      </div>
+    </div>
+  `).join('');
+  
+  window.scrollTo(0, 0);
+  showToast(passed ? '🎉 ¡Examen aprobado!' : '📚 ¡Sigue practicando!', passed ? 'success' : 'error');
+}
+
+// ================================================================
+// RIGHTS
+// ================================================================
+function renderRights() {
+  document.getElementById('rights-grid').innerHTML = RIGHTS_DATA.map(r => `
+    <div class="right-card">
+      <div class="right-icon">${r.icon}</div>
+      <h3>${r.title}</h3>
+      <p>${r.desc}</p>
+      <ul>${r.items.map(item => `<li>${item}</li>`).join('')}</ul>
+    </div>
+  `).join('');
+}
+
+// ================================================================
+// VIDEOS
+// ================================================================
+function renderVideos() {
+  document.getElementById('video-grid').innerHTML = VIDEOS_DATA.map(v => `
+    <div class="video-card" onclick="window.open('${v.url}', '_blank')">
+      <div class="video-thumb">
+        <div class="play-icon">${v.emoji}</div>
+        <div class="yt-badge">YouTube</div>
+      </div>
+      <div class="video-info">
+        <h4>${v.title}</h4>
+        <p>${v.desc}</p>
+        <p style="color:var(--accent);font-size:0.72rem;margin-top:4px;">🔗 Buscar en YouTube →</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ================================================================
+// TEXT TO SPEECH
+// ================================================================
+const lessonTexts = {
+  1: "Sesión 1: Historia y Fundamentos de la Contabilidad. Luca Pacioli, nacido en 1445 en Venecia, Italia, fue el creador del sistema de Partida Doble. Sus 5 reglas son: primero, no hay deudor sin acreedor. Segundo, la suma adeudada es igual a lo que se abona. Tercero, todo el que recibe debe a quien da. Cuarto, todo valor que ingresa es deudor y todo valor que sale es acreedor. Quinto, toda pérdida es deudora y toda ganancia acreedora. En el Imperio Inca, los Quipus eran el sistema contable: cuerdas con nudos de distintos colores. Los Quipucamayocs eran los contadores. La Contabilidad es la ciencia que registra, clasifica, analiza e interpreta la información financiera de una empresa. La ecuación fundamental es: ACTIVO igual a PASIVO más PATRIMONIO.",
+  2: "Sesión 2: Activo, Pasivo y Patrimonio. El Activo Corriente permanece hasta un año e incluye Caja, Bancos, Clientes y Mercaderías. El Activo No Corriente permanece más de un año: maquinaria, terrenos. El Activo Disponible es Caja y Bancos. El Activo Exigible son las cuentas por cobrar. El Activo Realizable son mercaderías y productos en almacén. El Pasivo Corriente son deudas menores a un año. El Pasivo No Corriente son deudas mayores a un año. Las 3 reglas de la Partida Doble son: primero, quien recibe es deudor y quien da es acreedor. Segundo, lo que ingresa es deudor y lo que sale es acreedor. Tercero, toda pérdida es deudora y toda ganancia es acreedora.",
+  3: "Sesión 3: La Empresa. Una empresa es una entidad conformada por personas, aspiraciones, bienes materiales y capacidades técnicas y financieras. Sus 6 elementos son: entidad, elementos humanos, aspiraciones, realizaciones, bienes materiales, y capacidad técnica y financiera. Para constituir una empresa en Perú, los pasos son: primero, búsqueda de nombre en SUNARP. Segundo, elaborar minuta ante notario. Tercero, escritura pública. Cuarto, inscripción en SUNARP. Quinto, obtener RUC en SUNAT. Sexto, licencia de funcionamiento en la municipalidad.",
+  4: "Sesión 4: Tipos de Empresa y Modelos de Negocio. Los tipos de empresa en Perú son: SA o Sociedad Anónima, para empresas grandes que pueden cotizar en bolsa. SAC o Sociedad Anónima Cerrada, con 2 a 20 accionistas, no vende acciones al público. SRL, con responsabilidad limitada que protege bienes personales. EIRL para un solo dueño con responsabilidad limitada. SAA que puede vender acciones al público en general. Los 9 modelos de negocio son: de varios lados, franquicia, cola larga, freemium, suscripción, e-commerce, dropshipping, afiliación y peer to peer.",
+};
+
+let currentUtterance = null;
+
+function speakLesson(n) {
+  const btn = document.getElementById('tts-btn-' + n);
+  const progressBar = document.getElementById('ap-' + n);
+  
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    btn.innerHTML = '▶️ Reproducir Audio';
+    btn.classList.remove('playing');
+    progressBar.style.display = 'none';
+    return;
+  }
+  
+  const text = lessonTexts[n] || "Contenido de la sesión no disponible para audio.";
+  currentUtterance = new SpeechSynthesisUtterance(text);
+  currentUtterance.lang = 'es-PE';
+  currentUtterance.rate = 0.9;
+  currentUtterance.pitch = 1;
+  
+  currentUtterance.onstart = () => {
+    btn.innerHTML = '⏹️ Detener Audio';
+    btn.classList.add('playing');
+    progressBar.style.display = 'block';
+  };
+  currentUtterance.onend = () => {
+    btn.innerHTML = '▶️ Reproducir Audio';
+    btn.classList.remove('playing');
+    progressBar.style.display = 'none';
+  };
+  
+  window.speechSynthesis.speak(currentUtterance);
+}
+
+// ================================================================
+// TOAST
+// ================================================================
+function showToast(msg, type = 'default') {
+  const toast = document.getElementById('toast');
+  toast.className = `toast ${type}`;
+  toast.innerHTML = (type === 'success' ? '✅ ' : type === 'error' ? '❌ ' : 'ℹ️ ') + msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// ================================================================
+// INIT
+// ================================================================
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loadingOverlay').classList.add('fade');
+    setTimeout(() => document.getElementById('loadingOverlay').remove(), 500);
+  }, 1700);
+  
+  renderRights();
+  renderVideos();
+  renderExamPicker();
+  renderExercises(EXERCISES_EC, 'exercises-ec');
+  renderExercises(EXERCISES_PD, 'exercises-pd');
+  renderExercises(EXERCISES_CLAS, 'exercises-clas');
+  renderExercises(EXERCISES_EMP, 'exercises-emp');
+  loadFlashcards('all', document.querySelector('.fc-session-btn'));
+});
+</script>
+</body>
+</html>
