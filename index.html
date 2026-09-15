@@ -913,227 +913,2406 @@ const FLASHCARDS = [
 // 20 EXAMS × 20 QUESTIONS EACH
 // ================================================================
 const ALL_QUESTIONS = [
-  // EXAM SET 1 - Fundamentos
-  {id:1, q:"¿En qué año nació Luca Pacioli?", opts:["1445","1517","1400","1350"], ans:0, exp:"Luca Pacioli nació en 1445 en Burgo Saneti Sepulcro, Venecia, Italia."},
-  {id:2, q:"¿Qué es la Partida Doble?", opts:["Un libro contable","Sistema donde toda transacción afecta mínimo dos cuentas","Un tipo de empresa","Un estado financiero"], ans:1, exp:"La Partida Doble establece que cada transacción afecta al menos dos cuentas: una con débito y otra con crédito."},
-  {id:3, q:"¿Qué representa el ACTIVO en la ecuación contable?", opts:["Lo que la empresa debe","Lo que la empresa tiene y posee","El capital de los socios","Las utilidades"], ans:1, exp:"El activo son los bienes, derechos y recursos de los que dispone la empresa."},
-  {id:4, q:"¿Cuánto dura normalmente un Ciclo Contable?", opts:["6 meses","3 meses","Un año","2 años"], ans:2, exp:"Normalmente el ciclo contable es de un año, aunque puede ser mensual, trimestral o semestral."},
-  {id:5, q:"¿Qué son los Quipucamayocs?", opts:["Tipo de quipu","Contadores del Imperio Inca","Libros de contabilidad inca","Monedas incas"], ans:1, exp:"Los Quipucamayocs eran los operadores de quipus, comparables a los contadores actuales."},
-  {id:6, q:"¿Cuál es la fórmula de la Ecuación Contable?", opts:["Activo = Pasivo - Patrimonio","Activo + Pasivo = Patrimonio","Activo = Pasivo + Patrimonio","Patrimonio = Activo + Pasivo"], ans:2, exp:"La ecuación fundamental es: ACTIVO = PASIVO + PATRIMONIO"},
-  {id:7, q:"¿En qué lado se ubica el Acreedor en la cuenta T?", opts:["Lado izquierdo (Debe)","Lado derecho (Haber)","Centro","Arriba"], ans:1, exp:"El Acreedor se ubica al lado DERECHO (Haber) y registra lo que sale de la empresa."},
-  {id:8, q:"¿Qué registra el Libro Diario?", opts:["Solo las compras","Todas las operaciones cronológicamente","Solo las ventas","El inventario final"], ans:1, exp:"El Libro Diario registra TODAS las operaciones que conforman la actividad de la empresa."},
-  {id:9, q:"¿Qué es el Activo Disponible?", opts:["Mercaderías en almacén","Cuentas por cobrar","Caja y Bancos","Maquinaria"], ans:2, exp:"El Activo Disponible representa Caja y Bancos, con disponibilidad inmediata."},
-  {id:10, q:"¿Qué tipo de empresa está diseñada para un solo dueño?", opts:["SA","SAC","EIRL","SRL"], ans:2, exp:"La EIRL (Empresa Individual de Responsabilidad Limitada) está diseñada para un solo propietario."},
-  {id:11, q:"¿Qué es el Modelo Freemium?", opts:["Venta solo en redes sociales","Servicio gratis básico, pago por avanzado","Modelo de franquicias","Venta por suscripción anual"], ans:1, exp:"Freemium ofrece parte del servicio gratis y cobra por funciones más completas o avanzadas."},
-  {id:12, q:"¿Cuándo se ABONA una cuenta de Activo?", opts:["Cuando aumenta","Cuando disminuye","Siempre","Nunca"], ans:1, exp:"Las cuentas de Activo se ABONAN (lado derecho) cuando DISMINUYEN."},
-  {id:13, q:"¿Qué es la SAA?", opts:["Sociedad Anónima Abierta","Sociedad Anónima Adjunta","Sociedad de Accionistas Abiertos","Sociedad Anónima Activa"], ans:0, exp:"SAA = Sociedad Anónima Abierta. Puede ofrecer acciones al público en general."},
-  {id:14, q:"¿Qué libro se usa para centralizar TODAS las operaciones de una empresa?", opts:["Libro Auxiliar","Libro Mayor","Libro de Ventas","Libro de Almacén"], ans:1, exp:"El Libro Mayor centraliza de forma sistemática todas las operaciones realizadas."},
-  {id:15, q:"¿Qué principio rige la Partida Doble?", opts:["'Sin pérdida no hay ganancia'","'No hay Deudor sin Acreedor'","'El debe siempre es mayor'","'El haber nunca se abona'"], ans:1, exp:"El principio es: 'No hay Deudor sin Acreedor, ni Acreedor sin Deudor'."},
-  {id:16, q:"¿Qué es el Pasivo Corriente?", opts:["Deudas a más de 5 años","Obligaciones con vencimiento menor a 1 año","Capital de los socios","Utilidades retenidas"], ans:1, exp:"El Pasivo Corriente son obligaciones con vencimiento MENOR a un año."},
-  {id:17, q:"¿Para qué sirve el PCGE (Plan Contable General Empresarial)?", opts:["Registrar planillas","Catálogo de cuentas para registrar hechos económicos","Manual de recursos humanos","Ley de impuestos"], ans:1, exp:"El PCGE es un catálogo de cuentas para registrar hechos económicos y elaborar Estados Financieros."},
-  {id:18, q:"¿En qué consiste el Modelo Dropshipping?", opts:["Compras en efectivo","El vendedor no almacena, el proveedor envía directamente","Venta puerta a puerta","Modelo de afiliados"], ans:1, exp:"En Dropshipping el vendedor no almacena. El proveedor gestiona inventario y envíos al cliente final."},
-  {id:19, q:"¿Qué es el Activo Exigible?", opts:["Dinero en caja","Cuentas por cobrar a clientes","Maquinaria","Mercaderías"], ans:1, exp:"El Activo Exigible son cuentas por cobrar a clientes, exigibles al vencimiento de la factura."},
-  {id:20, q:"¿Cuál es el objetivo principal de la Contabilidad?", opts:["Solo pagar impuestos","Facilitar la toma de decisiones y control de gestión","Calcular sueldos","Hacer inventarios"], ans:1, exp:"La Contabilidad facilita la toma de decisiones y el control de gestión estudiando el patrimonio."},
-
-  // EXAM SET 2 - Historia y Ciclo
-  {id:21, q:"¿En qué año murió Luca Pacioli?", opts:["1400","1500","1517","1550"], ans:2, exp:"Luca Pacioli murió en 1517."},
-  {id:22, q:"¿De qué material se hacían los Quipus?", opts:["Metal y piedra","Algodón y fibra de camélidos","Madera y cuero","Arcilla"], ans:1, exp:"Los Quipus estaban hechos de algodón y fibra de camélidos (alpaca, guanaco, llama)."},
-  {id:23, q:"¿Qué significa 'Quipu'?", opts:["Número","Nudo","Registro","Contador"], ans:1, exp:"Quipu significa 'NUDO' en quechua."},
-  {id:24, q:"¿Cuál es la primera etapa del Ciclo Contable?", opts:["Cierre contable","Movimiento","Apertura contable","Liquidación"], ans:2, exp:"La primera etapa es la APERTURA CONTABLE, donde se realiza el balance inicial del nuevo ciclo."},
-  {id:25, q:"¿Qué son las Reglas del Principio Matemático de la Partida Doble?", opts:["Reglas de auditoría","5 reglas sobre deudor/acreedor, debe/haber","Normas de publicidad","Reglas de impuestos"], ans:1, exp:"Las 5 reglas incluyen: no hay deudor sin acreedor, suma adeudada = abono, etc."},
-  {id:26, q:"¿En qué consiste la segunda etapa del Ciclo Contable?", opts:["Cierre en el libro mayor","Registro de operaciones en el Libro Diario","Balance general","Apertura de cuentas"], ans:1, exp:"El MOVIMIENTO consiste en registrar todas las operaciones en el Libro Diario."},
-  {id:27, q:"¿Qué documentos se obtienen al final del Ciclo Contable?", opts:["Solo el Libro Diario","Los Estados Financieros","Los Quipus","La hoja de planillas"], ans:1, exp:"Al cerrar el ciclo contable se generan los ESTADOS FINANCIEROS."},
-  {id:28, q:"¿Cómo se llaman las 'ramas afines' de la Contabilidad?", opts:["Solo matemáticas y estadística","Documentación mercantil, estadística, ing. sistemas, derecho, legislación","Solo auditoría","Solo finanzas"], ans:1, exp:"Las ramas afines son: documentación mercantil, estadística, ingeniería de sistemas, derecho y legislación."},
-  {id:29, q:"¿Qué es el Patrimonio Neto?", opts:["Todo el activo de la empresa","Activo menos Pasivo","Solo el capital aportado","Las ventas del año"], ans:1, exp:"Patrimonio = Activo - Pasivo. Incluye capital, reservas, acciones y utilidades."},
-  {id:30, q:"¿Cuándo se CARGA una cuenta de Pasivo?", opts:["Cuando aumenta","Cuando disminuye","Siempre al inicio","Nunca"], ans:1, exp:"Las cuentas de Pasivo se CARGAN (Debe/izquierda) cuando DISMINUYEN."},
-  {id:31, q:"¿Cuál es el Libro Auxiliar usado para compras?", opts:["Libro Mayor","Libro de Registro de Compras","Libro Diario","Libro Caja"], ans:1, exp:"El Libro de Registro de Compras es el auxiliar para registrar todas las compras."},
-  {id:32, q:"¿Qué es el Activo Realizable?", opts:["Dinero en banco","Cuentas por cobrar","Mercaderías y productos en almacén listos para venta","Terrenos"], ans:2, exp:"El Activo Realizable son existencias en almacén listas para la venta o transformación."},
-  {id:33, q:"¿Cuáles son los 4 pasos del Ciclo Contable?", opts:["Comprar, vender, pagar, cobrar","Comprobantes, libros, hoja de comprobación, estados financieros","Inventario, compra, venta, cierre","Apertura, registro, ajuste, cierre"], ans:1, exp:"Los pasos son: Comprobantes de Pago → Libros Contables → Hoja de Comprobación → Estados Financieros."},
-  {id:34, q:"¿Qué tipo de empresa puede cotizar en la Bolsa de Valores de Lima?", opts:["SRL","EIRL","SA (Sociedad Anónima)","SAC"], ans:2, exp:"La SA puede participar en la Bolsa de Valores, a diferencia de la SAC que es cerrada."},
-  {id:35, q:"¿Cuántos modelos de negocio se mencionan en el curso?", opts:["5","7","9","12"], ans:2, exp:"Se estudian 9 modelos de negocio: De Varios Lados, Franquicia, Cola Larga, Freemium, Suscripción, E-Commerce, Dropshipping, Afiliación y Peer to Peer."},
-  {id:36, q:"¿Qué es el Modelo Peer to Peer?", opts:["Empresa y Estado","Particulares conectados entre sí","Empresa a empresa","Banco a cliente"], ans:1, exp:"Peer to Peer (Red entre Pares) conecta a particulares entre sí. La empresa gana comisiones/publicidad."},
-  {id:37, q:"¿Qué es la Capacidad Técnica de una empresa?", opts:["Dinero disponible","Conjunto de conocimientos y habilidades del personal","Número de clientes","Tamaño de la empresa"], ans:1, exp:"La Capacidad Técnica es el conjunto de conocimientos y habilidades que poseen los miembros para ejecutar tareas."},
-  {id:38, q:"¿Qué es una Franquicia?", opts:["Tipo de impuesto","Acuerdo para vender productos de otra empresa usando su marca a cambio de compensación","Sociedad de responsabilidad limitada","Modelo de ventas por internet"], ans:1, exp:"La Franquicia permite vender bajo la marca de otro a cambio de un porcentaje sobre ventas o canon fijo."},
-  {id:39, q:"¿Qué hace el Libro de Inventarios y Balances?", opts:["Registra solo las ventas","Controla el inventario y refleja el balance general","Registra planillas","Contiene las actas de socios"], ans:1, exp:"El Libro de Inventarios y Balances muestra el inventario de bienes y el balance de la empresa."},
-  {id:40, q:"¿Cuál es la función del Libro Mayor?", opts:["Registrar operaciones diarias","Centralizar todas las operaciones de forma sistemática","Registrar compras","Controlar el almacén"], ans:1, exp:"El Libro Mayor centraliza TODAS las operaciones en forma sistemática y sirve para preparar los estados financieros."},
-
-  // EXAM SET 3 - Clasificación de Empresas
-  {id:41, q:"¿Cuántos accionistas mínimo necesita una SAC?", opts:["Solo 1","Mínimo 2, máximo 20","Sin límite","Mínimo 50"], ans:1, exp:"La SAC tiene entre 2 y 20 accionistas, siendo una empresa pequeña y cerrada."},
-  {id:42, q:"¿Qué significa la 'responsabilidad limitada' en una empresa?", opts:["La empresa tiene pocas deudas","Los bienes personales del dueño están protegidos de deudas empresariales","Que solo se puede deber hasta cierta cifra","Que hay pocos trabajadores"], ans:1, exp:"Responsabilidad limitada significa que las deudas de la empresa no afectan el patrimonio personal del dueño."},
-  {id:43, q:"¿Cuál es la diferencia principal entre SA y SAA?", opts:["El tamaño","La SAA puede ofrecer acciones al público en general, la SA no siempre","El número de socios","El tipo de negocio"], ans:1, exp:"La SAA puede cotizar en bolsa y captar capital del público en general, a diferencia de la SA tradicional."},
-  {id:44, q:"¿Para qué sirve la SACS (Sociedad por Acciones Cerrada Simplificada)?", opts:["Solo para grandes empresas","Fomentar la formalización de emprendedores con trámites simplificados","Para empresas públicas","Para bancos"], ans:1, exp:"La SACS fue creada para facilitar la formalización de emprendedores y pequeños empresarios con menos burocracia."},
-  {id:45, q:"¿Cuál es el objetivo empresarial de 'Calidad'?", opts:["Bajar precios","Ofrecer bienes y servicios que superen a la competencia en todo el proceso productivo","Tener muchos empleados","Solo cumplir la ley"], ans:1, exp:"La calidad debe estar no solo en el producto sino en TODO el proceso productivo y de distribución."},
-  {id:46, q:"¿Cuándo una empresa persigue el objetivo de 'Supervivencia'?", opts:["Cuando quiere crecer rápido","En periodos de crisis, solo busca mantenerse","Cuando lanza nuevos productos","Cuando contrata personal"], ans:1, exp:"En situaciones de crisis, la empresa solo aspira a sobrevivir hasta que cambien las condiciones."},
-  {id:47, q:"¿Qué incluyen los 'Objetivos Sociales' de una empresa?", opts:["Solo maximizar ganancias","Respeto al medio ambiente y nivel de vida digno para trabajadores","Reducir costos","Expandirse internacionalmente"], ans:1, exp:"Los objetivos sociales incluyen respeto ambiental y condiciones de vida dignas para los trabajadores."},
-  {id:48, q:"¿Qué es el Modelo de Cola Larga?", opts:["Venta de pocos productos en grandes cantidades","Amplio catálogo de productos específicos con pocas ventas individuales pero gran total","Venta en cadena","Modelo de supermercados"], ans:1, exp:"El modelo de Cola Larga ofrece muchos productos nicho que individualmente venden poco pero suman mucho."},
-  {id:49, q:"¿Qué es el E-Commerce?", opts:["Comercio en efectivo","Comercio electrónico online con envío a domicilio","Comercio entre empresas","Comercio en ferias"], ans:1, exp:"E-Commerce es el comercio electrónico: venta de productos/servicios online con logística de envío."},
-  {id:50, q:"¿Qué es el Modelo de Afiliación?", opts:["Asociación de empresas","Promover productos de terceros y recibir comisiones por ventas","Filial de una empresa grande","Tipo de franquicia"], ans:1, exp:"En el modelo de Afiliación se promocionan productos ajenos a cambio de comisiones por las ventas generadas."},
-  {id:51, q:"¿Qué es una Realización en el contexto de empresa?", opts:["Un inventario","La satisfacción al lograr lo que se aspiraba","Un tipo de venta","Un estado financiero"], ans:1, exp:"Las Realizaciones son las satisfacciones que sienten los miembros de la empresa al cumplir sus aspiraciones."},
-  {id:52, q:"¿Cuántos elementos tiene la estructura de una empresa?", opts:["3","4","6","8"], ans:2, exp:"Los 6 elementos son: Entidad, Elementos humanos, Aspiraciones, Realizaciones, Bienes materiales, Capacidad técnica y financiera."},
-  {id:53, q:"¿Cuál es la Ley que regula las Sociedades en Perú?", opts:["Ley N° 28015","Ley General de Sociedades N° 26887","Decreto Legislativo 728","Ley N° 30056"], ans:1, exp:"La Ley General de Sociedades N° 26887 regula los tipos de sociedades en el Perú."},
-  {id:54, q:"¿Qué es el 'Máximo Beneficio' como objetivo empresarial?", opts:["Tener muchos empleados","La diferencia entre ingresos y gastos: el objetivo más importante","Tener la empresa más grande","Dar más créditos"], ans:1, exp:"El máximo beneficio es la diferencia entre ingresos y gastos, el objetivo más importante pues garantiza la supervivencia."},
-  {id:55, q:"¿Qué tipo de modelo de negocio funciona cobrando periódicamente?", opts:["Dropshipping","Freemium","Suscripción","Afiliación"], ans:2, exp:"El Modelo de Suscripción genera ingresos recurrentes con pagos periódicos del consumidor."},
-  {id:56, q:"¿Qué es la 'Fidelización' de clientes?", opts:["Descuento en ventas","Lograr que los clientes vuelvan a comprar porque quedaron satisfechos","Contratar empleados fijos","Registro de clientes en el libro auxiliar"], ans:1, exp:"La fidelización es conseguir que los clientes satisfechos vuelvan a comprar, esencial para el objetivo de satisfacción."},
-  {id:57, q:"¿Cuál es la clave del éxito del Modelo Freemium?", opts:["Cobrar a todos desde el inicio","Tener muchos usuarios, pues pocos pagan por el nivel premium","Usar solo redes sociales","Vender por catálogo"], ans:1, exp:"En Freemium se necesitan muchos usuarios porque estadísticamente solo una minoría paga por el servicio premium."},
-  {id:58, q:"¿Qué es un Modelo de Negocio?", opts:["Solo un plan financiero","Herramienta que define qué, cómo, a quién vender y cómo generar ingresos","Un tipo de empresa","Un libro de contabilidad"], ans:1, exp:"El Modelo de Negocio define la propuesta de valor, clientes, canales, costos y fuentes de ingreso."},
-  {id:59, q:"¿Cuál es la ventaja principal del Dropshipping?", opts:["Altos márgenes de ganancia","Baja inversión inicial pues no requiere inventario propio","Control total de la calidad","Amplio personal"], ans:1, exp:"El Dropshipping requiere poca inversión porque el proveedor gestiona el inventario y los envíos."},
-  {id:60, q:"¿Qué es el 'Crecimiento' como objetivo empresarial?", opts:["Contratar más personal","Reinvertir beneficios para aumentar participación de mercado","Abrir más tiendas sin reinvertir","Reducir costos"], ans:1, exp:"El objetivo de Crecimiento implica reinvertir las utilidades para aumentar el tamaño y participación en el mercado."},
-
-  // EXAM SET 4 - Partida Doble y casos
-  {id:61, q:"Si una empresa COMPRA mercadería AL CONTADO, ¿qué sucede?", opts:["Activo aumenta y Pasivo aumenta","Activo aumenta (mercadería) y Activo disminuye (caja)","Solo aumenta el Activo","Solo disminuye el Pasivo"], ans:1, exp:"Se intercambia un activo por otro: aumenta mercadería (20) y disminuye Caja (10.1)."},
-  {id:62, q:"Si una empresa COMPRA mercadería AL CRÉDITO, ¿qué sucede?", opts:["Solo aumenta el Activo","Activo aumenta y Pasivo aumenta","Patrimonio disminuye","Solo el Pasivo cambia"], ans:1, exp:"Aumenta el Activo (mercadería) y aumenta el Pasivo (cuenta por pagar al proveedor)."},
-  {id:63, q:"Si un socio APORTA capital en efectivo, ¿qué sucede?", opts:["Activo disminuye","Activo aumenta (caja) y Patrimonio aumenta (capital)","Solo aumenta el Patrimonio","El Pasivo aumenta"], ans:1, exp:"Aumenta el Activo (Caja) y aumenta el Patrimonio (Capital aportado por el socio)."},
-  {id:64, q:"Si la empresa PAGA un servicio con dinero, ¿qué sucede?", opts:["Activo aumenta","Activo disminuye (caja) y Patrimonio disminuye (pérdida)","Pasivo aumenta","Patrimonio aumenta"], ans:1, exp:"El pago de gastos disminuye el Activo (Caja) y reduce el Patrimonio (gasto/pérdida)."},
-  {id:65, q:"¿Qué cuenta del PCGE representa la Caja?", opts:["Cuenta 20","Cuenta 10.1","Cuenta 42.1","Cuenta 50"], ans:1, exp:"La Cuenta 10.1 representa Caja en el Plan Contable General Empresarial."},
-  {id:66, q:"¿Qué cuenta del PCGE representa Mercaderías?", opts:["Cuenta 25.2","Cuenta 42.1","Cuenta 20","Cuenta 33.4"], ans:2, exp:"La Cuenta 20 representa Mercaderías en el PCGE."},
-  {id:67, q:"¿Qué cuenta del PCGE representa Facturas por Pagar al Proveedor?", opts:["Cuenta 10.1","Cuenta 42.1","Cuenta 50","Cuenta 20.1"], ans:1, exp:"La Cuenta 42.1 representa Facturas, boletas y otros comprobantes por pagar."},
-  {id:68, q:"¿Qué cuenta del PCGE representa el Capital?", opts:["Cuenta 10.4","Cuenta 33.5","Cuenta 50","Cuenta 42.1"], ans:2, exp:"La Cuenta 50 representa Capital en el PCGE."},
-  {id:69, q:"Si la empresa compra una camioneta para reparto AL CONTADO, ¿qué sucede?", opts:["Activo aumenta y Pasivo aumenta","Activo aumenta (camioneta) y Activo disminuye (banco)","Solo aumenta el Activo","El Patrimonio disminuye"], ans:1, exp:"Aumenta Activo No Corriente (camioneta) y disminuye Activo Corriente (cuenta corriente bancaria)."},
-  {id:70, q:"¿Cuándo se dice que el Debe y el Haber están en equilibrio?", opts:["Cuando hay más activo que pasivo","Cuando la suma del Debe es igual a la suma del Haber","Cuando no hay deudas","Cuando las ventas superan los gastos"], ans:1, exp:"El principio de Partida Doble exige que la suma total del Debe siempre sea igual a la suma total del Haber."},
-  {id:71, q:"¿Qué cuenta representa la Cuenta Corriente Bancaria en el PCGE?", opts:["10.1","10.4","42.1","50"], ans:1, exp:"La Cuenta 10.4 representa la Cuenta Corriente bancaria en el PCGE."},
-  {id:72, q:"¿Qué cuenta del PCGE representa Materia Prima?", opts:["Cuenta 20","Cuenta 24","Cuenta 25.1","Cuenta 33.5"], ans:1, exp:"La Cuenta 24 representa Materias Primas en el PCGE."},
-  {id:73, q:"Si la empresa compra al crédito el 40% y al contado el 60%, ¿qué aumenta en el Pasivo?", opts:["El 60%","El 40%","El 100%","Nada"], ans:1, exp:"Solo el 40% crédito genera una deuda en el Pasivo (cuenta por pagar). El 60% contado se paga de inmediato."},
-  {id:74, q:"¿Qué es un comprobante de pago?", opts:["Un cheque bancario","Documento que acredita una transacción comercial (factura, boleta, nota)","El Libro Diario","Un estado financiero"], ans:1, exp:"Los comprobantes de pago son documentos que acreditan las operaciones comerciales y son el punto de inicio del ciclo contable."},
-  {id:75, q:"Las cuentas de RESULTADO — Ingreso: ¿cómo se registran?", opts:["Se cargan (Debe)","Se abonan (Haber)","Se anulan","Se promedian"], ans:1, exp:"Toda cuenta de INGRESO se ABONA (lado derecho/Haber)."},
-  {id:76, q:"Las cuentas de RESULTADO — Egreso: ¿cómo se registran?", opts:["Se abonan (Haber)","Se cargan (Debe)","Se neutralizan","Se ignoran"], ans:1, exp:"Toda cuenta de EGRESO se CARGA (lado izquierdo/Debe)."},
-  {id:77, q:"¿Cuántos libros Principales existen?", opts:["3","4","5","7"], ans:2, exp:"Los 5 libros principales son: Inventarios y Balances, Diario, Mayor, Caja y Actas."},
-  {id:78, q:"¿Cuál es la cuenta que representa suministros diversos en el PCGE?", opts:["20","25.2","42.1","10.1"], ans:1, exp:"La Cuenta 25.2 representa Suministros Diversos en el PCGE."},
-  {id:79, q:"¿Qué pasa con el Patrimonio cuando la empresa tiene PÉRDIDAS?", opts:["Aumenta","Disminuye","No cambia","Se transfiere al Pasivo"], ans:1, exp:"Las pérdidas reducen el Patrimonio de la empresa."},
-  {id:80, q:"¿Qué tipo de activo es la maquinaria de una empresa?", opts:["Activo Corriente","Activo Disponible","Activo No Corriente","Activo Exigible"], ans:2, exp:"La maquinaria es un Activo No Corriente porque permanece más de un año en la empresa."},
-
-  // EXAM SET 5 - Definiciones avanzadas
-  {id:81, q:"¿Qué significa 'DEBE' en contabilidad?", opts:["Una deuda de la empresa","El lado izquierdo de la cuenta T donde se registran cargos","Una obligación tributaria","El dinero en caja"], ans:1, exp:"'DEBE' es el lado izquierdo de la cuenta T. Se cargan (debitan) aumentos de activos y gastos."},
-  {id:82, q:"¿Qué significa 'HABER' en contabilidad?", opts:["Tener activos","El lado derecho de la cuenta T donde se registran abonos","El patrimonio total","Las ganancias del año"], ans:1, exp:"'HABER' es el lado derecho de la cuenta T. Se abonan (acreditan) aumentos de pasivos, patrimonio e ingresos."},
-  {id:83, q:"¿Qué son los Estados Financieros?", opts:["Solo el balance general","Reportes que muestran la situación financiera: Balance, Estado de Resultados, Flujo de Efectivo, Cambios en Patrimonio","Las facturas del año","Los libros auxiliares"], ans:1, exp:"Los 4 principales Estados Financieros son: Balance de Situación Financiera, Estado de Resultados, Flujo de Efectivo y Cambios en el Patrimonio Neto."},
-  {id:84, q:"¿Qué es el Balance de Situación Financiera?", opts:["Un libro contable","Reporte que muestra activos, pasivos y patrimonio en una fecha determinada","El estado de ventas","El registro de compras"], ans:1, exp:"El Balance de Situación Financiera (antes llamado Balance General) muestra lo que la empresa tiene, debe y le pertenece a una fecha dada."},
-  {id:85, q:"¿Qué son las NIIF?", opts:["Normas de Impuestos Financieros Internacionales","Normas Internacionales de Información Financiera","Normas de Inspección Fiscal","Normas de Inventario y Finanzas"], ans:1, exp:"NIIF = Normas Internacionales de Información Financiera. El PCGE está homologado con ellas."},
-  {id:86, q:"¿Qué es el Consejo Normativo de Contabilidad?", opts:["Ministerio de Economía","Órgano del Sistema Nacional de Contabilidad que norma la contabilidad pública y privada","Un banco central","Una ONG"], ans:1, exp:"El Consejo Normativo de Contabilidad estudia, analiza y emite normas de contabilidad para el sector público y privado."},
-  {id:87, q:"¿Cuántos Elementos tiene el Plan Contable General Empresarial?", opts:["5","7","9","10"], ans:2, exp:"El PCGE tiene 9 elementos que agrupan las diferentes cuentas contables."},
-  {id:88, q:"¿Para qué tipo de empresas está diseñado el PCGE?", opts:["Solo grandes empresas","Empresas con fines de lucro de cualquier tamaño o sector (excepto Estado y Financieras)","Solo empresas industriales","Solo empresas de servicios"], ans:1, exp:"El PCGE está diseñado para empresas con fines de lucro de cualquier tamaño o sector, excepto Estado y Financieras que tienen su propio plan."},
-  {id:89, q:"¿Qué es el Estado de Resultados?", opts:["Balance de activos","Reporte que muestra ingresos, gastos y utilidad o pérdida de un período","Lista de clientes","Registro de facturas"], ans:1, exp:"El Estado de Resultados (antes P&L o Estado de Ganancias y Pérdidas) muestra si la empresa ganó o perdió en el período."},
-  {id:90, q:"¿Qué es la Yupana?", opts:["Un tipo de quipu","Especie de ábaco o calculadora usada por los incas","Un libro contable inca","Un tipo de nudo"], ans:1, exp:"La Yupana era una especie de ábaco o calculadora usada por los Incas como complemento del sistema numérico."},
-  {id:91, q:"¿Qué es el 'Crecimiento' como objetivo empresarial según el curso?", opts:["Solo aumentar empleados","Reinvertir beneficios para crecer y aumentar participación de mercado","Abrir tiendas en el extranjero","Fusionarse con otra empresa"], ans:1, exp:"Crecer implica reinvertir los beneficios para aumentar la participación de mercado y alcanzar una mejor posición futura."},
-  {id:92, q:"¿Qué busca el objetivo de 'Satisfacción del Cliente'?", opts:["Reducir precios al mínimo","Tratar bien a los clientes para que queden satisfechos y vuelvan (fidelización)","Dar regalos a clientes","Ofrecer muchos descuentos"], ans:1, exp:"La satisfacción del cliente busca fidelizarlos: que queden satisfechos y confíen en la empresa en el futuro."},
-  {id:93, q:"¿A qué se refiere 'Bienes Materiales' como elemento de empresa?", opts:["El dinero en caja","Instalaciones, oficinas, mobiliario y demás cosas físicas","El capital de los socios","Las ventas realizadas"], ans:1, exp:"Los Bienes Materiales son todas las cosas físicas de la empresa: instalaciones, oficinas, mobiliario, equipos, etc."},
-  {id:94, q:"¿Cuál fue la actividad principal de los Quipucamayocs?", opts:["Comerciar con otras civilizaciones","Operar quipus para registrar y consolidar información del Imperio Inca","Construir caminos del inca","Administrar ejércitos"], ans:1, exp:"Los Quipucamayocs elaboraban anotaciones en quipus, consolidaban datos contables y hacían la 'memoria del imperio'."},
-  {id:95, q:"¿Qué ventaja tiene la SAC sobre la SA?", opts:["Puede cotizar en bolsa","Mantiene control en grupo selecto sin complejidad regulatoria del mercado de valores","Tiene más accionistas","Es más grande"], ans:1, exp:"La SAC es más íntima y controlada, sin las complejas regulaciones del mercado de valores que tiene la SA."},
-  {id:96, q:"¿Qué es el 'nicho de mercado' en un modelo de negocio?", opts:["El local comercial","Un segmento específico y bien definido de clientes a quienes va dirigido el negocio","El tipo de producto","La zona geográfica"], ans:1, exp:"El nicho de mercado es el segmento específico de clientes. Cuanto más concreto sea, mejor puede enfocarse el negocio."},
-  {id:97, q:"¿Cuántos 'lados' puede tener el Modelo de Varios Lados?", opts:["Exactamente 2","2 o más grupos de clientes no relacionados","Solo 3","Un número par"], ans:1, exp:"El Modelo de Varios Lados puede tener 2 o más grupos de clientes que interactúan para beneficio mutuo."},
-  {id:98, q:"¿Qué genera el 'efecto red' en el Modelo de Varios Lados?", opts:["Más gastos","Que cuantos más usuarios hay de un lado, más crece el otro lado","Más empleados","Precios más altos"], ans:1, exp:"El efecto red hace que cuantos más usuarios hay de un lado, más aumentan del otro lado, creando crecimiento exponencial."},
-  {id:99, q:"¿Qué es el Libro de Actas?", opts:["Registro de compras","Libro donde se registran los acuerdos de los órganos de gobierno de la empresa","Registro de ventas","El estado de resultados"], ans:1, exp:"El Libro de Actas registra los acuerdos adoptados por las juntas de socios, directorio y otros órganos de gobierno."},
-  {id:100, q:"¿Cuál es el documento que inicia el proceso del Ciclo Contable?", opts:["El Libro Mayor","El Comprobante de Pago (factura, boleta, etc.)","El Estado Financiero","El Libro de Actas"], ans:1, exp:"El Ciclo Contable inicia con la obtención de Comprobantes de Pago que acreditan las operaciones comerciales."},
-
-  // EXAM SET 6-20: Adicionales de repaso
-  {id:101, q:"¿Qué es una persona jurídica?", opts:["Una persona física","Entidad reconocida legalmente con derechos y obligaciones propias (empresa, ONG, etc.)","Un contador público","Un accionista mayoritario"], ans:1, exp:"Una persona jurídica es una entidad reconocida por la ley con derechos y obligaciones distintos a los de sus miembros individuales."},
-  {id:102, q:"¿Cuál es la diferencia entre Activo Corriente y No Corriente?", opts:["El tamaño del activo","El tiempo: corriente ≤1 año, no corriente >1 año","El tipo de bien","El precio"], ans:1, exp:"Corriente permanece hasta 1 año; No Corriente permanece más de 1 año en la empresa."},
-  {id:103, q:"¿Qué pasa cuando la empresa COBRA a un cliente?", opts:["Disminuye el Activo","Aumenta el Activo (caja) y disminuye el Activo (cuentas por cobrar)","Aumenta el Pasivo","Disminuye el Patrimonio"], ans:1, exp:"Al cobrar, la caja aumenta y las cuentas por cobrar disminuyen: se intercambia un activo por otro."},
-  {id:104, q:"¿Qué pasa cuando la empresa PAGA a un proveedor?", opts:["Aumenta el Activo","Disminuye el Activo (caja) y disminuye el Pasivo (deuda con proveedor)","Aumenta el Patrimonio","Disminuye el Pasivo y aumenta el Activo"], ans:1, exp:"Al pagar, disminuye la caja (Activo) y disminuye la deuda con el proveedor (Pasivo)."},
-  {id:105, q:"¿Qué representa la cuenta 33.4 en el PCGE?", opts:["Maquinaria","Vehículos (camioneta)","Edificios","Terrenos"], ans:1, exp:"La cuenta 33.4 representa Unidades de Transporte (vehículos) en el PCGE."},
-  {id:106, q:"¿Qué significa 'Embalajes' en contabilidad?", opts:["Un tipo de deuda","Materiales usados para envolver/embalar productos (suministros)","Un activo fijo","Un tipo de maquinaria"], ans:1, exp:"Los embalajes son materiales usados para embalar/proteger productos, clasificados como suministros."},
-  {id:107, q:"¿Cuántos socios mínimo necesita una SRL?", opts:["1","2","5","10"], ans:1, exp:"La SRL requiere mínimo 2 socios. A diferencia de la EIRL que es individual."},
-  {id:108, q:"¿Qué es el 'aumento de capital' en una empresa?", opts:["Contratar más empleados","Los socios aportan más dinero a la empresa para incrementar el patrimonio","Comprar más mercadería","Pedir un préstamo"], ans:1, exp:"El aumento de capital es cuando los socios/accionistas aportan fondos adicionales, incrementando el patrimonio de la empresa."},
-  {id:109, q:"¿Qué representa la Cuenta 52 en el PCGE?", opts:["Capital","Capital Adicional (aumento de capital)","Pasivo a largo plazo","Gastos financieros"], ans:1, exp:"La Cuenta 52 representa Capital Adicional, producto de aportes complementarios de los socios."},
-  {id:110, q:"¿Cuál es la principal desventaja del Dropshipping?", opts:["Alta inversión inicial","Márgenes estrechos y poco control sobre calidad del servicio","Necesita muchos empleados","Es ilegal en Perú"], ans:1, exp:"El Dropshipping tiene márgenes reducidos y no permite controlar la calidad porque el proveedor maneja todo."},
-  {id:111, q:"¿Qué es el 'Libro de Planillas'?", opts:["Registro de facturas","Libro auxiliar donde se registran los sueldos y beneficios de los trabajadores","Libro de inventario","Registro de compras"], ans:1, exp:"El Libro de Planillas registra todos los sueldos, beneficios y deducciones de los trabajadores de la empresa."},
-  {id:112, q:"¿Qué tipo de activo son las 'mercaderías' que están en almacén?", opts:["Activo Disponible","Activo Exigible","Activo Realizable","Activo No Corriente"], ans:2, exp:"Las mercaderías en almacén listas para la venta son Activo Realizable."},
-  {id:113, q:"¿Qué sucede contablemente si la empresa recibe un préstamo bancario?", opts:["Solo aumenta el Activo","Activo aumenta (caja) y Pasivo aumenta (deuda con banco)","El Patrimonio aumenta","El Pasivo disminuye"], ans:1, exp:"Al recibir un préstamo, aumenta el Activo (dinero) y aumenta el Pasivo (obligación con el banco)."},
-  {id:114, q:"¿Qué es el 'Giro del Negocio'?", opts:["El logo de la empresa","La actividad principal a la que se dedica la empresa","El nombre comercial","El número de RUC"], ans:1, exp:"El giro del negocio es la actividad principal de la empresa (ej: 'comercialización de abarrotes', 'servicios de transporte')."},
-  {id:115, q:"¿Qué significa 'RUC'?", opts:["Registro Único de Comercio","Registro Único de Contribuyentes","Registro Universal de Comerciantes","Registro de Uso Comercial"], ans:1, exp:"RUC = Registro Único de Contribuyentes. Es el número de identificación tributaria de empresas en Perú."},
-  {id:116, q:"¿Qué es una 'Factura' en términos contables?", opts:["Un tipo de libro","Comprobante de pago que acredita una transacción comercial entre empresas con crédito fiscal","Una cuenta bancaria","Un tipo de contrato"], ans:1, exp:"La factura es el comprobante de pago principal en operaciones comerciales, que otorga crédito fiscal al comprador."},
-  {id:117, q:"¿Qué es la 'Liquidez' en una empresa?", opts:["La cantidad de empleados","La capacidad de pagar obligaciones a corto plazo con dinero disponible","El total de ventas","Las utilidades del año"], ans:1, exp:"La liquidez es la capacidad de la empresa para cumplir sus obligaciones de corto plazo con sus activos corrientes."},
-  {id:118, q:"¿Qué es el 'Patrimonio Neto'?", opts:["Solo el capital inicial","Total de activos menos total de pasivos: lo que realmente pertenece a los dueños","Las deudas de la empresa","Los ingresos del año"], ans:1, exp:"El Patrimonio Neto = Activo Total - Pasivo Total. Es lo que genuinamente pertenece a los socios o dueños."},
-  {id:119, q:"¿Cuál es el papel de la Ingeniería de Sistemas en la Contabilidad?", opts:["No tiene relación","Ha optimizado el registro de operaciones mediante sistemas computarizados","Solo hace páginas web","Diseña logos corporativos"], ans:1, exp:"La Ing. de Sistemas ha permitido llevar los libros contables computarizados, optimizando tiempo y reduciendo errores."},
-  {id:120, q:"¿Qué es la 'Utilidad' en una empresa?", opts:["El local de la empresa","La ganancia: diferencia entre ingresos totales y gastos totales cuando los ingresos son mayores","Las ventas brutas","Los sueldos de empleados"], ans:1, exp:"La Utilidad es la ganancia neta: cuando los ingresos superan a los gastos en un período determinado."},
-
-  // More questions for exams 7-20
-  {id:121, q:"¿Qué tipo de empresa es 'McDonald's' en su relación con los restaurantes locales?", opts:["SAC","E-Commerce","Franquicia","Peer to Peer"], ans:2, exp:"McDonald's opera bajo el modelo de Franquicia: permite a terceros usar su marca y método a cambio de regalías."},
-  {id:122, q:"¿Qué tipo de modelo usa 'Spotify'?", opts:["Dropshipping","Franquicia","Freemium","Peer to Peer"], ans:2, exp:"Spotify usa el modelo Freemium: versión básica gratis y premium de pago con funciones adicionales."},
-  {id:123, q:"¿Qué tipo de modelo usa 'Netflix'?", opts:["Cola Larga","Suscripción","Dropshipping","Afiliación"], ans:1, exp:"Netflix usa el Modelo de Suscripción: pago periódico mensual por acceso al contenido."},
-  {id:124, q:"¿Qué tipo de modelo usa 'Amazon' para su marketplace?", opts:["Freemium","Peer to Peer","De Varios Lados","Dropshipping"], ans:2, exp:"Amazon marketplace es un Modelo de Varios Lados: conecta compradores con vendedores en la misma plataforma."},
-  {id:125, q:"¿Qué tipo de modelo usa 'MercadoLibre' para ventas entre personas?", opts:["Franquicia","E-Commerce puro","Peer to Peer","Suscripción"], ans:2, exp:"MercadoLibre opera como Peer to Peer (P2P): conecta compradores y vendedores particulares entre sí."},
-  {id:126, q:"¿En qué período del Imperio Inca floreció el sistema de Quipus?", opts:["Siglos I al V","Siglos XI al XVI","Siglos XVII al XIX","Siglos V al X"], ans:1, exp:"El Imperio Inca con su sistema de Quipus floreció entre los siglos XI y XVI."},
-  {id:127, q:"¿Qué diferencia al PCGE del 2010 respecto a versiones anteriores?", opts:["Tiene menos cuentas","Está homologado con las NIIF (Normas Internacionales de Información Financiera)","Solo aplica a grandes empresas","Elimina los libros auxiliares"], ans:1, exp:"El PCGE emitido en 2010 está homologado con las NIIF, permitiendo comparabilidad internacional."},
-  {id:128, q:"¿Cuál es el objetivo del 'Libro de Bancos'?", opts:["Registrar préstamos","Controlar y registrar todas las operaciones con cuentas bancarias","Registrar facturas","Controlar el almacén"], ans:1, exp:"El Libro de Bancos es un auxiliar que controla todos los movimientos de las cuentas bancarias de la empresa."},
-  {id:129, q:"¿Qué es la 'Depreciación'?", opts:["Un tipo de descuento","La reducción del valor de un activo fijo por uso o paso del tiempo","Un aumento del patrimonio","Una deuda bancaria"], ans:1, exp:"La depreciación es la pérdida de valor de los activos fijos (maquinaria, vehículos) por uso u obsolescencia con el tiempo."},
-  {id:130, q:"¿Qué es el 'Capital de Trabajo'?", opts:["El dinero para pagar salarios","Activo Corriente menos Pasivo Corriente: los recursos disponibles para operar","El capital aportado por socios","Las utilidades del mes"], ans:1, exp:"El Capital de Trabajo = Activo Corriente - Pasivo Corriente. Es el dinero disponible para las operaciones diarias."},
-  {id:131, q:"¿Qué es el 'Punto de Equilibrio'?", opts:["Cuando activos = pasivos","El nivel de ventas donde los ingresos igualan a los costos, sin ganancia ni pérdida","Cuando el debe = haber","Cuando el balance es cero"], ans:1, exp:"El Punto de Equilibrio es el volumen de ventas donde los ingresos cubren exactamente los costos, sin utilidad ni pérdida."},
-  {id:132, q:"¿Qué son los 'Gastos Operativos'?", opts:["Compras de mercadería","Gastos necesarios para el funcionamiento diario de la empresa (alquiler, servicios, sueldos)","Deudas bancarias","Inversiones en activos"], ans:1, exp:"Los Gastos Operativos son todos los costos necesarios para mantener el funcionamiento diario del negocio."},
-  {id:133, q:"¿Qué es el 'Flujo de Efectivo'?", opts:["El saldo bancario","Estado financiero que muestra entradas y salidas de dinero en un período","El libro de caja","Las ventas del mes"], ans:1, exp:"El Flujo de Efectivo (Estado de Flujos de Efectivo) muestra las entradas y salidas de dinero real en un período."},
-  {id:134, q:"¿Qué es el 'Margen de Utilidad'?", opts:["Las ventas totales","El porcentaje de ganancia sobre las ventas o costos","El total de activos","Las deudas totales"], ans:1, exp:"El Margen de Utilidad es el porcentaje de ganancia en relación a las ventas: (Utilidad / Ventas) × 100."},
-  {id:135, q:"¿Cuál es la función de la 'Auditoría'?", opts:["Registrar operaciones","Revisión independiente y verificación de la información financiera de una empresa","Elaborar el presupuesto","Contratar personal"], ans:1, exp:"La Auditoría es la revisión independiente de los libros y estados financieros para verificar su exactitud y cumplimiento legal."},
-  {id:136, q:"¿Qué es la 'Solvencia'?", opts:["Tener muchos clientes","Capacidad de la empresa para pagar todas sus deudas con sus activos totales","Tener muchas ventas","El total del patrimonio"], ans:1, exp:"La Solvencia es la capacidad de la empresa para afrontar todas sus obligaciones con sus activos totales."},
-  {id:137, q:"¿Qué tipo de pasivo es una deuda bancaria a 5 años?", opts:["Pasivo Corriente","Pasivo No Corriente","Patrimonio","Activo No Corriente"], ans:1, exp:"Una deuda a 5 años tiene vencimiento mayor a 1 año, por lo que es Pasivo No Corriente (largo plazo)."},
-  {id:138, q:"¿Qué son los 'Activos Intangibles'?", opts:["Dinero en banco","Bienes sin forma física: marcas, patentes, software, goodwill","Máquinas y equipos","Mercaderías"], ans:1, exp:"Los Activos Intangibles son bienes sin forma física pero con valor económico: marcas, patentes, licencias, software."},
-  {id:139, q:"¿Qué es el 'Goodwill' o Fondo de Comercio?", opts:["Un tipo de préstamo","El valor intangible extra que tiene una empresa por su reputación, clientela y posicionamiento","Un activo fijo","Un tipo de deuda"], ans:1, exp:"El Goodwill es el valor adicional de una empresa más allá de sus activos tangibles: reputación, marca, clientela fiel."},
-  {id:140, q:"¿Qué es la 'Rentabilidad'?", opts:["Las ventas totales","La capacidad de generar ganancias en relación a la inversión realizada","El número de clientes","Los activos totales"], ans:1, exp:"La Rentabilidad mide la eficiencia de generar ganancias en relación al capital invertido o a las ventas."},
-
-  // Additional questions for exams 8-20
-  {id:141, q:"¿Qué diferencia al Pasivo del Patrimonio?", opts:["El tamaño de las cifras","El Pasivo son deudas a terceros; el Patrimonio pertenece a los dueños","No hay diferencia","Solo la ubicación en el balance"], ans:1, exp:"El Pasivo son obligaciones con terceros (bancos, proveedores). El Patrimonio es lo que pertenece a los dueños/socios."},
-  {id:142, q:"¿Cuántos tipos de constitución de empresa se mencionan en el curso?", opts:["3","4","6","5"], ans:2, exp:"Se mencionan 6: SA, SAC, SRL, EIRL, SAA y SACS."},
-  {id:143, q:"¿Cuál es la principal ventaja de la SRL para empresas pequeñas?", opts:["Puede cotizar en bolsa","Combina flexibilidad de empresa pequeña con limitación de responsabilidad personal","No paga impuestos","Tiene menos socios que otras"], ans:1, exp:"La SRL protege los bienes personales de los socios mientras permite operar con flexibilidad."},
-  {id:144, q:"¿Qué es la 'Hoja de Comprobación' en el ciclo contable?", opts:["Un recibo","Estado de verificación que confirma que el debe = haber antes de hacer los estados financieros","Un libro auxiliar","Una factura"], ans:1, exp:"La Hoja de Comprobación (o Hoja de Trabajo) verifica el equilibrio del debe y haber antes de elaborar estados financieros."},
-  {id:145, q:"¿Qué regla de la Partida Doble aplica cuando una empresa VENDE?", opts:["Para cosas: lo que ingresa es deudor, lo que sale es acreedor","Para personas: quien recibe es deudor, quien da es acreedor","Para resultados: toda ganancia es acreedora","Todas las anteriores"], ans:2, exp:"Al vender, se aplica la regla de resultados: la ganancia/ingreso se ABONA (acreedor) en la cuenta de ingresos."},
-  {id:146, q:"¿Qué es la 'Depreciación Acumulada'?", opts:["Un tipo de ingreso","El total de depreciación acumulada desde la compra de un activo fijo","Un pasivo corriente","Una cuenta de patrimonio"], ans:1, exp:"La Depreciación Acumulada es el monto total de depreciación aplicada a un activo desde su adquisición hasta la fecha actual."},
-  {id:147, q:"¿En qué se diferencia un activo 'tangible' de uno 'intangible'?", opts:["Solo en el precio","Tangible tiene forma física (edificio, máquina); intangible no (marca, patente)","No hay diferencia práctica","Solo en cómo se deprecian"], ans:1, exp:"Tangible = se puede tocar (edificio, vehículo, máquina). Intangible = no tiene forma física (marca, software, patente)."},
-  {id:148, q:"¿Cuál es el rol del Contador en una empresa?", opts:["Solo hacer planillas","Registrar, analizar e interpretar la información financiera para apoyar la toma de decisiones","Solo pagar impuestos","Solo auditar"], ans:1, exp:"El Contador registra, clasifica, analiza e interpreta toda la información financiera de la empresa para la toma de decisiones."},
-  {id:149, q:"¿Qué es el 'Costo de Ventas'?", opts:["El precio de venta","El costo de adquirir o producir los bienes vendidos en un período","Los gastos administrativos","Los gastos de marketing"], ans:1, exp:"El Costo de Ventas es lo que le costó a la empresa adquirir o producir los bienes que vendió en el período."},
-  {id:150, q:"¿Qué es la 'Utilidad Bruta'?", opts:["La utilidad neta después de impuestos","Ventas totales menos Costo de Ventas","El total de ingresos","Las ventas del mes"], ans:1, exp:"Utilidad Bruta = Ventas Totales - Costo de Ventas. Antes de descontar gastos operativos e impuestos."},
-
-  // Exam sets 9-15 (additional 160 questions total... using 50 more)
-  {id:151, q:"¿Qué es una 'Nota de Débito'?", opts:["Un tipo de préstamo","Documento que aumenta la deuda del comprador hacia el vendedor","Un cheque devuelto","Un tipo de contrato"], ans:1, exp:"La Nota de Débito aumenta el importe que el comprador debe al vendedor (ej: por error en factura o cargos adicionales)."},
-  {id:152, q:"¿Qué es una 'Nota de Crédito'?", opts:["Un descuento automático","Documento que reduce la deuda del comprador (por devoluciones o descuentos)","Un préstamo bancario","Un tipo de garantía"], ans:1, exp:"La Nota de Crédito reduce el importe que el comprador debe al vendedor (devoluciones, descuentos, correcciones)."},
-  {id:153, q:"¿Cuál es el principio de 'Empresa en Marcha'?", opts:["Que la empresa vende constantemente","Supuesto de que la empresa continuará operando indefinidamente sin intención de liquidarse","Que tiene muchos empleados","Que siempre crece"], ans:1, exp:"El principio de Empresa en Marcha asume que la empresa continuará operando en el futuro previsible."},
-  {id:154, q:"¿Qué es el principio de 'Consistencia'?", opts:["Ser constante en ventas","Usar los mismos métodos contables de período a período para comparabilidad","Tener los mismos clientes","No cambiar el nombre"], ans:1, exp:"La Consistencia exige aplicar los mismos criterios y métodos contables en períodos sucesivos para que los datos sean comparables."},
-  {id:155, q:"¿Qué es el principio de 'Materialidad'?", opts:["Solo registrar transacciones físicas","Solo registrar partidas significativas; las triviales se pueden simplificar","Registrar todo sin excepción","Solo registrar transacciones en efectivo"], ans:1, exp:"La Materialidad (o significatividad) indica que solo deben registrarse o revelarse las partidas importantes para la toma de decisiones."},
-  {id:156, q:"¿Qué son las 'Reservas' en el Patrimonio?", opts:["Dinero guardado en caja fuerte","Parte de las utilidades retenidas para fines específicos de la empresa","Deudas a largo plazo","Activos no utilizados"], ans:1, exp:"Las Reservas son utilidades retenidas y asignadas a propósitos específicos (legal, estatutaria, facultativa)."},
-  {id:157, q:"¿Qué es la 'Reserva Legal'?", opts:["Un porcentaje obligatorio de las utilidades que la empresa debe retener según ley","Un tipo de seguro","Un activo del banco","Una deuda tributaria"], ans:0, exp:"La Reserva Legal es el monto obligatorio (10% de las utilidades según la LGS) que las empresas deben retener hasta alcanzar el 20% del capital."},
-  {id:158, q:"¿Qué son los 'Resultados Acumulados'?", opts:["Las ventas históricas","Utilidades o pérdidas de períodos anteriores que no se han distribuido","Los gastos del año","Los activos totales"], ans:1, exp:"Los Resultados Acumulados son las utilidades (o pérdidas) de años anteriores que no han sido distribuidas como dividendos."},
-  {id:159, q:"¿Qué es el 'Registro de Ventas'?", opts:["Un libro principal","Libro auxiliar donde se registran todas las ventas de la empresa con sus comprobantes","El estado de resultados","El libro mayor"], ans:1, exp:"El Libro de Registro de Ventas es un auxiliar que centraliza todas las ventas con sus respectivos comprobantes."},
-  {id:160, q:"¿Qué es la 'Planilla de Trabajadores'?", opts:["Una nota de débito","Documento donde se detallan los sueldos, descuentos y beneficios de cada empleado","Un libro contable principal","Un tipo de factura"], ans:1, exp:"La Planilla detalla los haberes (sueldo básico, bonificaciones) y deducciones (AFP, seguro) de cada trabajador."},
-
-  // Final additional questions
-  {id:161, q:"¿Cuál es el monto del sueldo mínimo vital en Perú aproximadamente?", opts:["S/ 500","S/ 750","S/ 1,025","S/ 2,000"], ans:2, exp:"El sueldo mínimo vital (RMV) en Perú es de S/ 1,025 (actualizado a 2023). Es el mínimo que todo empleador debe pagar."},
-  {id:162, q:"¿Cuántos días de vacaciones tiene un trabajador en Perú al año?", opts:["7 días","15 días","30 días","45 días"], ans:2, exp:"Todo trabajador en Perú tiene derecho a 30 días calendarios de vacaciones por año de trabajo."},
-  {id:163, q:"¿Qué es la CTS (Compensación por Tiempo de Servicios)?", opts:["Un seguro de salud","Beneficio laboral equivalente a aprox. 1 sueldo/año, depositado en mayo y noviembre","Un impuesto","Un tipo de préstamo bancario"], ans:1, exp:"La CTS es un beneficio social que funciona como seguro de desempleo. Se deposita en mayo y noviembre."},
-  {id:164, q:"¿Cuándo tiene derecho un trabajador a gratificaciones en Perú?", opts:["Solo en Navidad","En julio (Fiestas Patrias) y diciembre (Navidad), equivalente a 1 sueldo cada vez","Mensualmente","Solo si la empresa tiene utilidades"], ans:1, exp:"Las gratificaciones se pagan en julio (Fiestas Patrias) y diciembre (Navidad), equivaliendo a 1 remuneración básica cada una."},
-  {id:165, q:"¿Qué porcentaje descuenta la AFP aproximadamente al trabajador?", opts:["2%","10%","12.5% aprox.","20%"], ans:2, exp:"Las AFP descuentan aproximadamente 12.5% del sueldo mensual (varía por AFP) para el fondo de pensiones."},
-  {id:166, q:"¿Qué es el SIS (Seguro Integral de Salud)?", opts:["Un banco estatal","Seguro de salud del Estado para personas en pobreza o pobreza extrema","Un tipo de AFP","Un impuesto al trabajo"], ans:1, exp:"El SIS es el seguro de salud del gobierno para personas de bajos recursos que no tienen acceso al seguro regular."},
-  {id:167, q:"¿Qué es ESSALUD?", opts:["Una AFP","Seguro Social de Salud pagado por el empleador (9% del sueldo) para trabajadores formales","Un tipo de impuesto","Un banco de salud"], ans:1, exp:"ESSALUD es el seguro social de salud. El empleador paga el 9% del sueldo mensual para que el trabajador tenga atención médica."},
-  {id:168, q:"¿Qué es el Impuesto a la Renta de 5ta Categoría?", opts:["Impuesto a las ventas","Impuesto que descuenta el empleador a trabajadores dependientes con ingresos altos","Un tipo de IGV","Un impuesto a las empresas"], ans:1, exp:"El Impuesto a la Renta 5ta categoría grava los sueldos de trabajadores dependientes que superan cierto umbral anual."},
-  {id:169, q:"¿Qué es el IGV?", opts:["Impuesto General al Valor","Impuesto General a las Ventas: 18% aplicado a ventas de bienes y servicios en Perú","Impuesto a las ganancias","Impuesto sobre el ingreso"], ans:1, exp:"El IGV (Impuesto General a las Ventas) es del 18% y se aplica sobre las ventas de bienes y servicios en Perú."},
-  {id:170, q:"¿Qué es el Impuesto a la Renta de 3ra Categoría?", opts:["Impuesto a sueldos","Impuesto que pagan las empresas sobre sus utilidades anuales","Impuesto al consumo","Impuesto a las importaciones"], ans:1, exp:"El Impuesto a la Renta 3ra categoría grava las utilidades anuales de las empresas (negocios, personas jurídicas)."},
-  {id:171, q:"¿Qué es el 'asiento contable'?", opts:["Un mueble de oficina","El registro formal de una transacción en el Libro Diario con cuenta, debe y haber","Un tipo de balance","Una nota de crédito"], ans:1, exp:"El asiento contable es el registro de una operación en el Libro Diario, indicando cuentas afectadas, montos en debe y haber."},
-  {id:172, q:"¿Qué es el 'saldo' de una cuenta?", opts:["El total de ventas","La diferencia entre el total de cargos (debe) y el total de abonos (haber) de una cuenta","El patrimonio final","El capital inicial"], ans:1, exp:"El saldo es la diferencia entre el total del Debe y el total del Haber en una cuenta. Puede ser deudor o acreedor."},
-  {id:173, q:"¿Cuándo tiene 'saldo deudor' una cuenta?", opts:["Cuando el haber es mayor","Cuando el debe es mayor que el haber","Cuando están equilibradas","Cuando no hay movimientos"], ans:1, exp:"Una cuenta tiene Saldo Deudor cuando el total del Debe es mayor que el total del Haber."},
-  {id:174, q:"¿Qué tipo de saldo tienen normalmente las cuentas de Activo?", opts:["Saldo acreedor","Saldo deudor","Sin saldo","Saldo mixto"], ans:1, exp:"Las cuentas de Activo normalmente tienen Saldo Deudor porque se debitan cuando aumentan."},
-  {id:175, q:"¿Qué tipo de saldo tienen normalmente las cuentas de Pasivo y Patrimonio?", opts:["Saldo deudor","Saldo acreedor","Sin saldo","Saldo negativo"], ans:1, exp:"Las cuentas de Pasivo y Patrimonio normalmente tienen Saldo Acreedor porque se acreditan cuando aumentan."},
-  {id:176, q:"¿Cuándo se dice que una empresa es 'solvente'?", opts:["Cuando vende mucho","Cuando sus activos totales son mayores que sus pasivos totales","Cuando tiene mucho efectivo","Cuando tiene muchos empleados"], ans:1, exp:"Una empresa es solvente cuando su Activo Total > Pasivo Total, es decir, puede cubrir todas sus deudas."},
-  {id:177, q:"¿Qué es la 'razón corriente' o liquidez corriente?", opts:["El saldo en caja","Activo Corriente dividido entre Pasivo Corriente; mide capacidad de pago a corto plazo","Las ventas del trimestre","El capital de la empresa"], ans:1, exp:"Razón Corriente = Activo Corriente / Pasivo Corriente. Si es >1, la empresa puede pagar sus deudas a corto plazo."},
-  {id:178, q:"¿Qué es la 'rotación de inventario'?", opts:["El porcentaje de devoluciones","Cuántas veces se vendió y repuso el inventario en un período","El número de productos","El costo de almacén"], ans:1, exp:"La Rotación de Inventario = Costo de Ventas / Inventario Promedio. Mide la eficiencia en la gestión de existencias."},
-  {id:179, q:"¿Qué es la 'razón de endeudamiento'?", opts:["El total de deudas","Pasivo Total dividido entre Activo Total; mide cuánto de los activos están financiados por deuda","El costo financiero","Las ventas a crédito"], ans:1, exp:"Razón de Endeudamiento = Pasivo Total / Activo Total. Indica qué proporción de activos está financiada con deuda."},
-  {id:180, q:"¿Qué pasa cuando el Activo es igual al Pasivo?", opts:["La empresa quiebra","El Patrimonio es igual a cero: la empresa no tiene capital propio","La empresa es muy grande","El balance no existe"], ans:1, exp:"Si Activo = Pasivo, entonces Patrimonio = 0. La empresa existe pero los dueños no tienen capital propio neto."},
-
-  // Final 20 for exams 14-20
-  {id:181, q:"¿Cuál es la función del 'control interno' en una empresa?", opts:["Controlar empleados","Conjunto de políticas y procedimientos para proteger activos, asegurar información confiable y cumplir leyes","Auditar externos","Solo revisar las ventas"], ans:1, exp:"El Control Interno protege activos, garantiza información financiera confiable y asegura el cumplimiento de normas."},
-  {id:182, q:"¿Qué es el 'período contable'?", opts:["Un trimestre","Intervalo de tiempo que abarca el ciclo contable (generalmente 1 año: 1 enero al 31 diciembre)","Solo enero","Un mes"], ans:1, exp:"El período contable es el lapso que cubre el ciclo contable. En Perú generalmente es del 1 de enero al 31 de diciembre."},
-  {id:183, q:"¿Qué es la 'conciliación bancaria'?", opts:["Pagar facturas bancarias","Proceso de comparar el saldo del Libro de Bancos con el estado de cuenta bancario para detectar diferencias","Solicitar préstamos","Abrir una cuenta bancaria"], ans:1, exp:"La Conciliación Bancaria compara registros contables internos con el estado de cuenta del banco para detectar omisiones o errores."},
-  {id:184, q:"¿Qué es el 'ajuste contable'?", opts:["Corrección de errores solo","Asiento al final del período para actualizar cuentas que no reflejan la realidad económica (depreciación, provisiones)","Cambio de moneda","Revisión de precios"], ans:1, exp:"Los ajustes contables se realizan al cierre del período para que las cuentas reflejen la situación real (depreciación, devengados)."},
-  {id:185, q:"¿Qué es el principio de 'Devengo'?", opts:["Solo registrar lo pagado en efectivo","Registrar ingresos y gastos cuando se generan, independientemente del pago","Registrar solo al final del año","Registrar solo ventas al contado"], ans:1, exp:"El principio de Devengo (o Acumulación) indica que los ingresos y gastos se registran cuando se generan, no cuando se pagan."},
-  {id:186, q:"¿Cuántos elementos tiene el Patrimonio de una empresa?", opts:["Solo el capital","Capital, capital adicional, reservas, resultados acumulados y resultado del ejercicio","Solo las utilidades","Capital y deudas"], ans:1, exp:"El Patrimonio incluye: Capital, Capital Adicional, Acciones de Inversión, Excedente de Revaluación, Reservas y Resultados Acumulados."},
-  {id:187, q:"¿Qué es la 'variación del patrimonio'?", opts:["El cambio en ventas","Estado Financiero que muestra los cambios en el patrimonio neto durante el período","El total de activos","Las variaciones en el inventario"], ans:1, exp:"El Estado de Cambios en el Patrimonio Neto muestra todos los movimientos del patrimonio durante el período contable."},
-  {id:188, q:"¿Para qué sirve la contabilidad de costos?", opts:["Solo para empresas grandes","Determinar el costo de producir bienes o servicios para fijar precios y tomar decisiones","Solo para auditorías","Para calcular impuestos"], ans:1, exp:"La Contabilidad de Costos determina el costo unitario de productos para fijar precios competitivos y tomar decisiones estratégicas."},
-  {id:189, q:"¿Cuál es la diferencia entre Contabilidad Financiera y Contabilidad de Gestión?", opts:["No hay diferencia","Financiera es para externos (inversores, Estado); Gestión es para internos (gerentes, administradores)","Solo el idioma","Solo el tipo de empresa"], ans:1, exp:"Contabilidad Financiera reporta a usuarios externos (bancos, SUNAT). Contabilidad de Gestión ayuda a la dirección interna."},
-  {id:190, q:"¿Qué es la 'amortización'?", opts:["Un tipo de préstamo","Reducción gradual del valor de activos intangibles (similar a la depreciación pero para intangibles)","El pago de salarios","Un tipo de impuesto"], ans:1, exp:"La Amortización es como la depreciación pero para Activos Intangibles (marcas, patentes, software): se reduce su valor gradualmente."},
-  {id:191, q:"¿Cuándo se aplica el método de 'línea recta' en depreciación?", opts:["Solo a vehículos","Cuando el activo pierde el mismo valor cada año durante su vida útil","Solo al final de la vida útil","Solo en maquinaria industrial"], ans:1, exp:"El método de Línea Recta asigna la misma cantidad de depreciación cada año: (Costo - Valor Residual) / Vida Útil."},
-  {id:192, q:"¿Qué es la 'vida útil' de un activo?", opts:["Los años que tiene la empresa","El período estimado durante el cual el activo prestará servicio económico","El tiempo de garantía","El plazo del préstamo bancario"], ans:1, exp:"La Vida Útil es el tiempo estimado que un activo fijo estará en uso productivo antes de volverse obsoleto o inutilizable."},
-  {id:193, q:"¿Qué es el 'valor residual' de un activo?", opts:["El precio original de compra","El valor estimado del activo al final de su vida útil (valor de chatarra o reventa)","El costo de depreciación","El precio de mercado actual"], ans:1, exp:"El Valor Residual (o valor de salvamento) es el precio estimado de venta del activo al final de su vida útil."},
-  {id:194, q:"¿Qué es la 'provisión'?", opts:["Un tipo de venta","Estimación de un pasivo probable cuyo monto o fecha son inciertos (ej: provisión para deudas incobrables)","Un tipo de activo","Un tipo de préstamo"], ans:1, exp:"Las Provisiones son estimaciones contables de obligaciones probables pero inciertas en monto o fecha (deudas incobrables, garantías)."},
-  {id:195, q:"¿Cuál es la regla general para el DEBE (Débito)?", opts:["Pasivos y Patrimonio aumentan","Activos aumentan, Pasivos y Patrimonio disminuyen","Solo aumentan los gastos","Los ingresos se debitan"], ans:1, exp:"Regla del DEBE: aumentan Activos y Gastos; disminuyen Pasivos, Patrimonio e Ingresos."},
-  {id:196, q:"¿Cuál es la regla general para el HABER (Crédito)?", opts:["Activos y gastos aumentan","Pasivos, Patrimonio e Ingresos aumentan; Activos y Gastos disminuyen","Solo los activos aumentan","Los gastos se acreditan"], ans:1, exp:"Regla del HABER: aumentan Pasivos, Patrimonio e Ingresos; disminuyen Activos y Gastos."},
-  {id:197, q:"¿Cuántas partes tiene el Plan Contable General Empresarial en sus elementos?", opts:["5 elementos","7 elementos","9 elementos","11 elementos"], ans:2, exp:"El PCGE tiene 9 elementos: del 1 al 9, donde el 1-3 son Activo, 4 es Pasivo, 5 es Patrimonio, 6-7 son Resultados, 8 es Saldos presupuestales y 9 es Costos."},
-  {id:198, q:"¿Qué organismo regula la contabilidad en el Perú?", opts:["El MEF directamente","El Consejo Normativo de Contabilidad del Sistema Nacional de Contabilidad","La SUNAT","El Banco Central de Reserva"], ans:1, exp:"El Consejo Normativo de Contabilidad, órgano del Sistema Nacional de Contabilidad, emite y regula las normas contables en Perú."},
-  {id:199, q:"¿Qué es la SUNAT?", opts:["Banco del gobierno","Superintendencia Nacional de Aduanas y Administración Tributaria: recauda impuestos en Perú","Una AFP","Un organismo contable"], ans:1, exp:"La SUNAT (Superintendencia Nacional de Aduanas y Administración Tributaria) administra, recauda y fiscaliza los tributos en Perú."},
-  {id:200, q:"¿Para qué sirve el número de RUC?", opts:["Solo para abrir cuentas bancarias","Identificar a contribuyentes para efectos tributarios; necesario para emitir comprobantes y declarar impuestos","Solo para empresas grandes","Para registrar marcas"], ans:1, exp:"El RUC identifica a personas naturales y jurídicas ante SUNAT para el pago de impuestos y la emisión de comprobantes."},
+  {
+    id: 1,
+    q: "¿En qué año nació Luca Pacioli?",
+    opts: [
+      "1445",
+      "1517",
+      "1400",
+      "1350"
+    ],
+    ans: 0,
+    exp: "Luca Pacioli nació en 1445 en Burgo Saneti Sepulcro, Venecia, Italia."
+  },
+  {
+    id: 2,
+    q: "¿Qué es la Partida Doble?",
+    opts: [
+      "Un libro contable en el ámbito contable",
+      "Sistema donde toda transacción afecta mínimo dos...",
+      "Un tipo de empresa según las normas",
+      "Un estado financiero en la empresa"
+    ],
+    ans: 1,
+    exp: "La Partida Doble establece que cada transacción afecta al menos dos cuentas: una con débito y otra con crédito."
+  },
+  {
+    id: 3,
+    q: "¿Qué representa el ACTIVO en la ecuación contable?",
+    opts: [
+      "Lo que la empresa debe",
+      "Lo que la empresa tiene y posee",
+      "El capital de los socios",
+      "Las utilidades"
+    ],
+    ans: 1,
+    exp: "El activo son los bienes, derechos y recursos de los que dispone la empresa."
+  },
+  {
+    id: 4,
+    q: "¿Cuánto dura normalmente un Ciclo Contable?",
+    opts: [
+      "6 meses",
+      "3 meses",
+      "Un año",
+      "2 años"
+    ],
+    ans: 2,
+    exp: "Normalmente el ciclo contable es de un año, aunque puede ser mensual, trimestral o semestral."
+  },
+  {
+    id: 5,
+    q: "¿Qué son los Quipucamayocs?",
+    opts: [
+      "Tipo de quipu",
+      "Contadores del Imperio Inca",
+      "Libros de contabilidad inca",
+      "Monedas incas"
+    ],
+    ans: 1,
+    exp: "Los Quipucamayocs eran los operadores de quipus, comparables a los contadores actuales."
+  },
+  {
+    id: 6,
+    q: "¿Cuál es la fórmula de la Ecuación Contable?",
+    opts: [
+      "Activo = Pasivo - Patrimonio",
+      "Activo + Pasivo = Patrimonio",
+      "Activo = Pasivo + Patrimonio",
+      "Patrimonio = Activo + Pasivo"
+    ],
+    ans: 2,
+    exp: "La ecuación fundamental es: ACTIVO = PASIVO + PATRIMONIO"
+  },
+  {
+    id: 7,
+    q: "¿En qué lado se ubica el Acreedor en la cuenta T?",
+    opts: [
+      "Lado izquierdo (Debe)",
+      "Lado derecho (Haber)",
+      "Centro",
+      "Arriba"
+    ],
+    ans: 1,
+    exp: "El Acreedor se ubica al lado DERECHO (Haber) y registra lo que sale de la empresa."
+  },
+  {
+    id: 8,
+    q: "¿Qué registra el Libro Diario?",
+    opts: [
+      "Solo las compras",
+      "Todas las operaciones cronológicamente",
+      "Solo las ventas",
+      "El inventario final"
+    ],
+    ans: 1,
+    exp: "El Libro Diario registra TODAS las operaciones que conforman la actividad de la empresa."
+  },
+  {
+    id: 9,
+    q: "¿Qué es el Activo Disponible?",
+    opts: [
+      "Mercaderías en almacén",
+      "Cuentas por cobrar",
+      "Caja y Bancos",
+      "Maquinaria"
+    ],
+    ans: 2,
+    exp: "El Activo Disponible representa Caja y Bancos, con disponibilidad inmediata."
+  },
+  {
+    id: 10,
+    q: "¿Qué tipo de empresa está diseñada para un solo dueño?",
+    opts: [
+      "SA",
+      "SAC",
+      "EIRL",
+      "SRL"
+    ],
+    ans: 2,
+    exp: "La EIRL (Empresa Individual de Responsabilidad Limitada) está diseñada para un solo propietario."
+  },
+  {
+    id: 11,
+    q: "¿Qué es el Modelo Freemium?",
+    opts: [
+      "Venta solo en redes sociales",
+      "Servicio gratis básico, pago por avanzado",
+      "Modelo de franquicias",
+      "Venta por suscripción anual"
+    ],
+    ans: 1,
+    exp: "Freemium ofrece parte del servicio gratis y cobra por funciones más completas o avanzadas."
+  },
+  {
+    id: 12,
+    q: "¿Cuándo se ABONA una cuenta de Activo?",
+    opts: [
+      "Cuando aumenta",
+      "Cuando disminuye",
+      "Siempre",
+      "Nunca"
+    ],
+    ans: 1,
+    exp: "Las cuentas de Activo se ABONAN (lado derecho) cuando DISMINUYEN."
+  },
+  {
+    id: 13,
+    q: "¿Qué es la SAA?",
+    opts: [
+      "Sociedad Anónima Abierta",
+      "Sociedad Anónima Adjunta",
+      "Sociedad de Accionistas Abiertos",
+      "Sociedad Anónima Activa"
+    ],
+    ans: 0,
+    exp: "SAA = Sociedad Anónima Abierta. Puede ofrecer acciones al público en general."
+  },
+  {
+    id: 14,
+    q: "¿Qué libro se usa para centralizar TODAS las operaciones de una empresa?",
+    opts: [
+      "Libro Auxiliar",
+      "Libro Mayor",
+      "Libro de Ventas",
+      "Libro de Almacén"
+    ],
+    ans: 1,
+    exp: "El Libro Mayor centraliza de forma sistemática todas las operaciones realizadas."
+  },
+  {
+    id: 15,
+    q: "¿Qué principio rige la Partida Doble?",
+    opts: [
+      "'Sin pérdida no hay ganancia'",
+      "'No hay Deudor sin Acreedor'",
+      "'El debe siempre es mayor'",
+      "'El haber nunca se abona'"
+    ],
+    ans: 1,
+    exp: "El principio es: 'No hay Deudor sin Acreedor, ni Acreedor sin Deudor'."
+  },
+  {
+    id: 16,
+    q: "¿Qué es el Pasivo Corriente?",
+    opts: [
+      "Deudas a más de 5 años",
+      "Obligaciones con vencimiento menor a 1 año",
+      "Capital de los socios",
+      "Utilidades retenidas"
+    ],
+    ans: 1,
+    exp: "El Pasivo Corriente son obligaciones con vencimiento MENOR a un año."
+  },
+  {
+    id: 17,
+    q: "¿Para qué sirve el PCGE (Plan Contable General Empresarial)?",
+    opts: [
+      "Registrar planillas en el ámbito contable",
+      "Catálogo de cuentas para registrar hechos...",
+      "Manual de recursos humanos según las normas",
+      "Ley de impuestos en la empresa"
+    ],
+    ans: 1,
+    exp: "El PCGE es un catálogo de cuentas para registrar hechos económicos y elaborar Estados Financieros."
+  },
+  {
+    id: 18,
+    q: "¿En qué consiste el Modelo Dropshipping?",
+    opts: [
+      "Compras en efectivo en el ámbito contable",
+      "El vendedor no almacena para el negocio",
+      "Venta puerta a puerta según las normas",
+      "Modelo de afiliados en la empresa"
+    ],
+    ans: 1,
+    exp: "En Dropshipping el vendedor no almacena. El proveedor gestiona inventario y envíos al cliente final."
+  },
+  {
+    id: 19,
+    q: "¿Qué es el Activo Exigible?",
+    opts: [
+      "Dinero en caja",
+      "Cuentas por cobrar a clientes",
+      "Maquinaria",
+      "Mercaderías"
+    ],
+    ans: 1,
+    exp: "El Activo Exigible son cuentas por cobrar a clientes, exigibles al vencimiento de la factura."
+  },
+  {
+    id: 20,
+    q: "¿Cuál es el objetivo principal de la Contabilidad?",
+    opts: [
+      "Solo pagar impuestos en el ámbito contable",
+      "Facilitar la toma de decisiones y control de...",
+      "Calcular sueldos según las normas",
+      "Hacer inventarios en la empresa"
+    ],
+    ans: 1,
+    exp: "La Contabilidad facilita la toma de decisiones y el control de gestión estudiando el patrimonio."
+  },
+  {
+    id: 21,
+    q: "¿En qué año murió Luca Pacioli?",
+    opts: [
+      "1400",
+      "1500",
+      "1517",
+      "1550"
+    ],
+    ans: 2,
+    exp: "Luca Pacioli murió en 1517."
+  },
+  {
+    id: 22,
+    q: "¿De qué material se hacían los Quipus?",
+    opts: [
+      "Metal y piedra",
+      "Algodón y fibra de camélidos",
+      "Madera y cuero",
+      "Arcilla"
+    ],
+    ans: 1,
+    exp: "Los Quipus estaban hechos de algodón y fibra de camélidos (alpaca, guanaco, llama)."
+  },
+  {
+    id: 23,
+    q: "¿Qué significa 'Quipu'?",
+    opts: [
+      "Número",
+      "Nudo",
+      "Registro",
+      "Contador"
+    ],
+    ans: 1,
+    exp: "Quipu significa 'NUDO' en quechua."
+  },
+  {
+    id: 24,
+    q: "¿Cuál es la primera etapa del Ciclo Contable?",
+    opts: [
+      "Cierre contable",
+      "Movimiento",
+      "Apertura contable",
+      "Liquidación"
+    ],
+    ans: 2,
+    exp: "La primera etapa es la APERTURA CONTABLE, donde se realiza el balance inicial del nuevo ciclo."
+  },
+  {
+    id: 25,
+    q: "¿Qué son las Reglas del Principio Matemático de la Partida Doble?",
+    opts: [
+      "Reglas de auditoría",
+      "5 reglas sobre deudor/acreedor, debe/haber",
+      "Normas de publicidad",
+      "Reglas de impuestos"
+    ],
+    ans: 1,
+    exp: "Las 5 reglas incluyen: no hay deudor sin acreedor, suma adeudada = abono, etc."
+  },
+  {
+    id: 26,
+    q: "¿En qué consiste la segunda etapa del Ciclo Contable?",
+    opts: [
+      "Cierre en el libro mayor",
+      "Registro de operaciones en el Libro Diario",
+      "Balance general",
+      "Apertura de cuentas"
+    ],
+    ans: 1,
+    exp: "El MOVIMIENTO consiste en registrar todas las operaciones en el Libro Diario."
+  },
+  {
+    id: 27,
+    q: "¿Qué documentos se obtienen al final del Ciclo Contable?",
+    opts: [
+      "Solo el Libro Diario",
+      "Los Estados Financieros",
+      "Los Quipus",
+      "La hoja de planillas"
+    ],
+    ans: 1,
+    exp: "Al cerrar el ciclo contable se generan los ESTADOS FINANCIEROS."
+  },
+  {
+    id: 28,
+    q: "¿Cómo se llaman las 'ramas afines' de la Contabilidad?",
+    opts: [
+      "Solo matemáticas y estadística en el ámbito contable",
+      "Documentación mercantil para el negocio",
+      "Solo auditoría según las normas",
+      "Solo finanzas en la empresa"
+    ],
+    ans: 1,
+    exp: "Las ramas afines son: documentación mercantil, estadística, ingeniería de sistemas, derecho y legislación."
+  },
+  {
+    id: 29,
+    q: "¿Qué es el Patrimonio Neto?",
+    opts: [
+      "Todo el activo de la empresa",
+      "Activo menos Pasivo",
+      "Solo el capital aportado",
+      "Las ventas del año"
+    ],
+    ans: 1,
+    exp: "Patrimonio = Activo - Pasivo. Incluye capital, reservas, acciones y utilidades."
+  },
+  {
+    id: 30,
+    q: "¿Cuándo se CARGA una cuenta de Pasivo?",
+    opts: [
+      "Cuando aumenta",
+      "Cuando disminuye",
+      "Siempre al inicio",
+      "Nunca"
+    ],
+    ans: 1,
+    exp: "Las cuentas de Pasivo se CARGAN (Debe/izquierda) cuando DISMINUYEN."
+  },
+  {
+    id: 31,
+    q: "¿Cuál es el Libro Auxiliar usado para compras?",
+    opts: [
+      "Libro Mayor",
+      "Libro de Registro de Compras",
+      "Libro Diario",
+      "Libro Caja"
+    ],
+    ans: 1,
+    exp: "El Libro de Registro de Compras es el auxiliar para registrar todas las compras."
+  },
+  {
+    id: 32,
+    q: "¿Qué es el Activo Realizable?",
+    opts: [
+      "Dinero en banco en el ámbito contable",
+      "Cuentas por cobrar para el negocio",
+      "Mercaderías y productos en almacén listos para...",
+      "Terrenos en la empresa"
+    ],
+    ans: 2,
+    exp: "El Activo Realizable son existencias en almacén listas para la venta o transformación."
+  },
+  {
+    id: 33,
+    q: "¿Cuáles son los 4 pasos del Ciclo Contable?",
+    opts: [
+      "Comprar, vender, pagar, cobrar en el ámbito contable",
+      "Comprobantes, libros, hoja de comprobación,...",
+      "Inventario, compra, venta, cierre según las normas",
+      "Apertura, registro, ajuste, cierre en la empresa"
+    ],
+    ans: 1,
+    exp: "Los pasos son: Comprobantes de Pago → Libros Contables → Hoja de Comprobación → Estados Financieros."
+  },
+  {
+    id: 34,
+    q: "¿Qué tipo de empresa puede cotizar en la Bolsa de Valores de Lima?",
+    opts: [
+      "SRL",
+      "EIRL",
+      "SA (Sociedad Anónima)",
+      "SAC"
+    ],
+    ans: 2,
+    exp: "La SA puede participar en la Bolsa de Valores, a diferencia de la SAC que es cerrada."
+  },
+  {
+    id: 35,
+    q: "¿Cuántos modelos de negocio se mencionan en el curso?",
+    opts: [
+      "5",
+      "7",
+      "9",
+      "12"
+    ],
+    ans: 2,
+    exp: "Se estudian 9 modelos de negocio: De Varios Lados, Franquicia, Cola Larga, Freemium, Suscripción, E-Commerce, Dropshipping, Afiliación y Peer to Peer."
+  },
+  {
+    id: 36,
+    q: "¿Qué es el Modelo Peer to Peer?",
+    opts: [
+      "Empresa y Estado",
+      "Particulares conectados entre sí",
+      "Empresa a empresa",
+      "Banco a cliente"
+    ],
+    ans: 1,
+    exp: "Peer to Peer (Red entre Pares) conecta a particulares entre sí. La empresa gana comisiones/publicidad."
+  },
+  {
+    id: 37,
+    q: "¿Qué es la Capacidad Técnica de una empresa?",
+    opts: [
+      "Dinero disponible en el ámbito contable",
+      "Conjunto de conocimientos y habilidades del...",
+      "Número de clientes según las normas",
+      "Tamaño de la empresa en la empresa"
+    ],
+    ans: 1,
+    exp: "La Capacidad Técnica es el conjunto de conocimientos y habilidades que poseen los miembros para ejecutar tareas."
+  },
+  {
+    id: 38,
+    q: "¿Qué es una Franquicia?",
+    opts: [
+      "Tipo de impuesto en el ámbito contable",
+      "Acuerdo para vender productos de otra empresa...",
+      "Sociedad de responsabilidad limitada",
+      "Modelo de ventas por internet en la empresa"
+    ],
+    ans: 1,
+    exp: "La Franquicia permite vender bajo la marca de otro a cambio de un porcentaje sobre ventas o canon fijo."
+  },
+  {
+    id: 39,
+    q: "¿Qué hace el Libro de Inventarios y Balances?",
+    opts: [
+      "Registra solo las ventas en el ámbito contable",
+      "Controla el inventario y refleja el balance...",
+      "Registra planillas según las normas",
+      "Contiene las actas de socios en la empresa"
+    ],
+    ans: 1,
+    exp: "El Libro de Inventarios y Balances muestra el inventario de bienes y el balance de la empresa."
+  },
+  {
+    id: 40,
+    q: "¿Cuál es la función del Libro Mayor?",
+    opts: [
+      "Registrar operaciones diarias en el ámbito contable",
+      "Centralizar todas las operaciones de forma...",
+      "Registrar compras según las normas",
+      "Controlar el almacén en la empresa"
+    ],
+    ans: 1,
+    exp: "El Libro Mayor centraliza TODAS las operaciones en forma sistemática y sirve para preparar los estados financieros."
+  },
+  {
+    id: 41,
+    q: "¿Cuántos accionistas mínimo necesita una SAC?",
+    opts: [
+      "Solo 1",
+      "Mínimo 2, máximo 20",
+      "Sin límite",
+      "Mínimo 50"
+    ],
+    ans: 1,
+    exp: "La SAC tiene entre 2 y 20 accionistas, siendo una empresa pequeña y cerrada."
+  },
+  {
+    id: 42,
+    q: "¿Qué significa la 'responsabilidad limitada' en una empresa?",
+    opts: [
+      "La empresa tiene pocas deudas en el ámbito contable",
+      "Los bienes personales del dueño están protegidos...",
+      "Que solo se puede deber hasta cierta cifra",
+      "Que hay pocos trabajadores en la empresa"
+    ],
+    ans: 1,
+    exp: "Responsabilidad limitada significa que las deudas de la empresa no afectan el patrimonio personal del dueño."
+  },
+  {
+    id: 43,
+    q: "¿Cuál es la diferencia principal entre SA y SAA?",
+    opts: [
+      "El tamaño en el ámbito contable",
+      "La SAA puede ofrecer acciones al público en general",
+      "El número de socios según las normas",
+      "El tipo de negocio en la empresa"
+    ],
+    ans: 1,
+    exp: "La SAA puede cotizar en bolsa y captar capital del público en general, a diferencia de la SA tradicional."
+  },
+  {
+    id: 44,
+    q: "¿Para qué sirve la SACS (Sociedad por Acciones Cerrada Simplificada)?",
+    opts: [
+      "Solo para grandes empresas en el ámbito contable",
+      "Fomentar la formalización de emprendedores con...",
+      "Para empresas públicas según las normas",
+      "Para bancos en la empresa"
+    ],
+    ans: 1,
+    exp: "La SACS fue creada para facilitar la formalización de emprendedores y pequeños empresarios con menos burocracia."
+  },
+  {
+    id: 45,
+    q: "¿Cuál es el objetivo empresarial de 'Calidad'?",
+    opts: [
+      "Bajar precios en el ámbito contable",
+      "Ofrecer bienes y servicios que superen a la...",
+      "Tener muchos empleados según las normas",
+      "Solo cumplir la ley en la empresa"
+    ],
+    ans: 1,
+    exp: "La calidad debe estar no solo en el producto sino en TODO el proceso productivo y de distribución."
+  },
+  {
+    id: 46,
+    q: "¿Cuándo una empresa persigue el objetivo de 'Supervivencia'?",
+    opts: [
+      "Cuando quiere crecer rápido",
+      "En periodos de crisis, solo busca mantenerse",
+      "Cuando lanza nuevos productos",
+      "Cuando contrata personal"
+    ],
+    ans: 1,
+    exp: "En situaciones de crisis, la empresa solo aspira a sobrevivir hasta que cambien las condiciones."
+  },
+  {
+    id: 47,
+    q: "¿Qué incluyen los 'Objetivos Sociales' de una empresa?",
+    opts: [
+      "Solo maximizar ganancias en el ámbito contable",
+      "Respeto al medio ambiente y nivel de vida digno...",
+      "Reducir costos según las normas",
+      "Expandirse internacionalmente en la empresa"
+    ],
+    ans: 1,
+    exp: "Los objetivos sociales incluyen respeto ambiental y condiciones de vida dignas para los trabajadores."
+  },
+  {
+    id: 48,
+    q: "¿Qué es el Modelo de Cola Larga?",
+    opts: [
+      "Venta de pocos productos en grandes cantidades",
+      "Amplio catálogo de productos específicos con pocas...",
+      "Venta en cadena según las normas",
+      "Modelo de supermercados en la empresa"
+    ],
+    ans: 1,
+    exp: "El modelo de Cola Larga ofrece muchos productos nicho que individualmente venden poco pero suman mucho."
+  },
+  {
+    id: 49,
+    q: "¿Qué es el E-Commerce?",
+    opts: [
+      "Comercio en efectivo en el ámbito contable",
+      "Comercio electrónico online con envío a domicilio",
+      "Comercio entre empresas según las normas",
+      "Comercio en ferias en la empresa"
+    ],
+    ans: 1,
+    exp: "E-Commerce es el comercio electrónico: venta de productos/servicios online con logística de envío."
+  },
+  {
+    id: 50,
+    q: "¿Qué es el Modelo de Afiliación?",
+    opts: [
+      "Asociación de empresas en el ámbito contable",
+      "Promover productos de terceros y recibir...",
+      "Filial de una empresa grande según las normas",
+      "Tipo de franquicia en la empresa"
+    ],
+    ans: 1,
+    exp: "En el modelo de Afiliación se promocionan productos ajenos a cambio de comisiones por las ventas generadas."
+  },
+  {
+    id: 51,
+    q: "¿Qué es una Realización en el contexto de empresa?",
+    opts: [
+      "Un inventario",
+      "La satisfacción al lograr lo que se aspiraba",
+      "Un tipo de venta",
+      "Un estado financiero"
+    ],
+    ans: 1,
+    exp: "Las Realizaciones son las satisfacciones que sienten los miembros de la empresa al cumplir sus aspiraciones."
+  },
+  {
+    id: 52,
+    q: "¿Cuántos elementos tiene la estructura de una empresa?",
+    opts: [
+      "3",
+      "4",
+      "6",
+      "8"
+    ],
+    ans: 2,
+    exp: "Los 6 elementos son: Entidad, Elementos humanos, Aspiraciones, Realizaciones, Bienes materiales, Capacidad técnica y financiera."
+  },
+  {
+    id: 53,
+    q: "¿Cuál es la Ley que regula las Sociedades en Perú?",
+    opts: [
+      "Ley N° 28015",
+      "Ley General de Sociedades N° 26887",
+      "Decreto Legislativo 728",
+      "Ley N° 30056"
+    ],
+    ans: 1,
+    exp: "La Ley General de Sociedades N° 26887 regula los tipos de sociedades en el Perú."
+  },
+  {
+    id: 54,
+    q: "¿Qué es el 'Máximo Beneficio' como objetivo empresarial?",
+    opts: [
+      "Tener muchos empleados en el ámbito contable",
+      "La diferencia entre ingresos y gastos",
+      "Tener la empresa más grande según las normas",
+      "Dar más créditos en la empresa"
+    ],
+    ans: 1,
+    exp: "El máximo beneficio es la diferencia entre ingresos y gastos, el objetivo más importante pues garantiza la supervivencia."
+  },
+  {
+    id: 55,
+    q: "¿Qué tipo de modelo de negocio funciona cobrando periódicamente?",
+    opts: [
+      "Dropshipping",
+      "Freemium",
+      "Suscripción",
+      "Afiliación"
+    ],
+    ans: 2,
+    exp: "El Modelo de Suscripción genera ingresos recurrentes con pagos periódicos del consumidor."
+  },
+  {
+    id: 56,
+    q: "¿Qué es la 'Fidelización' de clientes?",
+    opts: [
+      "Descuento en ventas en el ámbito contable",
+      "Lograr que los clientes vuelvan a comprar porque...",
+      "Contratar empleados fijos según las normas",
+      "Registro de clientes en el libro auxiliar"
+    ],
+    ans: 1,
+    exp: "La fidelización es conseguir que los clientes satisfechos vuelvan a comprar, esencial para el objetivo de satisfacción."
+  },
+  {
+    id: 57,
+    q: "¿Cuál es la clave del éxito del Modelo Freemium?",
+    opts: [
+      "Cobrar a todos desde el inicio en el ámbito contable",
+      "Tener muchos usuarios para el negocio",
+      "Usar solo redes sociales según las normas",
+      "Vender por catálogo en la empresa"
+    ],
+    ans: 1,
+    exp: "En Freemium se necesitan muchos usuarios porque estadísticamente solo una minoría paga por el servicio premium."
+  },
+  {
+    id: 58,
+    q: "¿Qué es un Modelo de Negocio?",
+    opts: [
+      "Solo un plan financiero en el ámbito contable",
+      "Herramienta que define qué para el negocio",
+      "Un tipo de empresa según las normas",
+      "Un libro de contabilidad en la empresa"
+    ],
+    ans: 1,
+    exp: "El Modelo de Negocio define la propuesta de valor, clientes, canales, costos y fuentes de ingreso."
+  },
+  {
+    id: 59,
+    q: "¿Cuál es la ventaja principal del Dropshipping?",
+    opts: [
+      "Altos márgenes de ganancia en el ámbito contable",
+      "Baja inversión inicial pues no requiere inventario...",
+      "Control total de la calidad según las normas",
+      "Amplio personal en la empresa"
+    ],
+    ans: 1,
+    exp: "El Dropshipping requiere poca inversión porque el proveedor gestiona el inventario y los envíos."
+  },
+  {
+    id: 60,
+    q: "¿Qué es el 'Crecimiento' como objetivo empresarial?",
+    opts: [
+      "Contratar más personal en el ámbito contable",
+      "Reinvertir beneficios para aumentar participación...",
+      "Abrir más tiendas sin reinvertir según las normas",
+      "Reducir costos en la empresa"
+    ],
+    ans: 1,
+    exp: "El objetivo de Crecimiento implica reinvertir las utilidades para aumentar el tamaño y participación en el mercado."
+  },
+  {
+    id: 61,
+    q: "Si una empresa COMPRA mercadería AL CONTADO, ¿qué sucede?",
+    opts: [
+      "Activo aumenta y Pasivo aumenta en el ámbito contable",
+      "Activo aumenta (mercadería) y Activo disminuye...",
+      "Solo aumenta el Activo según las normas",
+      "Solo disminuye el Pasivo en la empresa"
+    ],
+    ans: 1,
+    exp: "Se intercambia un activo por otro: aumenta mercadería (20) y disminuye Caja (10.1)."
+  },
+  {
+    id: 62,
+    q: "Si una empresa COMPRA mercadería AL CRÉDITO, ¿qué sucede?",
+    opts: [
+      "Solo aumenta el Activo",
+      "Activo aumenta y Pasivo aumenta",
+      "Patrimonio disminuye",
+      "Solo el Pasivo cambia"
+    ],
+    ans: 1,
+    exp: "Aumenta el Activo (mercadería) y aumenta el Pasivo (cuenta por pagar al proveedor)."
+  },
+  {
+    id: 63,
+    q: "Si un socio APORTA capital en efectivo, ¿qué sucede?",
+    opts: [
+      "Activo disminuye en el ámbito contable",
+      "Activo aumenta (caja) y Patrimonio aumenta...",
+      "Solo aumenta el Patrimonio según las normas",
+      "El Pasivo aumenta en la empresa"
+    ],
+    ans: 1,
+    exp: "Aumenta el Activo (Caja) y aumenta el Patrimonio (Capital aportado por el socio)."
+  },
+  {
+    id: 64,
+    q: "Si la empresa PAGA un servicio con dinero, ¿qué sucede?",
+    opts: [
+      "Activo aumenta en el ámbito contable",
+      "Activo disminuye para el negocio",
+      "Pasivo aumenta según las normas",
+      "Patrimonio aumenta en la empresa"
+    ],
+    ans: 1,
+    exp: "El pago de gastos disminuye el Activo (Caja) y reduce el Patrimonio (gasto/pérdida)."
+  },
+  {
+    id: 65,
+    q: "¿Qué cuenta del PCGE representa la Caja?",
+    opts: [
+      "Cuenta 20",
+      "Cuenta 10.1",
+      "Cuenta 42.1",
+      "Cuenta 50"
+    ],
+    ans: 1,
+    exp: "La Cuenta 10.1 representa Caja en el Plan Contable General Empresarial."
+  },
+  {
+    id: 66,
+    q: "¿Qué cuenta del PCGE representa Mercaderías?",
+    opts: [
+      "Cuenta 25.2",
+      "Cuenta 42.1",
+      "Cuenta 20",
+      "Cuenta 33.4"
+    ],
+    ans: 2,
+    exp: "La Cuenta 20 representa Mercaderías en el PCGE."
+  },
+  {
+    id: 67,
+    q: "¿Qué cuenta del PCGE representa Facturas por Pagar al Proveedor?",
+    opts: [
+      "Cuenta 10.1",
+      "Cuenta 42.1",
+      "Cuenta 50",
+      "Cuenta 20.1"
+    ],
+    ans: 1,
+    exp: "La Cuenta 42.1 representa Facturas, boletas y otros comprobantes por pagar."
+  },
+  {
+    id: 68,
+    q: "¿Qué cuenta del PCGE representa el Capital?",
+    opts: [
+      "Cuenta 10.4",
+      "Cuenta 33.5",
+      "Cuenta 50",
+      "Cuenta 42.1"
+    ],
+    ans: 2,
+    exp: "La Cuenta 50 representa Capital en el PCGE."
+  },
+  {
+    id: 69,
+    q: "Si la empresa compra una camioneta para reparto AL CONTADO, ¿qué sucede?",
+    opts: [
+      "Activo aumenta y Pasivo aumenta en el ámbito contable",
+      "Activo aumenta (camioneta) y Activo disminuye...",
+      "Solo aumenta el Activo según las normas",
+      "El Patrimonio disminuye en la empresa"
+    ],
+    ans: 1,
+    exp: "Aumenta Activo No Corriente (camioneta) y disminuye Activo Corriente (cuenta corriente bancaria)."
+  },
+  {
+    id: 70,
+    q: "¿Cuándo se dice que el Debe y el Haber están en equilibrio?",
+    opts: [
+      "Cuando hay más activo que pasivo en el ámbito contable",
+      "Cuando la suma del Debe es igual a la suma del...",
+      "Cuando no hay deudas según las normas",
+      "Cuando las ventas superan los gastos"
+    ],
+    ans: 1,
+    exp: "El principio de Partida Doble exige que la suma total del Debe siempre sea igual a la suma total del Haber."
+  },
+  {
+    id: 71,
+    q: "¿Qué cuenta representa la Cuenta Corriente Bancaria en el PCGE?",
+    opts: [
+      "10.1",
+      "10.4",
+      "42.1",
+      "50"
+    ],
+    ans: 1,
+    exp: "La Cuenta 10.4 representa la Cuenta Corriente bancaria en el PCGE."
+  },
+  {
+    id: 72,
+    q: "¿Qué cuenta del PCGE representa Materia Prima?",
+    opts: [
+      "Cuenta 20",
+      "Cuenta 24",
+      "Cuenta 25.1",
+      "Cuenta 33.5"
+    ],
+    ans: 1,
+    exp: "La Cuenta 24 representa Materias Primas en el PCGE."
+  },
+  {
+    id: 73,
+    q: "Si la empresa compra al crédito el 40% y al contado el 60%, ¿qué aumenta en el Pasivo?",
+    opts: [
+      "El 60%",
+      "El 40%",
+      "El 100%",
+      "Nada"
+    ],
+    ans: 1,
+    exp: "Solo el 40% crédito genera una deuda en el Pasivo (cuenta por pagar). El 60% contado se paga de inmediato."
+  },
+  {
+    id: 74,
+    q: "¿Qué es un comprobante de pago?",
+    opts: [
+      "Un cheque bancario en el ámbito contable",
+      "Documento que acredita una transacción comercial",
+      "El Libro Diario según las normas",
+      "Un estado financiero en la empresa"
+    ],
+    ans: 1,
+    exp: "Los comprobantes de pago son documentos que acreditan las operaciones comerciales y son el punto de inicio del ciclo contable."
+  },
+  {
+    id: 75,
+    q: "Las cuentas de RESULTADO — Ingreso: ¿cómo se registran?",
+    opts: [
+      "Se cargan (Debe)",
+      "Se abonan (Haber)",
+      "Se anulan",
+      "Se promedian"
+    ],
+    ans: 1,
+    exp: "Toda cuenta de INGRESO se ABONA (lado derecho/Haber)."
+  },
+  {
+    id: 76,
+    q: "Las cuentas de RESULTADO — Egreso: ¿cómo se registran?",
+    opts: [
+      "Se abonan (Haber)",
+      "Se cargan (Debe)",
+      "Se neutralizan",
+      "Se ignoran"
+    ],
+    ans: 1,
+    exp: "Toda cuenta de EGRESO se CARGA (lado izquierdo/Debe)."
+  },
+  {
+    id: 77,
+    q: "¿Cuántos libros Principales existen?",
+    opts: [
+      "3",
+      "4",
+      "5",
+      "7"
+    ],
+    ans: 2,
+    exp: "Los 5 libros principales son: Inventarios y Balances, Diario, Mayor, Caja y Actas."
+  },
+  {
+    id: 78,
+    q: "¿Cuál es la cuenta que representa suministros diversos en el PCGE?",
+    opts: [
+      "20",
+      "25.2",
+      "42.1",
+      "10.1"
+    ],
+    ans: 1,
+    exp: "La Cuenta 25.2 representa Suministros Diversos en el PCGE."
+  },
+  {
+    id: 79,
+    q: "¿Qué pasa con el Patrimonio cuando la empresa tiene PÉRDIDAS?",
+    opts: [
+      "Aumenta",
+      "Disminuye",
+      "No cambia",
+      "Se transfiere al Pasivo"
+    ],
+    ans: 1,
+    exp: "Las pérdidas reducen el Patrimonio de la empresa."
+  },
+  {
+    id: 80,
+    q: "¿Qué tipo de activo es la maquinaria de una empresa?",
+    opts: [
+      "Activo Corriente",
+      "Activo Disponible",
+      "Activo No Corriente",
+      "Activo Exigible"
+    ],
+    ans: 2,
+    exp: "La maquinaria es un Activo No Corriente porque permanece más de un año en la empresa."
+  },
+  {
+    id: 81,
+    q: "¿Qué significa 'DEBE' en contabilidad?",
+    opts: [
+      "Una deuda de la empresa en el ámbito contable",
+      "El lado izquierdo de la cuenta T donde se...",
+      "Una obligación tributaria según las normas",
+      "El dinero en caja en la empresa"
+    ],
+    ans: 1,
+    exp: "'DEBE' es el lado izquierdo de la cuenta T. Se cargan (debitan) aumentos de activos y gastos."
+  },
+  {
+    id: 82,
+    q: "¿Qué significa 'HABER' en contabilidad?",
+    opts: [
+      "Tener activos en el ámbito contable",
+      "El lado derecho de la cuenta T donde se registran...",
+      "El patrimonio total según las normas",
+      "Las ganancias del año en la empresa"
+    ],
+    ans: 1,
+    exp: "'HABER' es el lado derecho de la cuenta T. Se abonan (acreditan) aumentos de pasivos, patrimonio e ingresos."
+  },
+  {
+    id: 83,
+    q: "¿Qué son los Estados Financieros?",
+    opts: [
+      "Solo el balance general en el ámbito contable",
+      "Reportes que muestran la situación financiera",
+      "Las facturas del año según las normas",
+      "Los libros auxiliares en la empresa"
+    ],
+    ans: 1,
+    exp: "Los 4 principales Estados Financieros son: Balance de Situación Financiera, Estado de Resultados, Flujo de Efectivo y Cambios en el Patrimonio Neto."
+  },
+  {
+    id: 84,
+    q: "¿Qué es el Balance de Situación Financiera?",
+    opts: [
+      "Un libro contable en el ámbito contable",
+      "Reporte que muestra activos para el negocio",
+      "El estado de ventas según las normas",
+      "El registro de compras en la empresa"
+    ],
+    ans: 1,
+    exp: "El Balance de Situación Financiera (antes llamado Balance General) muestra lo que la empresa tiene, debe y le pertenece a una fecha dada."
+  },
+  {
+    id: 85,
+    q: "¿Qué son las NIIF?",
+    opts: [
+      "Normas de Impuestos Financieros Internacionales",
+      "Normas Internacionales de Información Financiera",
+      "Normas de Inspección Fiscal según las normas",
+      "Normas de Inventario y Finanzas en la empresa"
+    ],
+    ans: 1,
+    exp: "NIIF = Normas Internacionales de Información Financiera. El PCGE está homologado con ellas."
+  },
+  {
+    id: 86,
+    q: "¿Qué es el Consejo Normativo de Contabilidad?",
+    opts: [
+      "Ministerio de Economía en el ámbito contable",
+      "Órgano del Sistema Nacional de Contabilidad que...",
+      "Un banco central según las normas",
+      "Una ONG en la empresa"
+    ],
+    ans: 1,
+    exp: "El Consejo Normativo de Contabilidad estudia, analiza y emite normas de contabilidad para el sector público y privado."
+  },
+  {
+    id: 87,
+    q: "¿Cuántos Elementos tiene el Plan Contable General Empresarial?",
+    opts: [
+      "5",
+      "7",
+      "9",
+      "10"
+    ],
+    ans: 2,
+    exp: "El PCGE tiene 9 elementos que agrupan las diferentes cuentas contables."
+  },
+  {
+    id: 88,
+    q: "¿Para qué tipo de empresas está diseñado el PCGE?",
+    opts: [
+      "Solo grandes empresas en el ámbito contable",
+      "Empresas con fines de lucro de cualquier tamaño o sector",
+      "Solo empresas industriales según las normas",
+      "Solo empresas de servicios en la empresa"
+    ],
+    ans: 1,
+    exp: "El PCGE está diseñado para empresas con fines de lucro de cualquier tamaño o sector, excepto Estado y Financieras que tienen su propio plan."
+  },
+  {
+    id: 89,
+    q: "¿Qué es el Estado de Resultados?",
+    opts: [
+      "Balance de activos en el ámbito contable",
+      "Reporte que muestra ingresos para el negocio",
+      "Lista de clientes según las normas",
+      "Registro de facturas en la empresa"
+    ],
+    ans: 1,
+    exp: "El Estado de Resultados (antes P&L o Estado de Ganancias y Pérdidas) muestra si la empresa ganó o perdió en el período."
+  },
+  {
+    id: 90,
+    q: "¿Qué es la Yupana?",
+    opts: [
+      "Un tipo de quipu en el ámbito contable",
+      "Especie de ábaco o calculadora usada por los incas",
+      "Un libro contable inca según las normas",
+      "Un tipo de nudo en la empresa"
+    ],
+    ans: 1,
+    exp: "La Yupana era una especie de ábaco o calculadora usada por los Incas como complemento del sistema numérico."
+  },
+  {
+    id: 91,
+    q: "¿Qué es el 'Crecimiento' como objetivo empresarial según el curso?",
+    opts: [
+      "Solo aumentar empleados en el ámbito contable",
+      "Reinvertir beneficios para crecer y aumentar...",
+      "Abrir tiendas en el extranjero según las normas",
+      "Fusionarse con otra empresa en la empresa"
+    ],
+    ans: 1,
+    exp: "Crecer implica reinvertir los beneficios para aumentar la participación de mercado y alcanzar una mejor posición futura."
+  },
+  {
+    id: 92,
+    q: "¿Qué busca el objetivo de 'Satisfacción del Cliente'?",
+    opts: [
+      "Reducir precios al mínimo en el ámbito contable",
+      "Tratar bien a los clientes para que queden satisfechos y vuelvan",
+      "Dar regalos a clientes según las normas",
+      "Ofrecer muchos descuentos en la empresa"
+    ],
+    ans: 1,
+    exp: "La satisfacción del cliente busca fidelizarlos: que queden satisfechos y confíen en la empresa en el futuro."
+  },
+  {
+    id: 93,
+    q: "¿A qué se refiere 'Bienes Materiales' como elemento de empresa?",
+    opts: [
+      "El dinero en caja en el ámbito contable",
+      "Instalaciones, oficinas, mobiliario y demás cosas...",
+      "El capital de los socios según las normas",
+      "Las ventas realizadas en la empresa"
+    ],
+    ans: 1,
+    exp: "Los Bienes Materiales son todas las cosas físicas de la empresa: instalaciones, oficinas, mobiliario, equipos, etc."
+  },
+  {
+    id: 94,
+    q: "¿Cuál fue la actividad principal de los Quipucamayocs?",
+    opts: [
+      "Comerciar con otras civilizaciones en el ámbito contable",
+      "Operar quipus para registrar y consolidar...",
+      "Construir caminos del inca según las normas",
+      "Administrar ejércitos en la empresa"
+    ],
+    ans: 1,
+    exp: "Los Quipucamayocs elaboraban anotaciones en quipus, consolidaban datos contables y hacían la 'memoria del imperio'."
+  },
+  {
+    id: 95,
+    q: "¿Qué ventaja tiene la SAC sobre la SA?",
+    opts: [
+      "Puede cotizar en bolsa en el ámbito contable",
+      "Mantiene control en grupo selecto sin complejidad...",
+      "Tiene más accionistas según las normas",
+      "Es más grande en la empresa"
+    ],
+    ans: 1,
+    exp: "La SAC es más íntima y controlada, sin las complejas regulaciones del mercado de valores que tiene la SA."
+  },
+  {
+    id: 96,
+    q: "¿Qué es el 'nicho de mercado' en un modelo de negocio?",
+    opts: [
+      "El local comercial en el ámbito contable",
+      "Un segmento específico y bien definido de clientes...",
+      "El tipo de producto según las normas",
+      "La zona geográfica en la empresa"
+    ],
+    ans: 1,
+    exp: "El nicho de mercado es el segmento específico de clientes. Cuanto más concreto sea, mejor puede enfocarse el negocio."
+  },
+  {
+    id: 97,
+    q: "¿Cuántos 'lados' puede tener el Modelo de Varios Lados?",
+    opts: [
+      "Exactamente 2",
+      "2 o más grupos de clientes no relacionados",
+      "Solo 3",
+      "Un número par"
+    ],
+    ans: 1,
+    exp: "El Modelo de Varios Lados puede tener 2 o más grupos de clientes que interactúan para beneficio mutuo."
+  },
+  {
+    id: 98,
+    q: "¿Qué genera el 'efecto red' en el Modelo de Varios Lados?",
+    opts: [
+      "Más gastos en el ámbito contable",
+      "Que cuantos más usuarios hay de un lado",
+      "Más empleados según las normas",
+      "Precios más altos en la empresa"
+    ],
+    ans: 1,
+    exp: "El efecto red hace que cuantos más usuarios hay de un lado, más aumentan del otro lado, creando crecimiento exponencial."
+  },
+  {
+    id: 99,
+    q: "¿Qué es el Libro de Actas?",
+    opts: [
+      "Registro de compras en el ámbito contable",
+      "Libro donde se registran los acuerdos de los...",
+      "Registro de ventas según las normas",
+      "El estado de resultados en la empresa"
+    ],
+    ans: 1,
+    exp: "El Libro de Actas registra los acuerdos adoptados por las juntas de socios, directorio y otros órganos de gobierno."
+  },
+  {
+    id: 100,
+    q: "¿Cuál es el documento que inicia el proceso del Ciclo Contable?",
+    opts: [
+      "El Libro Mayor en el ámbito contable",
+      "El Comprobante de Pago para el negocio",
+      "El Estado Financiero según las normas",
+      "El Libro de Actas en la empresa"
+    ],
+    ans: 1,
+    exp: "El Ciclo Contable inicia con la obtención de Comprobantes de Pago que acreditan las operaciones comerciales."
+  },
+  {
+    id: 101,
+    q: "¿Qué es una persona jurídica?",
+    opts: [
+      "Una persona física en el ámbito contable",
+      "Entidad reconocida legalmente con derechos y obligaciones propias",
+      "Un contador público según las normas",
+      "Un accionista mayoritario en la empresa"
+    ],
+    ans: 1,
+    exp: "Una persona jurídica es una entidad reconocida por la ley con derechos y obligaciones distintos a los de sus miembros individuales."
+  },
+  {
+    id: 102,
+    q: "¿Cuál es la diferencia entre Activo Corriente y No Corriente?",
+    opts: [
+      "El tamaño del activo en el ámbito contable",
+      "El tiempo: corriente ≤1 año, no corriente >1 año",
+      "El tipo de bien según las normas",
+      "El precio en la empresa"
+    ],
+    ans: 1,
+    exp: "Corriente permanece hasta 1 año; No Corriente permanece más de 1 año en la empresa."
+  },
+  {
+    id: 103,
+    q: "¿Qué pasa cuando la empresa COBRA a un cliente?",
+    opts: [
+      "Disminuye el Activo en el ámbito contable",
+      "Aumenta el Activo para el negocio",
+      "Aumenta el Pasivo según las normas",
+      "Disminuye el Patrimonio en la empresa"
+    ],
+    ans: 1,
+    exp: "Al cobrar, la caja aumenta y las cuentas por cobrar disminuyen: se intercambia un activo por otro."
+  },
+  {
+    id: 104,
+    q: "¿Qué pasa cuando la empresa PAGA a un proveedor?",
+    opts: [
+      "Aumenta el Activo en el ámbito contable",
+      "Disminuye el Activo para el negocio",
+      "Aumenta el Patrimonio según las normas",
+      "Disminuye el Pasivo y aumenta el Activo"
+    ],
+    ans: 1,
+    exp: "Al pagar, disminuye la caja (Activo) y disminuye la deuda con el proveedor (Pasivo)."
+  },
+  {
+    id: 105,
+    q: "¿Qué representa la cuenta 33.4 en el PCGE?",
+    opts: [
+      "Maquinaria",
+      "Vehículos (camioneta)",
+      "Edificios",
+      "Terrenos"
+    ],
+    ans: 1,
+    exp: "La cuenta 33.4 representa Unidades de Transporte (vehículos) en el PCGE."
+  },
+  {
+    id: 106,
+    q: "¿Qué significa 'Embalajes' en contabilidad?",
+    opts: [
+      "Un tipo de deuda en el ámbito contable",
+      "Materiales usados para envolver/embalar productos",
+      "Un activo fijo según las normas",
+      "Un tipo de maquinaria en la empresa"
+    ],
+    ans: 1,
+    exp: "Los embalajes son materiales usados para embalar/proteger productos, clasificados como suministros."
+  },
+  {
+    id: 107,
+    q: "¿Cuántos socios mínimo necesita una SRL?",
+    opts: [
+      "1",
+      "2",
+      "5",
+      "10"
+    ],
+    ans: 1,
+    exp: "La SRL requiere mínimo 2 socios. A diferencia de la EIRL que es individual."
+  },
+  {
+    id: 108,
+    q: "¿Qué es el 'aumento de capital' en una empresa?",
+    opts: [
+      "Contratar más empleados en el ámbito contable",
+      "Los socios aportan más dinero a la empresa para...",
+      "Comprar más mercadería según las normas",
+      "Pedir un préstamo en la empresa"
+    ],
+    ans: 1,
+    exp: "El aumento de capital es cuando los socios/accionistas aportan fondos adicionales, incrementando el patrimonio de la empresa."
+  },
+  {
+    id: 109,
+    q: "¿Qué representa la Cuenta 52 en el PCGE?",
+    opts: [
+      "Capital",
+      "Capital Adicional (aumento de capital)",
+      "Pasivo a largo plazo",
+      "Gastos financieros"
+    ],
+    ans: 1,
+    exp: "La Cuenta 52 representa Capital Adicional, producto de aportes complementarios de los socios."
+  },
+  {
+    id: 110,
+    q: "¿Cuál es la principal desventaja del Dropshipping?",
+    opts: [
+      "Alta inversión inicial en el ámbito contable",
+      "Márgenes estrechos y poco control sobre calidad...",
+      "Necesita muchos empleados según las normas",
+      "Es ilegal en Perú en la empresa"
+    ],
+    ans: 1,
+    exp: "El Dropshipping tiene márgenes reducidos y no permite controlar la calidad porque el proveedor maneja todo."
+  },
+  {
+    id: 111,
+    q: "¿Qué es el 'Libro de Planillas'?",
+    opts: [
+      "Registro de facturas en el ámbito contable",
+      "Libro auxiliar donde se registran los sueldos y...",
+      "Libro de inventario según las normas",
+      "Registro de compras en la empresa"
+    ],
+    ans: 1,
+    exp: "El Libro de Planillas registra todos los sueldos, beneficios y deducciones de los trabajadores de la empresa."
+  },
+  {
+    id: 112,
+    q: "¿Qué tipo de activo son las 'mercaderías' que están en almacén?",
+    opts: [
+      "Activo Disponible",
+      "Activo Exigible",
+      "Activo Realizable",
+      "Activo No Corriente"
+    ],
+    ans: 2,
+    exp: "Las mercaderías en almacén listas para la venta son Activo Realizable."
+  },
+  {
+    id: 113,
+    q: "¿Qué sucede contablemente si la empresa recibe un préstamo bancario?",
+    opts: [
+      "Solo aumenta el Activo en el ámbito contable",
+      "Activo aumenta (caja) y Pasivo aumenta (deuda con...",
+      "El Patrimonio aumenta según las normas",
+      "El Pasivo disminuye en la empresa"
+    ],
+    ans: 1,
+    exp: "Al recibir un préstamo, aumenta el Activo (dinero) y aumenta el Pasivo (obligación con el banco)."
+  },
+  {
+    id: 114,
+    q: "¿Qué es el 'Giro del Negocio'?",
+    opts: [
+      "El logo de la empresa en el ámbito contable",
+      "La actividad principal a la que se dedica la...",
+      "El nombre comercial según las normas",
+      "El número de RUC en la empresa"
+    ],
+    ans: 1,
+    exp: "El giro del negocio es la actividad principal de la empresa (ej: 'comercialización de abarrotes', 'servicios de transporte')."
+  },
+  {
+    id: 115,
+    q: "¿Qué significa 'RUC'?",
+    opts: [
+      "Registro Único de Comercio",
+      "Registro Único de Contribuyentes",
+      "Registro Universal de Comerciantes",
+      "Registro de Uso Comercial"
+    ],
+    ans: 1,
+    exp: "RUC = Registro Único de Contribuyentes. Es el número de identificación tributaria de empresas en Perú."
+  },
+  {
+    id: 116,
+    q: "¿Qué es una 'Factura' en términos contables?",
+    opts: [
+      "Un tipo de libro en el ámbito contable",
+      "Comprobante de pago que acredita una transacción...",
+      "Una cuenta bancaria según las normas",
+      "Un tipo de contrato en la empresa"
+    ],
+    ans: 1,
+    exp: "La factura es el comprobante de pago principal en operaciones comerciales, que otorga crédito fiscal al comprador."
+  },
+  {
+    id: 117,
+    q: "¿Qué es la 'Liquidez' en una empresa?",
+    opts: [
+      "La cantidad de empleados en el ámbito contable",
+      "La capacidad de pagar obligaciones a corto plazo...",
+      "El total de ventas según las normas",
+      "Las utilidades del año en la empresa"
+    ],
+    ans: 1,
+    exp: "La liquidez es la capacidad de la empresa para cumplir sus obligaciones de corto plazo con sus activos corrientes."
+  },
+  {
+    id: 118,
+    q: "¿Qué es el 'Patrimonio Neto'?",
+    opts: [
+      "Solo el capital inicial en el ámbito contable",
+      "Total de activos menos total de pasivos",
+      "Las deudas de la empresa según las normas",
+      "Los ingresos del año en la empresa"
+    ],
+    ans: 1,
+    exp: "El Patrimonio Neto = Activo Total - Pasivo Total. Es lo que genuinamente pertenece a los socios o dueños."
+  },
+  {
+    id: 119,
+    q: "¿Cuál es el papel de la Ingeniería de Sistemas en la Contabilidad?",
+    opts: [
+      "No tiene relación en el ámbito contable",
+      "Ha optimizado el registro de operaciones mediante...",
+      "Solo hace páginas web según las normas",
+      "Diseña logos corporativos en la empresa"
+    ],
+    ans: 1,
+    exp: "La Ing. de Sistemas ha permitido llevar los libros contables computarizados, optimizando tiempo y reduciendo errores."
+  },
+  {
+    id: 120,
+    q: "¿Qué es la 'Utilidad' en una empresa?",
+    opts: [
+      "El local de la empresa en el ámbito contable",
+      "La ganancia: diferencia entre ingresos totales y...",
+      "Las ventas brutas según las normas",
+      "Los sueldos de empleados en la empresa"
+    ],
+    ans: 1,
+    exp: "La Utilidad es la ganancia neta: cuando los ingresos superan a los gastos en un período determinado."
+  },
+  {
+    id: 121,
+    q: "¿Qué tipo de empresa es 'McDonald's' en su relación con los restaurantes locales?",
+    opts: [
+      "SAC",
+      "E-Commerce",
+      "Franquicia",
+      "Peer to Peer"
+    ],
+    ans: 2,
+    exp: "McDonald's opera bajo el modelo de Franquicia: permite a terceros usar su marca y método a cambio de regalías."
+  },
+  {
+    id: 122,
+    q: "¿Qué tipo de modelo usa 'Spotify'?",
+    opts: [
+      "Dropshipping",
+      "Franquicia",
+      "Freemium",
+      "Peer to Peer"
+    ],
+    ans: 2,
+    exp: "Spotify usa el modelo Freemium: versión básica gratis y premium de pago con funciones adicionales."
+  },
+  {
+    id: 123,
+    q: "¿Qué tipo de modelo usa 'Netflix'?",
+    opts: [
+      "Cola Larga",
+      "Suscripción",
+      "Dropshipping",
+      "Afiliación"
+    ],
+    ans: 1,
+    exp: "Netflix usa el Modelo de Suscripción: pago periódico mensual por acceso al contenido."
+  },
+  {
+    id: 124,
+    q: "¿Qué tipo de modelo usa 'Amazon' para su marketplace?",
+    opts: [
+      "Freemium",
+      "Peer to Peer",
+      "De Varios Lados",
+      "Dropshipping"
+    ],
+    ans: 2,
+    exp: "Amazon marketplace es un Modelo de Varios Lados: conecta compradores con vendedores en la misma plataforma."
+  },
+  {
+    id: 125,
+    q: "¿Qué tipo de modelo usa 'MercadoLibre' para ventas entre personas?",
+    opts: [
+      "Franquicia",
+      "E-Commerce puro",
+      "Peer to Peer",
+      "Suscripción"
+    ],
+    ans: 2,
+    exp: "MercadoLibre opera como Peer to Peer (P2P): conecta compradores y vendedores particulares entre sí."
+  },
+  {
+    id: 126,
+    q: "¿En qué período del Imperio Inca floreció el sistema de Quipus?",
+    opts: [
+      "Siglos I al V",
+      "Siglos XI al XVI",
+      "Siglos XVII al XIX",
+      "Siglos V al X"
+    ],
+    ans: 1,
+    exp: "El Imperio Inca con su sistema de Quipus floreció entre los siglos XI y XVI."
+  },
+  {
+    id: 127,
+    q: "¿Qué diferencia al PCGE del 2010 respecto a versiones anteriores?",
+    opts: [
+      "Tiene menos cuentas en el ámbito contable",
+      "Está homologado con las NIIF para el negocio",
+      "Solo aplica a grandes empresas según las normas",
+      "Elimina los libros auxiliares en la empresa"
+    ],
+    ans: 1,
+    exp: "El PCGE emitido en 2010 está homologado con las NIIF, permitiendo comparabilidad internacional."
+  },
+  {
+    id: 128,
+    q: "¿Cuál es el objetivo del 'Libro de Bancos'?",
+    opts: [
+      "Registrar préstamos en el ámbito contable",
+      "Controlar y registrar todas las operaciones con...",
+      "Registrar facturas según las normas",
+      "Controlar el almacén en la empresa"
+    ],
+    ans: 1,
+    exp: "El Libro de Bancos es un auxiliar que controla todos los movimientos de las cuentas bancarias de la empresa."
+  },
+  {
+    id: 129,
+    q: "¿Qué es la 'Depreciación'?",
+    opts: [
+      "Un tipo de descuento en el ámbito contable",
+      "La reducción del valor de un activo fijo por uso o...",
+      "Un aumento del patrimonio según las normas",
+      "Una deuda bancaria en la empresa"
+    ],
+    ans: 1,
+    exp: "La depreciación es la pérdida de valor de los activos fijos (maquinaria, vehículos) por uso u obsolescencia con el tiempo."
+  },
+  {
+    id: 130,
+    q: "¿Qué es el 'Capital de Trabajo'?",
+    opts: [
+      "El dinero para pagar salarios en el ámbito contable",
+      "Activo Corriente menos Pasivo Corriente",
+      "El capital aportado por socios según las normas",
+      "Las utilidades del mes en la empresa"
+    ],
+    ans: 1,
+    exp: "El Capital de Trabajo = Activo Corriente - Pasivo Corriente. Es el dinero disponible para las operaciones diarias."
+  },
+  {
+    id: 131,
+    q: "¿Qué es el 'Punto de Equilibrio'?",
+    opts: [
+      "Cuando activos = pasivos en el ámbito contable",
+      "El nivel de ventas donde los ingresos igualan a los costos",
+      "Cuando el debe = haber según las normas",
+      "Cuando el balance es cero en la empresa"
+    ],
+    ans: 1,
+    exp: "El Punto de Equilibrio es el volumen de ventas donde los ingresos cubren exactamente los costos, sin utilidad ni pérdida."
+  },
+  {
+    id: 132,
+    q: "¿Qué son los 'Gastos Operativos'?",
+    opts: [
+      "Compras de mercadería en el ámbito contable",
+      "Gastos necesarios para el funcionamiento diario de la empresa",
+      "Deudas bancarias según las normas",
+      "Inversiones en activos en la empresa"
+    ],
+    ans: 1,
+    exp: "Los Gastos Operativos son todos los costos necesarios para mantener el funcionamiento diario del negocio."
+  },
+  {
+    id: 133,
+    q: "¿Qué es el 'Flujo de Efectivo'?",
+    opts: [
+      "El saldo bancario en el ámbito contable",
+      "Estado financiero que muestra entradas y salidas...",
+      "El libro de caja según las normas",
+      "Las ventas del mes en la empresa"
+    ],
+    ans: 1,
+    exp: "El Flujo de Efectivo (Estado de Flujos de Efectivo) muestra las entradas y salidas de dinero real en un período."
+  },
+  {
+    id: 134,
+    q: "¿Qué es el 'Margen de Utilidad'?",
+    opts: [
+      "Las ventas totales en el ámbito contable",
+      "El porcentaje de ganancia sobre las ventas o...",
+      "El total de activos según las normas",
+      "Las deudas totales en la empresa"
+    ],
+    ans: 1,
+    exp: "El Margen de Utilidad es el porcentaje de ganancia en relación a las ventas: (Utilidad / Ventas) × 100."
+  },
+  {
+    id: 135,
+    q: "¿Cuál es la función de la 'Auditoría'?",
+    opts: [
+      "Registrar operaciones en el ámbito contable",
+      "Revisión independiente y verificación de la...",
+      "Elaborar el presupuesto según las normas",
+      "Contratar personal en la empresa"
+    ],
+    ans: 1,
+    exp: "La Auditoría es la revisión independiente de los libros y estados financieros para verificar su exactitud y cumplimiento legal."
+  },
+  {
+    id: 136,
+    q: "¿Qué es la 'Solvencia'?",
+    opts: [
+      "Tener muchos clientes en el ámbito contable",
+      "Capacidad de la empresa para pagar todas sus...",
+      "Tener muchas ventas según las normas",
+      "El total del patrimonio en la empresa"
+    ],
+    ans: 1,
+    exp: "La Solvencia es la capacidad de la empresa para afrontar todas sus obligaciones con sus activos totales."
+  },
+  {
+    id: 137,
+    q: "¿Qué tipo de pasivo es una deuda bancaria a 5 años?",
+    opts: [
+      "Pasivo Corriente",
+      "Pasivo No Corriente",
+      "Patrimonio",
+      "Activo No Corriente"
+    ],
+    ans: 1,
+    exp: "Una deuda a 5 años tiene vencimiento mayor a 1 año, por lo que es Pasivo No Corriente (largo plazo)."
+  },
+  {
+    id: 138,
+    q: "¿Qué son los 'Activos Intangibles'?",
+    opts: [
+      "Dinero en banco en el ámbito contable",
+      "Bienes sin forma física para el negocio",
+      "Máquinas y equipos según las normas",
+      "Mercaderías en la empresa"
+    ],
+    ans: 1,
+    exp: "Los Activos Intangibles son bienes sin forma física pero con valor económico: marcas, patentes, licencias, software."
+  },
+  {
+    id: 139,
+    q: "¿Qué es el 'Goodwill' o Fondo de Comercio?",
+    opts: [
+      "Un tipo de préstamo en el ámbito contable",
+      "El valor intangible extra que tiene una empresa por su reputación",
+      "Un activo fijo según las normas",
+      "Un tipo de deuda en la empresa"
+    ],
+    ans: 1,
+    exp: "El Goodwill es el valor adicional de una empresa más allá de sus activos tangibles: reputación, marca, clientela fiel."
+  },
+  {
+    id: 140,
+    q: "¿Qué es la 'Rentabilidad'?",
+    opts: [
+      "Las ventas totales en el ámbito contable",
+      "La capacidad de generar ganancias en relación a la...",
+      "El número de clientes según las normas",
+      "Los activos totales en la empresa"
+    ],
+    ans: 1,
+    exp: "La Rentabilidad mide la eficiencia de generar ganancias en relación al capital invertido o a las ventas."
+  },
+  {
+    id: 141,
+    q: "¿Qué diferencia al Pasivo del Patrimonio?",
+    opts: [
+      "El tamaño de las cifras en el ámbito contable",
+      "El Pasivo son deudas a terceros para el negocio",
+      "No hay diferencia según las normas",
+      "Solo la ubicación en el balance en la empresa"
+    ],
+    ans: 1,
+    exp: "El Pasivo son obligaciones con terceros (bancos, proveedores). El Patrimonio es lo que pertenece a los dueños/socios."
+  },
+  {
+    id: 142,
+    q: "¿Cuántos tipos de constitución de empresa se mencionan en el curso?",
+    opts: [
+      "3",
+      "4",
+      "6",
+      "5"
+    ],
+    ans: 2,
+    exp: "Se mencionan 6: SA, SAC, SRL, EIRL, SAA y SACS."
+  },
+  {
+    id: 143,
+    q: "¿Cuál es la principal ventaja de la SRL para empresas pequeñas?",
+    opts: [
+      "Puede cotizar en bolsa en el ámbito contable",
+      "Combina flexibilidad de empresa pequeña con...",
+      "No paga impuestos según las normas",
+      "Tiene menos socios que otras en la empresa"
+    ],
+    ans: 1,
+    exp: "La SRL protege los bienes personales de los socios mientras permite operar con flexibilidad."
+  },
+  {
+    id: 144,
+    q: "¿Qué es la 'Hoja de Comprobación' en el ciclo contable?",
+    opts: [
+      "Un recibo en el ámbito contable",
+      "Estado de verificación que confirma que el debe =...",
+      "Un libro auxiliar según las normas",
+      "Una factura en la empresa"
+    ],
+    ans: 1,
+    exp: "La Hoja de Comprobación (o Hoja de Trabajo) verifica el equilibrio del debe y haber antes de elaborar estados financieros."
+  },
+  {
+    id: 145,
+    q: "¿Qué regla de la Partida Doble aplica cuando una empresa VENDE?",
+    opts: [
+      "Para cosas: lo que ingresa es deudor, lo que sale es acreedor",
+      "Para personas: quien recibe es deudor, quien da es acreedor",
+      "Para resultados: toda ganancia es acreedora",
+      "Todas las anteriores en la empresa"
+    ],
+    ans: 2,
+    exp: "Al vender, se aplica la regla de resultados: la ganancia/ingreso se ABONA (acreedor) en la cuenta de ingresos."
+  },
+  {
+    id: 146,
+    q: "¿Qué es la 'Depreciación Acumulada'?",
+    opts: [
+      "Un tipo de ingreso en el ámbito contable",
+      "El total de depreciación acumulada desde la compra...",
+      "Un pasivo corriente según las normas",
+      "Una cuenta de patrimonio en la empresa"
+    ],
+    ans: 1,
+    exp: "La Depreciación Acumulada es el monto total de depreciación aplicada a un activo desde su adquisición hasta la fecha actual."
+  },
+  {
+    id: 147,
+    q: "¿En qué se diferencia un activo 'tangible' de uno 'intangible'?",
+    opts: [
+      "Solo en el precio en el ámbito contable",
+      "Tangible tiene forma física para el negocio",
+      "No hay diferencia práctica según las normas",
+      "Solo en cómo se deprecian en la empresa"
+    ],
+    ans: 1,
+    exp: "Tangible = se puede tocar (edificio, vehículo, máquina). Intangible = no tiene forma física (marca, software, patente)."
+  },
+  {
+    id: 148,
+    q: "¿Cuál es el rol del Contador en una empresa?",
+    opts: [
+      "Solo hacer planillas en el ámbito contable",
+      "Registrar, analizar e interpretar la información...",
+      "Solo pagar impuestos según las normas",
+      "Solo auditar en la empresa"
+    ],
+    ans: 1,
+    exp: "El Contador registra, clasifica, analiza e interpreta toda la información financiera de la empresa para la toma de decisiones."
+  },
+  {
+    id: 149,
+    q: "¿Qué es el 'Costo de Ventas'?",
+    opts: [
+      "El precio de venta en el ámbito contable",
+      "El costo de adquirir o producir los bienes...",
+      "Los gastos administrativos según las normas",
+      "Los gastos de marketing en la empresa"
+    ],
+    ans: 1,
+    exp: "El Costo de Ventas es lo que le costó a la empresa adquirir o producir los bienes que vendió en el período."
+  },
+  {
+    id: 150,
+    q: "¿Qué es la 'Utilidad Bruta'?",
+    opts: [
+      "La utilidad neta después de impuestos",
+      "Ventas totales menos Costo de Ventas",
+      "El total de ingresos",
+      "Las ventas del mes"
+    ],
+    ans: 1,
+    exp: "Utilidad Bruta = Ventas Totales - Costo de Ventas. Antes de descontar gastos operativos e impuestos."
+  },
+  {
+    id: 151,
+    q: "¿Qué es una 'Nota de Débito'?",
+    opts: [
+      "Un tipo de préstamo en el ámbito contable",
+      "Documento que aumenta la deuda del comprador hacia...",
+      "Un cheque devuelto según las normas",
+      "Un tipo de contrato en la empresa"
+    ],
+    ans: 1,
+    exp: "La Nota de Débito aumenta el importe que el comprador debe al vendedor (ej: por error en factura o cargos adicionales)."
+  },
+  {
+    id: 152,
+    q: "¿Qué es una 'Nota de Crédito'?",
+    opts: [
+      "Un descuento automático en el ámbito contable",
+      "Documento que reduce la deuda del comprador",
+      "Un préstamo bancario según las normas",
+      "Un tipo de garantía en la empresa"
+    ],
+    ans: 1,
+    exp: "La Nota de Crédito reduce el importe que el comprador debe al vendedor (devoluciones, descuentos, correcciones)."
+  },
+  {
+    id: 153,
+    q: "¿Cuál es el principio de 'Empresa en Marcha'?",
+    opts: [
+      "Que la empresa vende constantemente",
+      "Supuesto de que la empresa continuará operando...",
+      "Que tiene muchos empleados según las normas",
+      "Que siempre crece en la empresa"
+    ],
+    ans: 1,
+    exp: "El principio de Empresa en Marcha asume que la empresa continuará operando en el futuro previsible."
+  },
+  {
+    id: 154,
+    q: "¿Qué es el principio de 'Consistencia'?",
+    opts: [
+      "Ser constante en ventas en el ámbito contable",
+      "Usar los mismos métodos contables de período a...",
+      "Tener los mismos clientes según las normas",
+      "No cambiar el nombre en la empresa"
+    ],
+    ans: 1,
+    exp: "La Consistencia exige aplicar los mismos criterios y métodos contables en períodos sucesivos para que los datos sean comparables."
+  },
+  {
+    id: 155,
+    q: "¿Qué es el principio de 'Materialidad'?",
+    opts: [
+      "Solo registrar transacciones físicas",
+      "Solo registrar partidas significativas",
+      "Registrar todo sin excepción según las normas",
+      "Solo registrar transacciones en efectivo"
+    ],
+    ans: 1,
+    exp: "La Materialidad (o significatividad) indica que solo deben registrarse o revelarse las partidas importantes para la toma de decisiones."
+  },
+  {
+    id: 156,
+    q: "¿Qué son las 'Reservas' en el Patrimonio?",
+    opts: [
+      "Dinero guardado en caja fuerte en el ámbito contable",
+      "Parte de las utilidades retenidas para fines...",
+      "Deudas a largo plazo según las normas",
+      "Activos no utilizados en la empresa"
+    ],
+    ans: 1,
+    exp: "Las Reservas son utilidades retenidas y asignadas a propósitos específicos (legal, estatutaria, facultativa)."
+  },
+  {
+    id: 157,
+    q: "¿Qué es la 'Reserva Legal'?",
+    opts: [
+      "Un porcentaje obligatorio de las utilidades que la...",
+      "Un tipo de seguro para el negocio",
+      "Un activo del banco según las normas",
+      "Una deuda tributaria en la empresa"
+    ],
+    ans: 0,
+    exp: "La Reserva Legal es el monto obligatorio (10% de las utilidades según la LGS) que las empresas deben retener hasta alcanzar el 20% del capital."
+  },
+  {
+    id: 158,
+    q: "¿Qué son los 'Resultados Acumulados'?",
+    opts: [
+      "Las ventas históricas en el ámbito contable",
+      "Utilidades o pérdidas de períodos anteriores que...",
+      "Los gastos del año según las normas",
+      "Los activos totales en la empresa"
+    ],
+    ans: 1,
+    exp: "Los Resultados Acumulados son las utilidades (o pérdidas) de años anteriores que no han sido distribuidas como dividendos."
+  },
+  {
+    id: 159,
+    q: "¿Qué es el 'Registro de Ventas'?",
+    opts: [
+      "Un libro principal en el ámbito contable",
+      "Libro auxiliar donde se registran todas las ventas...",
+      "El estado de resultados según las normas",
+      "El libro mayor en la empresa"
+    ],
+    ans: 1,
+    exp: "El Libro de Registro de Ventas es un auxiliar que centraliza todas las ventas con sus respectivos comprobantes."
+  },
+  {
+    id: 160,
+    q: "¿Qué es la 'Planilla de Trabajadores'?",
+    opts: [
+      "Una nota de débito en el ámbito contable",
+      "Documento donde se detallan los sueldos",
+      "Un libro contable principal según las normas",
+      "Un tipo de factura en la empresa"
+    ],
+    ans: 1,
+    exp: "La Planilla detalla los haberes (sueldo básico, bonificaciones) y deducciones (AFP, seguro) de cada trabajador."
+  },
+  {
+    id: 161,
+    q: "¿Cuál es el monto del sueldo mínimo vital en Perú aproximadamente?",
+    opts: [
+      "S/ 500",
+      "S/ 750",
+      "S/ 1,025",
+      "S/ 2,000"
+    ],
+    ans: 2,
+    exp: "El sueldo mínimo vital (RMV) en Perú es de S/ 1,025 (actualizado a 2023). Es el mínimo que todo empleador debe pagar."
+  },
+  {
+    id: 162,
+    q: "¿Cuántos días de vacaciones tiene un trabajador en Perú al año?",
+    opts: [
+      "7 días",
+      "15 días",
+      "30 días",
+      "45 días"
+    ],
+    ans: 2,
+    exp: "Todo trabajador en Perú tiene derecho a 30 días calendarios de vacaciones por año de trabajo."
+  },
+  {
+    id: 163,
+    q: "¿Qué es la CTS (Compensación por Tiempo de Servicios)?",
+    opts: [
+      "Un seguro de salud en el ámbito contable",
+      "Beneficio laboral equivalente a aprox. 1 sueldo/año",
+      "Un impuesto según las normas",
+      "Un tipo de préstamo bancario en la empresa"
+    ],
+    ans: 1,
+    exp: "La CTS es un beneficio social que funciona como seguro de desempleo. Se deposita en mayo y noviembre."
+  },
+  {
+    id: 164,
+    q: "¿Cuándo tiene derecho un trabajador a gratificaciones en Perú?",
+    opts: [
+      "Solo en Navidad en el ámbito contable",
+      "En julio (Fiestas Patrias) y diciembre (Navidad),...",
+      "Mensualmente según las normas",
+      "Solo si la empresa tiene utilidades"
+    ],
+    ans: 1,
+    exp: "Las gratificaciones se pagan en julio (Fiestas Patrias) y diciembre (Navidad), equivaliendo a 1 remuneración básica cada una."
+  },
+  {
+    id: 165,
+    q: "¿Qué porcentaje descuenta la AFP aproximadamente al trabajador?",
+    opts: [
+      "2%",
+      "10%",
+      "12.5% aprox.",
+      "20%"
+    ],
+    ans: 2,
+    exp: "Las AFP descuentan aproximadamente 12.5% del sueldo mensual (varía por AFP) para el fondo de pensiones."
+  },
+  {
+    id: 166,
+    q: "¿Qué es el SIS (Seguro Integral de Salud)?",
+    opts: [
+      "Un banco estatal en el ámbito contable",
+      "Seguro de salud del Estado para personas en...",
+      "Un tipo de AFP según las normas",
+      "Un impuesto al trabajo en la empresa"
+    ],
+    ans: 1,
+    exp: "El SIS es el seguro de salud del gobierno para personas de bajos recursos que no tienen acceso al seguro regular."
+  },
+  {
+    id: 167,
+    q: "¿Qué es ESSALUD?",
+    opts: [
+      "Una AFP en el ámbito contable",
+      "Seguro Social de Salud pagado por el empleador",
+      "Un tipo de impuesto según las normas",
+      "Un banco de salud en la empresa"
+    ],
+    ans: 1,
+    exp: "ESSALUD es el seguro social de salud. El empleador paga el 9% del sueldo mensual para que el trabajador tenga atención médica."
+  },
+  {
+    id: 168,
+    q: "¿Qué es el Impuesto a la Renta de 5ta Categoría?",
+    opts: [
+      "Impuesto a las ventas en el ámbito contable",
+      "Impuesto que descuenta el empleador a trabajadores...",
+      "Un tipo de IGV según las normas",
+      "Un impuesto a las empresas en la empresa"
+    ],
+    ans: 1,
+    exp: "El Impuesto a la Renta 5ta categoría grava los sueldos de trabajadores dependientes que superan cierto umbral anual."
+  },
+  {
+    id: 169,
+    q: "¿Qué es el IGV?",
+    opts: [
+      "Impuesto General al Valor en el ámbito contable",
+      "Impuesto General a las Ventas para el negocio",
+      "Impuesto a las ganancias según las normas",
+      "Impuesto sobre el ingreso en la empresa"
+    ],
+    ans: 1,
+    exp: "El IGV (Impuesto General a las Ventas) es del 18% y se aplica sobre las ventas de bienes y servicios en Perú."
+  },
+  {
+    id: 170,
+    q: "¿Qué es el Impuesto a la Renta de 3ra Categoría?",
+    opts: [
+      "Impuesto a sueldos en el ámbito contable",
+      "Impuesto que pagan las empresas sobre sus...",
+      "Impuesto al consumo según las normas",
+      "Impuesto a las importaciones en la empresa"
+    ],
+    ans: 1,
+    exp: "El Impuesto a la Renta 3ra categoría grava las utilidades anuales de las empresas (negocios, personas jurídicas)."
+  },
+  {
+    id: 171,
+    q: "¿Qué es el 'asiento contable'?",
+    opts: [
+      "Un mueble de oficina en el ámbito contable",
+      "El registro formal de una transacción en el Libro Diario con cuenta",
+      "Un tipo de balance según las normas",
+      "Una nota de crédito en la empresa"
+    ],
+    ans: 1,
+    exp: "El asiento contable es el registro de una operación en el Libro Diario, indicando cuentas afectadas, montos en debe y haber."
+  },
+  {
+    id: 172,
+    q: "¿Qué es el 'saldo' de una cuenta?",
+    opts: [
+      "El total de ventas en el ámbito contable",
+      "La diferencia entre el total de cargos",
+      "El patrimonio final según las normas",
+      "El capital inicial en la empresa"
+    ],
+    ans: 1,
+    exp: "El saldo es la diferencia entre el total del Debe y el total del Haber en una cuenta. Puede ser deudor o acreedor."
+  },
+  {
+    id: 173,
+    q: "¿Cuándo tiene 'saldo deudor' una cuenta?",
+    opts: [
+      "Cuando el haber es mayor",
+      "Cuando el debe es mayor que el haber",
+      "Cuando están equilibradas",
+      "Cuando no hay movimientos"
+    ],
+    ans: 1,
+    exp: "Una cuenta tiene Saldo Deudor cuando el total del Debe es mayor que el total del Haber."
+  },
+  {
+    id: 174,
+    q: "¿Qué tipo de saldo tienen normalmente las cuentas de Activo?",
+    opts: [
+      "Saldo acreedor",
+      "Saldo deudor",
+      "Sin saldo",
+      "Saldo mixto"
+    ],
+    ans: 1,
+    exp: "Las cuentas de Activo normalmente tienen Saldo Deudor porque se debitan cuando aumentan."
+  },
+  {
+    id: 175,
+    q: "¿Qué tipo de saldo tienen normalmente las cuentas de Pasivo y Patrimonio?",
+    opts: [
+      "Saldo deudor",
+      "Saldo acreedor",
+      "Sin saldo",
+      "Saldo negativo"
+    ],
+    ans: 1,
+    exp: "Las cuentas de Pasivo y Patrimonio normalmente tienen Saldo Acreedor porque se acreditan cuando aumentan."
+  },
+  {
+    id: 176,
+    q: "¿Cuándo se dice que una empresa es 'solvente'?",
+    opts: [
+      "Cuando vende mucho en el ámbito contable",
+      "Cuando sus activos totales son mayores que sus...",
+      "Cuando tiene mucho efectivo según las normas",
+      "Cuando tiene muchos empleados en la empresa"
+    ],
+    ans: 1,
+    exp: "Una empresa es solvente cuando su Activo Total > Pasivo Total, es decir, puede cubrir todas sus deudas."
+  },
+  {
+    id: 177,
+    q: "¿Qué es la 'razón corriente' o liquidez corriente?",
+    opts: [
+      "El saldo en caja en el ámbito contable",
+      "Activo Corriente dividido entre Pasivo Corriente",
+      "Las ventas del trimestre según las normas",
+      "El capital de la empresa en la empresa"
+    ],
+    ans: 1,
+    exp: "Razón Corriente = Activo Corriente / Pasivo Corriente. Si es >1, la empresa puede pagar sus deudas a corto plazo."
+  },
+  {
+    id: 178,
+    q: "¿Qué es la 'rotación de inventario'?",
+    opts: [
+      "El porcentaje de devoluciones en el ámbito contable",
+      "Cuántas veces se vendió y repuso el inventario en...",
+      "El número de productos según las normas",
+      "El costo de almacén en la empresa"
+    ],
+    ans: 1,
+    exp: "La Rotación de Inventario = Costo de Ventas / Inventario Promedio. Mide la eficiencia en la gestión de existencias."
+  },
+  {
+    id: 179,
+    q: "¿Qué es la 'razón de endeudamiento'?",
+    opts: [
+      "El total de deudas en el ámbito contable",
+      "Pasivo Total dividido entre Activo Total",
+      "El costo financiero según las normas",
+      "Las ventas a crédito en la empresa"
+    ],
+    ans: 1,
+    exp: "Razón de Endeudamiento = Pasivo Total / Activo Total. Indica qué proporción de activos está financiada con deuda."
+  },
+  {
+    id: 180,
+    q: "¿Qué pasa cuando el Activo es igual al Pasivo?",
+    opts: [
+      "La empresa quiebra en el ámbito contable",
+      "El Patrimonio es igual a cero para el negocio",
+      "La empresa es muy grande según las normas",
+      "El balance no existe en la empresa"
+    ],
+    ans: 1,
+    exp: "Si Activo = Pasivo, entonces Patrimonio = 0. La empresa existe pero los dueños no tienen capital propio neto."
+  },
+  {
+    id: 181,
+    q: "¿Cuál es la función del 'control interno' en una empresa?",
+    opts: [
+      "Controlar empleados en el ámbito contable",
+      "Conjunto de políticas y procedimientos para proteger activos",
+      "Auditar externos según las normas",
+      "Solo revisar las ventas en la empresa"
+    ],
+    ans: 1,
+    exp: "El Control Interno protege activos, garantiza información financiera confiable y asegura el cumplimiento de normas."
+  },
+  {
+    id: 182,
+    q: "¿Qué es el 'período contable'?",
+    opts: [
+      "Un trimestre en el ámbito contable",
+      "Intervalo de tiempo que abarca el ciclo contable",
+      "Solo enero según las normas",
+      "Un mes en la empresa"
+    ],
+    ans: 1,
+    exp: "El período contable es el lapso que cubre el ciclo contable. En Perú generalmente es del 1 de enero al 31 de diciembre."
+  },
+  {
+    id: 183,
+    q: "¿Qué es la 'conciliación bancaria'?",
+    opts: [
+      "Pagar facturas bancarias en el ámbito contable",
+      "Proceso de comparar el saldo del Libro de Bancos...",
+      "Solicitar préstamos según las normas",
+      "Abrir una cuenta bancaria en la empresa"
+    ],
+    ans: 1,
+    exp: "La Conciliación Bancaria compara registros contables internos con el estado de cuenta del banco para detectar omisiones o errores."
+  },
+  {
+    id: 184,
+    q: "¿Qué es el 'ajuste contable'?",
+    opts: [
+      "Corrección de errores solo en el ámbito contable",
+      "Asiento al final del período para actualizar cuentas que no reflejan la realidad económica",
+      "Cambio de moneda según las normas",
+      "Revisión de precios en la empresa"
+    ],
+    ans: 1,
+    exp: "Los ajustes contables se realizan al cierre del período para que las cuentas reflejen la situación real (depreciación, devengados)."
+  },
+  {
+    id: 185,
+    q: "¿Qué es el principio de 'Devengo'?",
+    opts: [
+      "Solo registrar lo pagado en efectivo",
+      "Registrar ingresos y gastos cuando se generan",
+      "Registrar solo al final del año según las normas",
+      "Registrar solo ventas al contado en la empresa"
+    ],
+    ans: 1,
+    exp: "El principio de Devengo (o Acumulación) indica que los ingresos y gastos se registran cuando se generan, no cuando se pagan."
+  },
+  {
+    id: 186,
+    q: "¿Cuántos elementos tiene el Patrimonio de una empresa?",
+    opts: [
+      "Solo el capital en el ámbito contable",
+      "Capital, capital adicional, reservas, resultados...",
+      "Solo las utilidades según las normas",
+      "Capital y deudas en la empresa"
+    ],
+    ans: 1,
+    exp: "El Patrimonio incluye: Capital, Capital Adicional, Acciones de Inversión, Excedente de Revaluación, Reservas y Resultados Acumulados."
+  },
+  {
+    id: 187,
+    q: "¿Qué es la 'variación del patrimonio'?",
+    opts: [
+      "El cambio en ventas en el ámbito contable",
+      "Estado Financiero que muestra los cambios en el...",
+      "El total de activos según las normas",
+      "Las variaciones en el inventario en la empresa"
+    ],
+    ans: 1,
+    exp: "El Estado de Cambios en el Patrimonio Neto muestra todos los movimientos del patrimonio durante el período contable."
+  },
+  {
+    id: 188,
+    q: "¿Para qué sirve la contabilidad de costos?",
+    opts: [
+      "Solo para empresas grandes en el ámbito contable",
+      "Determinar el costo de producir bienes o servicios...",
+      "Solo para auditorías según las normas",
+      "Para calcular impuestos en la empresa"
+    ],
+    ans: 1,
+    exp: "La Contabilidad de Costos determina el costo unitario de productos para fijar precios competitivos y tomar decisiones estratégicas."
+  },
+  {
+    id: 189,
+    q: "¿Cuál es la diferencia entre Contabilidad Financiera y Contabilidad de Gestión?",
+    opts: [
+      "No hay diferencia en el ámbito contable",
+      "Financiera es para externos para el negocio",
+      "Solo el idioma según las normas",
+      "Solo el tipo de empresa en la empresa"
+    ],
+    ans: 1,
+    exp: "Contabilidad Financiera reporta a usuarios externos (bancos, SUNAT). Contabilidad de Gestión ayuda a la dirección interna."
+  },
+  {
+    id: 190,
+    q: "¿Qué es la 'amortización'?",
+    opts: [
+      "Un tipo de préstamo en el ámbito contable",
+      "Reducción gradual del valor de activos intangibles",
+      "El pago de salarios según las normas",
+      "Un tipo de impuesto en la empresa"
+    ],
+    ans: 1,
+    exp: "La Amortización es como la depreciación pero para Activos Intangibles (marcas, patentes, software): se reduce su valor gradualmente."
+  },
+  {
+    id: 191,
+    q: "¿Cuándo se aplica el método de 'línea recta' en depreciación?",
+    opts: [
+      "Solo a vehículos en el ámbito contable",
+      "Cuando el activo pierde el mismo valor cada año...",
+      "Solo al final de la vida útil según las normas",
+      "Solo en maquinaria industrial en la empresa"
+    ],
+    ans: 1,
+    exp: "El método de Línea Recta asigna la misma cantidad de depreciación cada año: (Costo - Valor Residual) / Vida Útil."
+  },
+  {
+    id: 192,
+    q: "¿Qué es la 'vida útil' de un activo?",
+    opts: [
+      "Los años que tiene la empresa en el ámbito contable",
+      "El período estimado durante el cual el activo...",
+      "El tiempo de garantía según las normas",
+      "El plazo del préstamo bancario en la empresa"
+    ],
+    ans: 1,
+    exp: "La Vida Útil es el tiempo estimado que un activo fijo estará en uso productivo antes de volverse obsoleto o inutilizable."
+  },
+  {
+    id: 193,
+    q: "¿Qué es el 'valor residual' de un activo?",
+    opts: [
+      "El precio original de compra en el ámbito contable",
+      "El valor estimado del activo al final de su vida útil",
+      "El costo de depreciación según las normas",
+      "El precio de mercado actual en la empresa"
+    ],
+    ans: 1,
+    exp: "El Valor Residual (o valor de salvamento) es el precio estimado de venta del activo al final de su vida útil."
+  },
+  {
+    id: 194,
+    q: "¿Qué es la 'provisión'?",
+    opts: [
+      "Un tipo de venta en el ámbito contable",
+      "Estimación de un pasivo probable cuyo monto o fecha son inciertos",
+      "Un tipo de activo según las normas",
+      "Un tipo de préstamo en la empresa"
+    ],
+    ans: 1,
+    exp: "Las Provisiones son estimaciones contables de obligaciones probables pero inciertas en monto o fecha (deudas incobrables, garantías)."
+  },
+  {
+    id: 195,
+    q: "¿Cuál es la regla general para el DEBE (Débito)?",
+    opts: [
+      "Pasivos y Patrimonio aumentan en el ámbito contable",
+      "Activos aumentan para el negocio",
+      "Solo aumentan los gastos según las normas",
+      "Los ingresos se debitan en la empresa"
+    ],
+    ans: 1,
+    exp: "Regla del DEBE: aumentan Activos y Gastos; disminuyen Pasivos, Patrimonio e Ingresos."
+  },
+  {
+    id: 196,
+    q: "¿Cuál es la regla general para el HABER (Crédito)?",
+    opts: [
+      "Activos y gastos aumentan en el ámbito contable",
+      "Pasivos, Patrimonio e Ingresos aumentan; Activos y...",
+      "Solo los activos aumentan según las normas",
+      "Los gastos se acreditan en la empresa"
+    ],
+    ans: 1,
+    exp: "Regla del HABER: aumentan Pasivos, Patrimonio e Ingresos; disminuyen Activos y Gastos."
+  },
+  {
+    id: 197,
+    q: "¿Cuántas partes tiene el Plan Contable General Empresarial en sus elementos?",
+    opts: [
+      "5 elementos",
+      "7 elementos",
+      "9 elementos",
+      "11 elementos"
+    ],
+    ans: 2,
+    exp: "El PCGE tiene 9 elementos: del 1 al 9, donde el 1-3 son Activo, 4 es Pasivo, 5 es Patrimonio, 6-7 son Resultados, 8 es Saldos presupuestales y 9 es Costos."
+  },
+  {
+    id: 198,
+    q: "¿Qué organismo regula la contabilidad en el Perú?",
+    opts: [
+      "El MEF directamente en el ámbito contable",
+      "El Consejo Normativo de Contabilidad del Sistema...",
+      "La SUNAT según las normas",
+      "El Banco Central de Reserva en la empresa"
+    ],
+    ans: 1,
+    exp: "El Consejo Normativo de Contabilidad, órgano del Sistema Nacional de Contabilidad, emite y regula las normas contables en Perú."
+  },
+  {
+    id: 199,
+    q: "¿Qué es la SUNAT?",
+    opts: [
+      "Banco del gobierno en el ámbito contable",
+      "Superintendencia Nacional de Aduanas y Administración Tributaria",
+      "Una AFP según las normas",
+      "Un organismo contable en la empresa"
+    ],
+    ans: 1,
+    exp: "La SUNAT (Superintendencia Nacional de Aduanas y Administración Tributaria) administra, recauda y fiscaliza los tributos en Perú."
+  },
+  {
+    id: 200,
+    q: "¿Para qué sirve el número de RUC?",
+    opts: [
+      "Solo para abrir cuentas bancarias en el ámbito contable",
+      "Identificar a contribuyentes para efectos tributarios",
+      "Solo para empresas grandes según las normas",
+      "Para registrar marcas en la empresa"
+    ],
+    ans: 1,
+    exp: "El RUC identifica a personas naturales y jurídicas ante SUNAT para el pago de impuestos y la emisión de comprobantes."
+  }
 ];
 
 // ================================================================
@@ -1766,12 +3945,12 @@ function checkExercise(container, exIdx, ansIdx, correct) {
   if (ansIdx === correct) {
     clicked.classList.add('correct');
     fb.className = 'ex-feedback show success';
-    fb.innerHTML = '✅ ¡Correcto! ' + (container === 'tab-ec' ? EXERCISES_EC[exIdx].exp : container === 'tab-pd' ? EXERCISES_PD[exIdx].exp : container === 'tab-clas' ? EXERCISES_CLAS[exIdx].exp : EXERCISES_EMP[exIdx].exp);
+    fb.innerHTML = '✅ ¡Correcto! ' + (container === 'exercises-ec' ? EXERCISES_EC[exIdx].exp : container === 'exercises-pd' ? EXERCISES_PD[exIdx].exp : container === 'exercises-clas' ? EXERCISES_CLAS[exIdx].exp : EXERCISES_EMP[exIdx].exp);
   } else {
     clicked.classList.add('wrong');
     correctEl.classList.add('correct');
     fb.className = 'ex-feedback show error';
-    fb.innerHTML = '❌ Incorrecto. La respuesta correcta era la opción ' + String.fromCharCode(65 + correct) + '. ' + (container === 'tab-ec' ? EXERCISES_EC[exIdx].exp : container === 'tab-pd' ? EXERCISES_PD[exIdx].exp : container === 'tab-clas' ? EXERCISES_CLAS[exIdx].exp : EXERCISES_EMP[exIdx].exp);
+    fb.innerHTML = '❌ Incorrecto. La respuesta correcta era la opción ' + String.fromCharCode(65 + correct) + '. ' + (container === 'exercises-ec' ? EXERCISES_EC[exIdx].exp : container === 'exercises-pd' ? EXERCISES_PD[exIdx].exp : container === 'exercises-clas' ? EXERCISES_CLAS[exIdx].exp : EXERCISES_EMP[exIdx].exp);
   }
 }
 
